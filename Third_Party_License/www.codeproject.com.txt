@@ -1,0 +1,5 @@
+LICENSE: The Code Project Open License (CPOL) 1.02
+https://www.codeproject.com/info/cpol10.aspx
+
+Multiselect Treeview Implementation
+https://www.codeproject.com/Articles/20581/Multiselect-Treeview-Implementation

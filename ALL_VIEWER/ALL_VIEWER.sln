@@ -1,0 +1,131 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34301.259
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ViewerBase", "ViewerBase\ViewerBase.shproj", "{ADCB0C9E-1F54-4768-8CDF-5BEBD772A596}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JADERLINK_MODEL_VIEWER", "JADERLINK_MODEL_VIEWER\JADERLINK_MODEL_VIEWER.csproj", "{E2A7DAC9-19DD-4775-83B3-131AA4943240}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RE4_PS2_MODEL_VIEWER", "RE4_PS2_MODEL_VIEWER\RE4_PS2_MODEL_VIEWER.csproj", "{939C28E3-E2F7-4E2C-93A4-0B1F1D577148}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RE4_UHD_MODEL_VIEWER", "RE4_UHD_MODEL_VIEWER\RE4_UHD_MODEL_VIEWER.csproj", "{6DE3D1D1-E360-4669-A844-ED3868551651}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RE4_2007_MODEL_VIEWER", "RE4_2007_MODEL_VIEWER\RE4_2007_MODEL_VIEWER.csproj", "{9BC91EA8-4D0B-4716-9142-4D4FA011D384}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Camera", "Camera\Camera.shproj", "{7A4ADF63-5187-4223-A861-9E25477AB4A5}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ShaderLoader", "ShaderLoader\ShaderLoader.shproj", "{02D530F7-5045-43E1-BC3B-5262CABEE275}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PMD_LIB", "PMD_LIB\PMD_LIB.shproj", "{02864B5E-F21E-4CF1-A287-3AC34656F7BC}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TGA_LIB", "TGA_LIB\TGA_LIB.shproj", "{32983CB7-1C40-45F0-8D06-C04A245F892E}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ScenarioSMD2007", "ScenarioSMD2007\ScenarioSMD2007.shproj", "{681D0465-23E6-4033-B1F3-CD061A192401}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MultiselectTree", "MultiselectTree\MultiselectTree.shproj", "{A2DC9D72-6E39-46BB-8B8B-57E81F22E363}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SMX", "SMX\SMX.shproj", "{1E471265-F147-4C2D-A710-034DB7459707}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TreeNode", "TreeNode\TreeNode.shproj", "{1E326A97-F359-4C43-9BF0-8781A011B1F4}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LoadSMX", "LoadSMX\LoadSMX.shproj", "{87088311-C51A-4C46-88B9-A394345BA532}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UHD_BIN_TPL", "UHD_BIN_TPL\UHD_BIN_TPL.shproj", "{A33786FD-0689-4C56-BC5B-C19211118D7F}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DDS_LIB", "DDS_LIB\DDS_LIB.shproj", "{C68F0593-E3CF-4D93-AAC0-C392404E3C20}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UhdScenarioSMD", "UhdScenarioSMD\UhdScenarioSMD.shproj", "{CD039D6F-4D90-441D-8E17-8A2A88445A06}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ControlUtils", "ControlUtils\ControlUtils.shproj", "{715EF6CB-6AA6-46B6-A7C0-81EEEE447DF3}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "StudioMdlDataReader", "StudioMdlDataReader\StudioMdlDataReader.shproj", "{52026703-41A2-4837-A833-4CE835DFAE44}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CjClutter.ObjLoader.Loader", "CjClutter.ObjLoader.Loader\CjClutter.ObjLoader.Loader.shproj", "{8A3A7579-5EF1-448E-A7E3-2BF569F56ED4}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Re4ViewerRender", "Re4ViewerRender\Re4ViewerRender.shproj", "{752F37A1-176D-4698-B2C8-850985D2CBC7}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		PMD_LIB\PMD_LIB.projitems*{02864b5e-f21e-4cf1-a287-3ac34656f7bc}*SharedItemsImports = 13
+		ShaderLoader\ShaderLoader.projitems*{02d530f7-5045-43e1-bc3b-5262cabee275}*SharedItemsImports = 13
+		TreeNode\TreeNode.projitems*{1e326a97-f359-4c43-9bf0-8781a011b1f4}*SharedItemsImports = 13
+		SMX\SMX.projitems*{1e471265-f147-4c2d-a710-034db7459707}*SharedItemsImports = 13
+		TGA_LIB\TGA_LIB.projitems*{32983cb7-1c40-45f0-8d06-c04a245f892e}*SharedItemsImports = 13
+		StudioMdlDataReader\StudioMdlDataReader.projitems*{52026703-41a2-4837-a833-4ce835dfae44}*SharedItemsImports = 13
+		ScenarioSMD2007\ScenarioSMD2007.projitems*{681d0465-23e6-4033-b1f3-cd061a192401}*SharedItemsImports = 13
+		Camera\Camera.projitems*{6de3d1d1-e360-4669-a844-ed3868551651}*SharedItemsImports = 4
+		ControlUtils\ControlUtils.projitems*{6de3d1d1-e360-4669-a844-ed3868551651}*SharedItemsImports = 4
+		DDS_LIB\DDS_LIB.projitems*{6de3d1d1-e360-4669-a844-ed3868551651}*SharedItemsImports = 4
+		LoadSMX\LoadSMX.projitems*{6de3d1d1-e360-4669-a844-ed3868551651}*SharedItemsImports = 4
+		MultiselectTree\MultiselectTree.projitems*{6de3d1d1-e360-4669-a844-ed3868551651}*SharedItemsImports = 4
+		Re4ViewerRender\Re4ViewerRender.projitems*{6de3d1d1-e360-4669-a844-ed3868551651}*SharedItemsImports = 4
+		ShaderLoader\ShaderLoader.projitems*{6de3d1d1-e360-4669-a844-ed3868551651}*SharedItemsImports = 4
+		SMX\SMX.projitems*{6de3d1d1-e360-4669-a844-ed3868551651}*SharedItemsImports = 4
+		TGA_LIB\TGA_LIB.projitems*{6de3d1d1-e360-4669-a844-ed3868551651}*SharedItemsImports = 4
+		TreeNode\TreeNode.projitems*{6de3d1d1-e360-4669-a844-ed3868551651}*SharedItemsImports = 4
+		UhdScenarioSMD\UhdScenarioSMD.projitems*{6de3d1d1-e360-4669-a844-ed3868551651}*SharedItemsImports = 4
+		UHD_BIN_TPL\UHD_BIN_TPL.projitems*{6de3d1d1-e360-4669-a844-ed3868551651}*SharedItemsImports = 4
+		ViewerBase\ViewerBase.projitems*{6de3d1d1-e360-4669-a844-ed3868551651}*SharedItemsImports = 4
+		ControlUtils\ControlUtils.projitems*{715ef6cb-6aa6-46b6-a7c0-81eeee447df3}*SharedItemsImports = 13
+		Re4ViewerRender\Re4ViewerRender.projitems*{752f37a1-176d-4698-b2c8-850985d2cbc7}*SharedItemsImports = 13
+		Camera\Camera.projitems*{7a4adf63-5187-4223-a861-9e25477ab4a5}*SharedItemsImports = 13
+		LoadSMX\LoadSMX.projitems*{87088311-c51a-4c46-88b9-a394345ba532}*SharedItemsImports = 13
+		CjClutter.ObjLoader.Loader\CjClutter.ObjLoader.Loader.projitems*{8a3a7579-5ef1-448e-a7e3-2bf569f56ed4}*SharedItemsImports = 13
+		Camera\Camera.projitems*{9bc91ea8-4d0b-4716-9142-4d4fa011d384}*SharedItemsImports = 4
+		ControlUtils\ControlUtils.projitems*{9bc91ea8-4d0b-4716-9142-4d4fa011d384}*SharedItemsImports = 4
+		LoadSMX\LoadSMX.projitems*{9bc91ea8-4d0b-4716-9142-4d4fa011d384}*SharedItemsImports = 4
+		MultiselectTree\MultiselectTree.projitems*{9bc91ea8-4d0b-4716-9142-4d4fa011d384}*SharedItemsImports = 4
+		PMD_LIB\PMD_LIB.projitems*{9bc91ea8-4d0b-4716-9142-4d4fa011d384}*SharedItemsImports = 4
+		Re4ViewerRender\Re4ViewerRender.projitems*{9bc91ea8-4d0b-4716-9142-4d4fa011d384}*SharedItemsImports = 4
+		ScenarioSMD2007\ScenarioSMD2007.projitems*{9bc91ea8-4d0b-4716-9142-4d4fa011d384}*SharedItemsImports = 4
+		ShaderLoader\ShaderLoader.projitems*{9bc91ea8-4d0b-4716-9142-4d4fa011d384}*SharedItemsImports = 4
+		SMX\SMX.projitems*{9bc91ea8-4d0b-4716-9142-4d4fa011d384}*SharedItemsImports = 4
+		TGA_LIB\TGA_LIB.projitems*{9bc91ea8-4d0b-4716-9142-4d4fa011d384}*SharedItemsImports = 4
+		TreeNode\TreeNode.projitems*{9bc91ea8-4d0b-4716-9142-4d4fa011d384}*SharedItemsImports = 4
+		ViewerBase\ViewerBase.projitems*{9bc91ea8-4d0b-4716-9142-4d4fa011d384}*SharedItemsImports = 4
+		MultiselectTree\MultiselectTree.projitems*{a2dc9d72-6e39-46bb-8b8b-57e81f22e363}*SharedItemsImports = 13
+		UHD_BIN_TPL\UHD_BIN_TPL.projitems*{a33786fd-0689-4c56-bc5b-c19211118d7f}*SharedItemsImports = 13
+		ViewerBase\ViewerBase.projitems*{adcb0c9e-1f54-4768-8cdf-5bebd772a596}*SharedItemsImports = 13
+		DDS_LIB\DDS_LIB.projitems*{c68f0593-e3cf-4d93-aac0-c392404e3c20}*SharedItemsImports = 13
+		UhdScenarioSMD\UhdScenarioSMD.projitems*{cd039d6f-4d90-441d-8e17-8a2a88445a06}*SharedItemsImports = 13
+		Camera\Camera.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
+		CjClutter.ObjLoader.Loader\CjClutter.ObjLoader.Loader.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
+		ControlUtils\ControlUtils.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
+		DDS_LIB\DDS_LIB.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
+		MultiselectTree\MultiselectTree.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
+		ShaderLoader\ShaderLoader.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
+		StudioMdlDataReader\StudioMdlDataReader.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
+		TGA_LIB\TGA_LIB.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
+		TreeNode\TreeNode.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
+		ViewerBase\ViewerBase.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2A7DAC9-19DD-4775-83B3-131AA4943240}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2A7DAC9-19DD-4775-83B3-131AA4943240}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2A7DAC9-19DD-4775-83B3-131AA4943240}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2A7DAC9-19DD-4775-83B3-131AA4943240}.Release|Any CPU.Build.0 = Release|Any CPU
+		{939C28E3-E2F7-4E2C-93A4-0B1F1D577148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{939C28E3-E2F7-4E2C-93A4-0B1F1D577148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{939C28E3-E2F7-4E2C-93A4-0B1F1D577148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{939C28E3-E2F7-4E2C-93A4-0B1F1D577148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DE3D1D1-E360-4669-A844-ED3868551651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DE3D1D1-E360-4669-A844-ED3868551651}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DE3D1D1-E360-4669-A844-ED3868551651}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DE3D1D1-E360-4669-A844-ED3868551651}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BC91EA8-4D0B-4716-9142-4D4FA011D384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BC91EA8-4D0B-4716-9142-4D4FA011D384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BC91EA8-4D0B-4716-9142-4D4FA011D384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BC91EA8-4D0B-4716-9142-4D4FA011D384}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {119A1659-20C7-4B7F-8E0C-F9CCA2AAEAB9}
+	EndGlobalSection
+EndGlobal
