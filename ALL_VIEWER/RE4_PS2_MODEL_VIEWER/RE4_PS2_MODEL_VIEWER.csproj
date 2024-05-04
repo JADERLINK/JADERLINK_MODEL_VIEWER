@@ -61,12 +61,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Forms\FormCamera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Forms\FormCamera.Designer.cs">
+      <DependentUpon>FormCamera.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Forms\FormCredits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Forms\FormCredits.Designer.cs">
+      <DependentUpon>FormCredits.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Forms\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\Forms\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\LoadPs2BinModel.cs" />
+    <Compile Include="src\LoadPs2ScenarioSMD.cs" />
+    <Compile Include="src\LoadPs2Tpl.cs" />
     <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -77,7 +92,14 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="src\Forms\FormCamera.resx">
+      <DependentUpon>FormCamera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Forms\FormCredits.resx">
+      <DependentUpon>FormCredits.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,6 +120,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\ObjShaderFrag.frag" />
+    <None Include="Resources\ObjShaderVert.vert" />
+    <None Include="Resources\WhiteTexture.png" />
   </ItemGroup>
+  <Import Project="..\Camera\Camera.projitems" Label="Shared" />
+  <Import Project="..\ControlUtils\ControlUtils.projitems" Label="Shared" />
+  <Import Project="..\LoadSMX\LoadSMX.projitems" Label="Shared" />
+  <Import Project="..\MultiselectTree\MultiselectTree.projitems" Label="Shared" />
+  <Import Project="..\Re4ViewerRender\Re4ViewerRender.projitems" Label="Shared" />
+  <Import Project="..\ShaderLoader\ShaderLoader.projitems" Label="Shared" />
+  <Import Project="..\SMX\SMX.projitems" Label="Shared" />
+  <Import Project="..\TreeNode\TreeNode.projitems" Label="Shared" />
+  <Import Project="..\ViewerBase\ViewerBase.projitems" Label="Shared" />
+  <Import Project="..\PS2_BIN\PS2_BIN.projitems" Label="Shared" />
+  <Import Project="..\Ps2ScenarioSMD\Ps2ScenarioSMD.projitems" Label="Shared" />
+  <Import Project="..\PS2_TPL\PS2_TPL.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

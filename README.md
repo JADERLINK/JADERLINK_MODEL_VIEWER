@@ -1,8 +1,8 @@
 # JADERLINK_MODEL_VIEWER
 
-View the 3d models, from the files: .obj, .smd, Re4 Uhd .BIN, Re4 2007 .PMD, and your Re4 .SMD scenario files.
+View the 3d models, from the files: .obj, .smd, Re4 Uhd .BIN, Re4 PS2 .BIN, Re4 2007 .PMD, and your Re4 .SMD scenario files (PS2/UHD/2007).
 
-![](https://i.imgur.com/9pJ5p9C.png)
+![](https://i.imgur.com/tL1reYS.png)
 
 **Info:**
 <br>License: MIT Licence
@@ -21,11 +21,18 @@ RE4_2007_MODEL_VIEWER.exe -> Arquivos .PMD (Re4 2007), Scenario .SMD + .SMX, com
 
 RE4_UHD_MODEL_VIEWER.exe -> arquivos .BIN (Re4 Uhd) + .TPL, Scenario .SMD + .SMX, com suporte a arquivos .PACK e PACK.YZ2;
 
+RE4_PS2_MODEL_VIEWER.exe -> arquivos .BIN (Re4 PS2) + .TPL, Scenario .SMD + .SMX;
+
+**Update 1.0.1**
+<br>Arrumado alinhamento da matriz de índices (isso evita possíveis bugs);
+<br>Adicionado a opção de desligar/ativar as cores de vertices, nos visualizadores;
+<br>Ao ativar/desativar a visualização das normals, caso a normal for xyz com valor zero, a normal não será exibida.
+<br>Adicionado o visualizador de ps2: RE4_PS2_MODEL_VIEWER;
+
 # **_MODEL_VIEWER.exe
 
 Para abrir o programa, é necessário que sua placa de vídeo (GPU) tenha o OpenGL versão 3.3 ou superior. Caso sua versão seja inferior à requerida, o programa mostrará uma mensagem de erro.
-<br>Aviso: a versão 1.0.0 é uma versão de pré-lançamento, então os programas podem conter erros nos quais podem fechar o programa sem aviso.
-<br>(A inserir informações sobre o programa);
+<br>Aviso: a versão 1.0.1 é uma versão de pré-lançamento, então os programas podem conter erros nos quais podem fechar o programa sem aviso.
 
 # Para Desenvolvedores:
 
@@ -48,4 +55,4 @@ Encontra-se em ALL_VIEWER/CjClutter.ObjLoader.Loader, código modificado, as mod
 
 -----
 **At.te: JADERLINK**
-<br>2024-04-13
+<br>2024-05-04

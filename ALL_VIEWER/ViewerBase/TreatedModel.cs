@@ -44,6 +44,9 @@ namespace ViewerBase
         // conjunto de Índices
         public uint[] Indexes { get; set; }
 
+        // quantidade de Índices
+        public int IndexesLength { get; set; }
+
         //coordenadas dos limites da mesh
         public Vector3 MinBoundary { get; set; }
         public Vector3 MaxBoundary { get; set; }

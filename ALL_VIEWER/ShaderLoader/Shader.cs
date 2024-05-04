@@ -106,6 +106,7 @@ namespace ShaderLoader // from https://github.com/opentk/LearnOpenTK/blob/master
             if (code != (int)All.True)
             {
                 // We can use `GL.GetProgramInfoLog(program)` to get information about the error.
+                Console.WriteLine(GL.GetProgramInfoLog(program));
                 throw new Exception($"Error occurred whilst linking Program({program})");
             }
         }

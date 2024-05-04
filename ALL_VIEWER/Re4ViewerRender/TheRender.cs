@@ -21,6 +21,8 @@ namespace Re4ViewerRender
         public static bool RenderWireframe = false;
         public static bool RenderNormals = false;
         public static bool RenderOnlyFrontFace = false;
+        public static bool RenderVertexColor = true;
+
 
         public static void Render(ref Matrix4 camMtx, ref Matrix4 projMatrix, RenderOrder order, ModelGroup modelGroup, Shader objShader, TextureRef whiteTex, Color SkyColor, Vector3 camPos)
         {
@@ -78,6 +80,14 @@ namespace Re4ViewerRender
                 objShader.SetInt("EnableNormals", 0);
             }
 
+            if (RenderVertexColor)
+            {
+                objShader.SetInt("EnableVertexColors", 1);
+            }
+            else
+            {
+                objShader.SetInt("EnableVertexColors", 0);
+            }
 
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);

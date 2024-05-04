@@ -123,9 +123,18 @@ namespace JADERLINK_MODEL_VIEWER.src
                     bmin = boundary[Boundary.min];
                 }
 
+                int IndexesLength = indicesList.Count;
+
+                int tempIndexDiv = IndexesLength / (16 / sizeof(uint));
+                int tempIndexRest = IndexesLength % (16 / sizeof(uint));
+                tempIndexDiv += tempIndexRest != 0 ? 1 : 0;
+                int tempIndexLength = tempIndexDiv * (16 / sizeof(uint));
+                indicesList.AddRange(new uint[tempIndexLength - IndexesLength]);
+
                 MeshPart mesh = new MeshPart();
                 mesh.Vertex = verticesList.ToArray();
                 mesh.Indexes = indicesList.ToArray();
+                mesh.IndexesLength = IndexesLength;
                 mesh.MinBoundary = bmin;
                 mesh.MaxBoundary = bmax;
                 mesh.CenterBoundary = new Vector3((bmax.X + bmin.X) / 2, (bmax.Y + bmin.Y) / 2, (bmax.Z + bmin.Z) / 2);

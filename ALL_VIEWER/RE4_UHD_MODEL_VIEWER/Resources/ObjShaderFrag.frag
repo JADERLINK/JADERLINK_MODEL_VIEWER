@@ -7,6 +7,7 @@ in vec4 color;
 
 in vec3 Normal_cameraspace;
 in vec3 LightDirection_cameraspace;
+flat in int NormalIsZero;
 
 uniform sampler2D texture0;
 uniform sampler2D texture1;
@@ -14,6 +15,7 @@ uniform sampler2D texture1;
 uniform vec4 matColor;
 //uniform vec4 smxColor;
 uniform bool EnableNormals;
+uniform bool EnableVertexColors;
 
 void main()
 {
@@ -27,7 +29,12 @@ void main()
     vec4 texColor = texture(texture0, texCoord);
     vec4 vexAlfa = texture(texture1, texCoord);
 
-    vec4 image_colour = texColor * matColor * color;
+    vec4 image_colour = texColor;
+
+	if(EnableVertexColors)
+	{
+		image_colour = texColor * matColor * color; 
+	}
 
     //ambient
     vec4 ambient_result = vec4(image_colour.r, image_colour.g, image_colour.b, image_colour.a * vexAlfa.r);
@@ -66,7 +73,7 @@ void main()
 		MaterialDiffuseColor * LightColor * LightPower * cosTheta / (distance*distance)
         , image_colour.a * vexAlfa.r);
 
-    if(!EnableNormals)
+    if(!EnableNormals || NormalIsZero != 0) // sem uso de normal
 	{
  		outputColor = ambient_result;
 	}

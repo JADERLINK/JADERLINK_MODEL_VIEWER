@@ -13,11 +13,11 @@ namespace ViewerBase
     public class TextureRef // baseado em https://github.com/opentk/LearnOpenTK/blob/master/Common/Texture.cs
     {
         private int Handle;
-        public readonly Bitmap bitmap;
+        //public readonly Bitmap bitmap;
 
         public TextureRef(Bitmap bitmap)
         {
-            this.bitmap = bitmap;
+            //this.bitmap = bitmap;
             Handle = GetTextureIdGL(bitmap);
 
             IsLoaded = true;

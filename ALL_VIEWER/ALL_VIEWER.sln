@@ -45,6 +45,12 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CjClutter.ObjLoader.Loader"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Re4ViewerRender", "Re4ViewerRender\Re4ViewerRender.shproj", "{752F37A1-176D-4698-B2C8-850985D2CBC7}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PS2_BIN", "PS2_BIN\PS2_BIN.shproj", "{AE3D5A71-4D26-40D2-B5E2-B1BAD2EF3FDE}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Ps2ScenarioSMD", "Ps2ScenarioSMD\Ps2ScenarioSMD.shproj", "{910C07D1-2980-46C9-BC77-34B9D331D0B6}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PS2_TPL", "PS2_TPL\PS2_TPL.shproj", "{EE41D693-71ED-4FC5-9290-F1CB41BBA851}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		PMD_LIB\PMD_LIB.projitems*{02864b5e-f21e-4cf1-a287-3ac34656f7bc}*SharedItemsImports = 13
@@ -72,6 +78,19 @@ Global
 		Camera\Camera.projitems*{7a4adf63-5187-4223-a861-9e25477ab4a5}*SharedItemsImports = 13
 		LoadSMX\LoadSMX.projitems*{87088311-c51a-4c46-88b9-a394345ba532}*SharedItemsImports = 13
 		CjClutter.ObjLoader.Loader\CjClutter.ObjLoader.Loader.projitems*{8a3a7579-5ef1-448e-a7e3-2bf569f56ed4}*SharedItemsImports = 13
+		Ps2ScenarioSMD\Ps2ScenarioSMD.projitems*{910c07d1-2980-46c9-bc77-34b9d331d0b6}*SharedItemsImports = 13
+		Camera\Camera.projitems*{939c28e3-e2f7-4e2c-93a4-0b1f1d577148}*SharedItemsImports = 4
+		ControlUtils\ControlUtils.projitems*{939c28e3-e2f7-4e2c-93a4-0b1f1d577148}*SharedItemsImports = 4
+		LoadSMX\LoadSMX.projitems*{939c28e3-e2f7-4e2c-93a4-0b1f1d577148}*SharedItemsImports = 4
+		MultiselectTree\MultiselectTree.projitems*{939c28e3-e2f7-4e2c-93a4-0b1f1d577148}*SharedItemsImports = 4
+		Ps2ScenarioSMD\Ps2ScenarioSMD.projitems*{939c28e3-e2f7-4e2c-93a4-0b1f1d577148}*SharedItemsImports = 4
+		PS2_BIN\PS2_BIN.projitems*{939c28e3-e2f7-4e2c-93a4-0b1f1d577148}*SharedItemsImports = 4
+		PS2_TPL\PS2_TPL.projitems*{939c28e3-e2f7-4e2c-93a4-0b1f1d577148}*SharedItemsImports = 4
+		Re4ViewerRender\Re4ViewerRender.projitems*{939c28e3-e2f7-4e2c-93a4-0b1f1d577148}*SharedItemsImports = 4
+		ShaderLoader\ShaderLoader.projitems*{939c28e3-e2f7-4e2c-93a4-0b1f1d577148}*SharedItemsImports = 4
+		SMX\SMX.projitems*{939c28e3-e2f7-4e2c-93a4-0b1f1d577148}*SharedItemsImports = 4
+		TreeNode\TreeNode.projitems*{939c28e3-e2f7-4e2c-93a4-0b1f1d577148}*SharedItemsImports = 4
+		ViewerBase\ViewerBase.projitems*{939c28e3-e2f7-4e2c-93a4-0b1f1d577148}*SharedItemsImports = 4
 		Camera\Camera.projitems*{9bc91ea8-4d0b-4716-9142-4d4fa011d384}*SharedItemsImports = 4
 		ControlUtils\ControlUtils.projitems*{9bc91ea8-4d0b-4716-9142-4d4fa011d384}*SharedItemsImports = 4
 		LoadSMX\LoadSMX.projitems*{9bc91ea8-4d0b-4716-9142-4d4fa011d384}*SharedItemsImports = 4
@@ -87,6 +106,7 @@ Global
 		MultiselectTree\MultiselectTree.projitems*{a2dc9d72-6e39-46bb-8b8b-57e81f22e363}*SharedItemsImports = 13
 		UHD_BIN_TPL\UHD_BIN_TPL.projitems*{a33786fd-0689-4c56-bc5b-c19211118d7f}*SharedItemsImports = 13
 		ViewerBase\ViewerBase.projitems*{adcb0c9e-1f54-4768-8cdf-5bebd772a596}*SharedItemsImports = 13
+		PS2_BIN\PS2_BIN.projitems*{ae3d5a71-4d26-40d2-b5e2-b1bad2ef3fde}*SharedItemsImports = 13
 		DDS_LIB\DDS_LIB.projitems*{c68f0593-e3cf-4d93-aac0-c392404e3c20}*SharedItemsImports = 13
 		UhdScenarioSMD\UhdScenarioSMD.projitems*{cd039d6f-4d90-441d-8e17-8a2a88445a06}*SharedItemsImports = 13
 		Camera\Camera.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
@@ -99,6 +119,7 @@ Global
 		TGA_LIB\TGA_LIB.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
 		TreeNode\TreeNode.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
 		ViewerBase\ViewerBase.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
+		PS2_TPL\PS2_TPL.projitems*{ee41d693-71ed-4fc5-9290-f1cb41bba851}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

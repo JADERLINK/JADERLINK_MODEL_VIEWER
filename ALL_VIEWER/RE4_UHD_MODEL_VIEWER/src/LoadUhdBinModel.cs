@@ -106,7 +106,14 @@ namespace RE4_UHD_MODEL_VIEWER.src
             {
                 Dictionary<Boundary, Vector3> boundary = new Dictionary<Boundary, Vector3>();
 
-                uint[] indices = new uint[uhdBIN.Materials[im].face_index_array.Length * 3];
+                int IndexesLength = uhdBIN.Materials[im].face_index_array.Length * 3;
+
+                int tempIndexDiv = (uhdBIN.Materials[im].face_index_array.Length * 3) / (16 / sizeof(uint));
+                int tempIndexRest = (uhdBIN.Materials[im].face_index_array.Length * 3) % (16 / sizeof(uint));
+                tempIndexDiv += tempIndexRest != 0 ? 1 : 0;
+                int tempIndexLength = tempIndexDiv * (16 / sizeof(uint));
+
+                uint[] indices = new uint[tempIndexLength];
 
                 int tempCont = 0;
                 for (int i = 0; i < uhdBIN.Materials[im].face_index_array.Length; i++)
@@ -258,6 +265,7 @@ namespace RE4_UHD_MODEL_VIEWER.src
                 MeshPart mesh = new MeshPart();
                 mesh.Vertex = vertices;
                 mesh.Indexes = indices;
+                mesh.IndexesLength = IndexesLength;
                 mesh.MinBoundary = bmin;
                 mesh.MaxBoundary = bmax;
                 mesh.CenterBoundary = new Vector3((bmax.X + bmin.X) / 2, (bmax.Y + bmin.Y) / 2, (bmax.Z + bmin.Z) / 2);

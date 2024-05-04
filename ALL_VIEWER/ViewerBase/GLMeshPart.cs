@@ -19,10 +19,13 @@ namespace ViewerBase
         public string MaterialRef { get; private set; }
 
         // conjunto de vertices, normals, UVs, e colors
-        public float[] Vertex { get; private set; }
+        //public float[] Vertex { get; private set; }
 
         // conjunto de Índices
-        public uint[] Indexes { get; private set; }
+        //public uint[] Indexes { get; private set; }
+
+        // quantidade de Índices
+        public int IndexesLength { get; private set; }
 
         //coordenadas dos limites da mesh
         public Vector3 MinBoundary { get; private set; }
@@ -42,8 +45,9 @@ namespace ViewerBase
             RefModelID = mesh.RefModelID;
             MeshID = mesh.MeshID;
             MaterialRef = mesh.MaterialRef;
-            Vertex = mesh.Vertex;
-            Indexes = mesh.Indexes;
+            //Vertex = mesh.Vertex;
+            //Indexes = mesh.Indexes;
+            IndexesLength = mesh.IndexesLength;
             MinBoundary = mesh.MinBoundary;
             MaxBoundary = mesh.MaxBoundary;
             CenterBoundary = mesh.CenterBoundary;
@@ -55,11 +59,11 @@ namespace ViewerBase
 
             vertexBufferObject = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBufferObject);
-            GL.BufferData(BufferTarget.ArrayBuffer, Vertex.Length * sizeof(float), Vertex, BufferUsageHint.StaticDraw);
+            GL.BufferData(BufferTarget.ArrayBuffer, mesh.Vertex.Length * sizeof(float), mesh.Vertex, BufferUsageHint.StaticDraw);
 
             elementBufferObject = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, elementBufferObject);
-            GL.BufferData(BufferTarget.ElementArrayBuffer, Indexes.Length * sizeof(uint), Indexes, BufferUsageHint.StaticDraw);
+            GL.BufferData(BufferTarget.ElementArrayBuffer, mesh.Indexes.Length * sizeof(uint), mesh.Indexes, BufferUsageHint.StaticDraw);
 
             var positionLocation = (int)AttribLocation.aPosition;
             GL.EnableVertexAttribArray(positionLocation);
@@ -89,7 +93,7 @@ namespace ViewerBase
             if (IsLoaded)
             {
                 GL.BindVertexArray(vertexArrayObject);
-                GL.DrawElements(PrimitiveType.Triangles, Indexes.Length, DrawElementsType.UnsignedInt, 0);
+                GL.DrawElements(PrimitiveType.Triangles, IndexesLength, DrawElementsType.UnsignedInt, 0);
             }
         
         }

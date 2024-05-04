@@ -148,12 +148,19 @@ namespace RE4_2007_MODEL_VIEWER.src
                 {
                     if (pmd.Nodes[iN].Meshs[iM].Orders.Length > 0 && pmd.Nodes[iN].Meshs[iM].Vertexs.Length > 0)
                     {
+                        int IndexesLength = pmd.Nodes[iN].Meshs[iM].Orders.Length;
+
                         Dictionary<Boundary, Vector3> boundary = new Dictionary<Boundary, Vector3>();
 
-                        float[] vertices = new float[pmd.Nodes[iN].Meshs[iM].Vertexs.Length * 12];
-                        uint[] indices = new uint[pmd.Nodes[iN].Meshs[iM].Orders.Length];
+                        int tempIndexDiv = pmd.Nodes[iN].Meshs[iM].Orders.Length / (16 / sizeof(uint));
+                        int tempIndexRest = pmd.Nodes[iN].Meshs[iM].Orders.Length % (16 / sizeof(uint));
+                        tempIndexDiv += tempIndexRest != 0 ? 1 : 0;
+                        int tempIndexLength = tempIndexDiv * (16 / sizeof(uint));
 
-                        for (int i = 0; i < indices.Length; i++)
+                        float[] vertices = new float[pmd.Nodes[iN].Meshs[iM].Vertexs.Length * 12];
+                        uint[] indices = new uint[tempIndexLength];
+
+                        for (int i = 0; i < IndexesLength; i++)
                         {
                             indices[i] = pmd.Nodes[iN].Meshs[iM].Orders[i];
                         }
@@ -260,6 +267,7 @@ namespace RE4_2007_MODEL_VIEWER.src
                         MeshPart mesh = new MeshPart();
                         mesh.Vertex = vertices;
                         mesh.Indexes = indices;
+                        mesh.IndexesLength = IndexesLength;
                         mesh.MinBoundary = bmin;
                         mesh.MaxBoundary = bmax;
                         mesh.CenterBoundary = new Vector3((bmax.X + bmin.X) / 2, (bmax.Y + bmin.Y) / 2, (bmax.Z + bmin.Z) / 2);

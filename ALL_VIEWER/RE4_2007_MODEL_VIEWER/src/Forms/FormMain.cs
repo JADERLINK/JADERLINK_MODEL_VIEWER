@@ -414,6 +414,13 @@ namespace RE4_2007_MODEL_VIEWER
             renderControl.GlControl.Invalidate();
         }
 
+        private void toolStripMenuItemVertexColor_Click(object sender, EventArgs e)
+        {
+            TheRender.RenderVertexColor = !TheRender.RenderVertexColor;
+            renderControl.GlControl.Invalidate();
+        }
+
+
         FormCamera cameraForm = null;
         int lastTrackBarCamSpeedValue = 50;
 
@@ -464,5 +471,6 @@ namespace RE4_2007_MODEL_VIEWER
         {
             creditsForm = null;
         }
+
     }
 }

@@ -10,6 +10,7 @@ out vec4 color;
 
 out vec3 Normal_cameraspace;
 out vec3 LightDirection_cameraspace;
+flat out int NormalIsZero;
 //-----------
 
 uniform mat4 mRotation;
@@ -32,6 +33,12 @@ void main(void)
         vertex_normal = normalize(vertex_normal);
     }
   
+    NormalIsZero = 0;
+    if(aNormal.x == 0 && aNormal.y == 0 && aNormal.z == 0)
+    {
+        NormalIsZero = 1;
+    }
+
     vec4 temp1 = vec4(aPosition, 1.0) * vec4(mScale, 1.0);
     vec4 temp2 = temp1 * mRotation;
     vec4 temp3 = temp2.xyzw + vec4(mPosition, 0).xyzw;
