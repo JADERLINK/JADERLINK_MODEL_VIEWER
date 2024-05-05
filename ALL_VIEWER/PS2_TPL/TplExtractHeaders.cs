@@ -11,15 +11,17 @@ namespace TPL_PS2_EXTRACT
     public class TplExtractHeaders
     {
         private BinaryReader br = null;
+        private long mainOffset = 0;
 
-        public TplExtractHeaders(BinaryReader br) 
+        public TplExtractHeaders(BinaryReader br, long mainOffset = 0) 
         {
             this.br = br;
+            this.mainOffset = mainOffset;
         }
 
-        public (uint Magic, uint TplCount, uint StartOffset, uint HeaderUnk1) MainReader(long MainOffset) 
+        public (uint Magic, uint TplCount, uint StartOffset, uint HeaderUnk1) MainReader() 
         {
-            br.BaseStream.Position = MainOffset;
+            br.BaseStream.Position = mainOffset;
             uint Magic = br.ReadUInt32();
             uint TplCount = br.ReadUInt32();
             uint StartOffset = br.ReadUInt32();
@@ -27,28 +29,28 @@ namespace TPL_PS2_EXTRACT
             return (Magic, TplCount, StartOffset, HeaderUnk1);
         }
 
-        public TplImageHeader[] Extract(uint TplCount, long StartOffset) 
+        public TplImageHeader[] Extract(uint TplCount, uint StartOffset) 
         {
-            br.BaseStream.Position = StartOffset;
+            br.BaseStream.Position = StartOffset + mainOffset;
             TplImageHeader[] tihs = new TplImageHeader[TplCount];
 
             uint PositionCount = 0;
             for (int i = 0; i < TplCount; i++)
             {
-                TplImageHeader tih = Fill(ref br, StartOffset + PositionCount);
+                TplImageHeader tih = Fill(ref br, PositionCount + StartOffset + mainOffset);
                 PositionCount += 0x30;
 
                 if (tih.MipmapStatus == 0x2)
                 {
                     if (tih.MipmapHeader1Offset != 0)
                     {
-                        TplImageHeader mipmap1 = Fill(ref br, tih.MipmapHeader1Offset);
+                        TplImageHeader mipmap1 = Fill(ref br, tih.MipmapHeader1Offset + mainOffset);
                         tih.MipmapHeader1 = mipmap1;
                     }
 
                     if (tih.MipmapHeader2Offset != 0)
                     {
-                        TplImageHeader mipmap2 = Fill(ref br, tih.MipmapHeader2Offset);
+                        TplImageHeader mipmap2 = Fill(ref br, tih.MipmapHeader2Offset + mainOffset);
                         tih.MipmapHeader2 = mipmap2;
                     }
 
@@ -117,6 +119,5 @@ namespace TPL_PS2_EXTRACT
 
             return tih;
         }
-
     }
 }

@@ -46,8 +46,8 @@ namespace RE4_PS2_MODEL_VIEWER.src
                 try
                 {
                     br = new BinaryReader(fileInfo.OpenRead());
-                    Teh = new TplExtractHeaders(br);
-                    var Header = Teh.MainReader(mainOffset);
+                    Teh = new TplExtractHeaders(br, mainOffset);
+                    var Header = Teh.MainReader();
                     Tihs = Teh.Extract(Header.TplCount, Header.StartOffset);
                 }
                 catch (Exception)
@@ -68,7 +68,7 @@ namespace RE4_PS2_MODEL_VIEWER.src
 
                     //texturas
                     Dictionary<string, Bitmap> textureDic = new Dictionary<string, Bitmap>();
-                    GetImages(ref textureDic, ref Tihs, ref br, (uint)mainOffset, FileID, true);
+                    GetImages(ref textureDic, ref Tihs, ref br, mainOffset, FileID, true);
 
                     // texturas
                     foreach (var texId in textureDic.Keys)
@@ -104,12 +104,12 @@ namespace RE4_PS2_MODEL_VIEWER.src
             }
         }
 
-        public static void GetImages(ref Dictionary<string, Bitmap> textureDic, ref TplImageHeader[] Tihs, ref BinaryReader br, uint MainOffset, string FileID, bool rotateInterlace1and3) 
+        public static void GetImages(ref Dictionary<string, Bitmap> textureDic, ref TplImageHeader[] Tihs, ref BinaryReader br, long MainOffset, string FileID, bool rotateInterlace1and3) 
         {
             try
             {
                 bool flipY = false;
-                TplImage tplImage = new TplImage(ref br, flipY, rotateInterlace1and3);
+                TplImage tplImage = new TplImage(ref br, flipY, rotateInterlace1and3, MainOffset);
                 //images
                 for (int i = 0; i < Tihs.Length; i++)
                 {
@@ -123,8 +123,8 @@ namespace RE4_PS2_MODEL_VIEWER.src
                             Tihs[i].Height, 
                             Tihs[i].BitDepth, 
                             Tihs[i].Interlace, 
-                            Tihs[i].IndexesOffset + MainOffset, 
-                            Tihs[i].PaletteOffset + MainOffset, 
+                            Tihs[i].IndexesOffset,
+                            Tihs[i].PaletteOffset,
                             out bitmap);
                     }
                     catch (Exception)
@@ -133,7 +133,12 @@ namespace RE4_PS2_MODEL_VIEWER.src
 
                     if (AsBitmap && bitmap != null)
                     {
-                        textureDic.Add(FileID + "/" + i.ToString("D4"), bitmap);
+                        // recriar um novo Bitmap resolve possiveis bugs de acontecer.
+                        Bitmap newBitmap = new Bitmap(bitmap.Width, bitmap.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                        Graphics Edit = Graphics.FromImage(newBitmap);
+                        Edit.DrawImage(bitmap, new Point(0,0));
+                        Edit.Save();
+                        textureDic.Add(FileID + "/" + i.ToString("D4"), newBitmap);
                     }
                 }
             }

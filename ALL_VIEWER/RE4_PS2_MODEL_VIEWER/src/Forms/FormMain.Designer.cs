@@ -33,9 +33,9 @@ namespace RE4_PS2_MODEL_VIEWER
             this.menuStripMenu = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemLoadBINTPL = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemLoadScenarioSMD = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemLoadSmx = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemActions = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemRemoveSelected = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,11 +100,6 @@ namespace RE4_PS2_MODEL_VIEWER
             this.toolStripMenuItemLoadBINTPL.Text = "Load PS2 BIN/TPL";
             this.toolStripMenuItemLoadBINTPL.Click += new System.EventHandler(this.toolStripMenuItemLoadBINTPL_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(232, 6);
-            // 
             // toolStripMenuItemLoadScenarioSMD
             // 
             this.toolStripMenuItemLoadScenarioSMD.Name = "toolStripMenuItemLoadScenarioSMD";
@@ -120,6 +115,11 @@ namespace RE4_PS2_MODEL_VIEWER
             this.toolStripMenuItemLoadSmx.Size = new System.Drawing.Size(235, 22);
             this.toolStripMenuItemLoadSmx.Text = "Load SMX";
             this.toolStripMenuItemLoadSmx.Click += new System.EventHandler(this.toolStripMenuItemLoadSmx_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(232, 6);
             // 
             // toolStripMenuItemExit
             // 
@@ -343,7 +343,7 @@ namespace RE4_PS2_MODEL_VIEWER
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "FormMain";
-            this.Text = "RE4 PS2 MODEL VIEWER | V.1.0.1 | YOUTUBE.COM/@JADERLINK";
+            this.Text = "RE4 PS2 MODEL VIEWER | V.1.0.1b | YOUTUBE.COM/@JADERLINK";
             this.menuStripMenu.ResumeLayout(false);
             this.menuStripMenu.PerformLayout();
             this.splitContainerMain.Panel2.ResumeLayout(false);

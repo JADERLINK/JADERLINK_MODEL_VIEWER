@@ -23,6 +23,9 @@ RE4_UHD_MODEL_VIEWER.exe -> arquivos .BIN (Re4 Uhd) + .TPL, Scenario .SMD + .SMX
 
 RE4_PS2_MODEL_VIEWER.exe -> arquivos .BIN (Re4 PS2) + .TPL, Scenario .SMD + .SMX;
 
+**Update 1.0.1b**
+<br>Reduzido o tempo de carregamento dos arquivos TPL/SMD da versão de PS2.
+
 **Update 1.0.1**
 <br>Arrumado alinhamento da matriz de índices (isso evita possíveis bugs);
 <br>Adicionado a opção de desligar/ativar as cores de vertices, nos visualizadores;
@@ -55,4 +58,4 @@ Encontra-se em ALL_VIEWER/CjClutter.ObjLoader.Loader, código modificado, as mod
 
 -----
 **At.te: JADERLINK**
-<br>2024-05-04
+<br>2024-05-05

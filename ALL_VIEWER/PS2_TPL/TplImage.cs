@@ -14,12 +14,14 @@ namespace TPL_PS2_EXTRACT
         private BinaryReader br;
         private bool flipY = false;
         private bool rotateInterlace1and3 = false;
+        private long mainOffset = 0;
 
-        public TplImage(ref BinaryReader br, bool flipY, bool rotateInterlace1and3)
+        public TplImage(ref BinaryReader br, bool flipY, bool rotateInterlace1and3, long mainOffset = 0)
         {
             this.br = br;
             this.flipY = flipY;
             this.rotateInterlace1and3 = rotateInterlace1and3;
+            this.mainOffset = mainOffset;
         }
 
         public bool GetImage(int width, int height, ushort bitDepth, ushort interlace, uint indexesOffset, uint paletteOffset, out Bitmap bitmap)
@@ -62,11 +64,11 @@ namespace TPL_PS2_EXTRACT
         {
             int indexesbytesCount = (height * width) / 2;
 
-            br.BaseStream.Position = indexesOffset;
+            br.BaseStream.Position = indexesOffset + mainOffset;
 
             byte[] indexes = br.ReadBytes(indexesbytesCount);
 
-            br.BaseStream.Position = paletteOffset;
+            br.BaseStream.Position = paletteOffset + mainOffset;
 
             byte[] palette = br.ReadBytes(0x80);
 
@@ -89,9 +91,7 @@ namespace TPL_PS2_EXTRACT
                 }
             }
 
-
-            bitmap = new Bitmap(width, height);
-
+            SimpleBitmap sbitmap = new SimpleBitmap(width, height);
 
             int Xcont = 0;
             int Ycont = 0;
@@ -100,8 +100,8 @@ namespace TPL_PS2_EXTRACT
                 int nibbleLow = indexes[IN] >> 4;
                 int nibbleHigh = indexes[IN] & 0x0F;
 
-                bitmap.SetPixel(Xcont + 1, Ycont, colors[nibbleLow]);
-                bitmap.SetPixel(Xcont, Ycont, colors[nibbleHigh]);
+                sbitmap.SetPixel(Xcont + 1, Ycont, colors[nibbleLow]);
+                sbitmap.SetPixel(Xcont, Ycont, colors[nibbleHigh]);
 
 
                 Xcont += 2;
@@ -111,6 +111,10 @@ namespace TPL_PS2_EXTRACT
                     Ycont += 1;
                 }
             }
+
+            bitmap = new Bitmap(width, height, width * 4,
+            System.Drawing.Imaging.PixelFormat.Format32bppArgb,
+            System.Runtime.InteropServices.Marshal.UnsafeAddrOfPinnedArrayElement(sbitmap.BitmapData, 0));
 
             if (rotateInterlace1and3 && interlace == 0x1)
             {
@@ -130,11 +134,11 @@ namespace TPL_PS2_EXTRACT
         {
             int indexesbytesCount = (height * width);
 
-            br.BaseStream.Position = indexesOffset;
+            br.BaseStream.Position = indexesOffset + mainOffset;
 
             byte[] indexes = br.ReadBytes(indexesbytesCount);
 
-            br.BaseStream.Position = paletteOffset;
+            br.BaseStream.Position = paletteOffset + mainOffset;
 
             byte[] palette = br.ReadBytes(256 * 4);
 
@@ -182,14 +186,14 @@ namespace TPL_PS2_EXTRACT
 
             }
 
-            bitmap = new Bitmap(width, height);
-
+            
+            SimpleBitmap sbitmap = new SimpleBitmap(width, height);
 
             int Xcont = 0;
             int Ycont = 0;
             for (int IN = 0; IN < indexes.Length; IN++)
             {
-                bitmap.SetPixel(Xcont, Ycont, colors[indexes[IN]]);
+                sbitmap.SetPixel(Xcont, Ycont, colors[indexes[IN]]);
 
                 Xcont += 1;
                 if (Xcont >= width)
@@ -198,6 +202,10 @@ namespace TPL_PS2_EXTRACT
                     Ycont += 1;
                 }
             }
+
+            bitmap = new Bitmap(width, height, width * 4,
+            System.Drawing.Imaging.PixelFormat.Format32bppArgb,
+            System.Runtime.InteropServices.Marshal.UnsafeAddrOfPinnedArrayElement(sbitmap.BitmapData, 0));
 
             if (rotateInterlace1and3 && interlace == 0x1)
             {
@@ -216,11 +224,11 @@ namespace TPL_PS2_EXTRACT
         {
             int bytesCount = (height * width) * 4;
 
-            br.BaseStream.Position = indexesOffset;
+            br.BaseStream.Position = indexesOffset + mainOffset;
 
             byte[] ColorBytes = br.ReadBytes(bytesCount);
 
-            bitmap = new Bitmap(width, height);
+            SimpleBitmap sbitmap = new SimpleBitmap(width, height);
 
             int Xcont = 0;
             int Ycont = 0;
@@ -236,7 +244,7 @@ namespace TPL_PS2_EXTRACT
                    );
                 cont += 4;
 
-                bitmap.SetPixel(Xcont, Ycont, c);
+                sbitmap.SetPixel(Xcont, Ycont, c);
 
                 Xcont++;
                 if (Xcont >= width)
@@ -245,6 +253,10 @@ namespace TPL_PS2_EXTRACT
                     Ycont += 1;
                 }
             }
+
+            bitmap = new Bitmap(width, height, width * 4,
+            System.Drawing.Imaging.PixelFormat.Format32bppArgb,
+            System.Runtime.InteropServices.Marshal.UnsafeAddrOfPinnedArrayElement(sbitmap.BitmapData, 0));
 
             if (rotateInterlace1and3 && interlace == 0x1)
             {
@@ -264,11 +276,11 @@ namespace TPL_PS2_EXTRACT
         {
             int indexesbytesCount = (height * width) / 2;
 
-            br.BaseStream.Position = indexesOffset;
+            br.BaseStream.Position = indexesOffset + mainOffset;
 
             byte[] indexes = br.ReadBytes(indexesbytesCount);
 
-            br.BaseStream.Position = paletteOffset;
+            br.BaseStream.Position = paletteOffset + mainOffset;
 
             byte[] palette = br.ReadBytes(0x80);
 
@@ -293,8 +305,8 @@ namespace TPL_PS2_EXTRACT
 
 
             // no comentario esta a imagem na posição correta
-            //bitmap = new Bitmap(width, height);
-            bitmap = new Bitmap(height, width);
+            //SimpleBitmap sbitmap = new SimpleBitmap(width, height);
+            SimpleBitmap sbitmap = new SimpleBitmap(height, width);
 
             //Notas
             // a cada 32 bytes é uma nova sequencia
@@ -316,7 +328,7 @@ namespace TPL_PS2_EXTRACT
             for (int IN = 0; IN < indexes.Length; IN += 32)
             {
 
-                preenche8(ref bitmap, Xcont, Ycont, ref colors, ref indexes, IN, flipInX);
+                preenche8(ref sbitmap, Xcont, Ycont, ref colors, ref indexes, IN, flipInX);
 
                 Ycont += 16;
                 niveis += 1;
@@ -357,7 +369,7 @@ namespace TPL_PS2_EXTRACT
 
             if (width > 128 || height > 128)
             {
-                Bitmap bitmapFix = new Bitmap(width, height);
+                SimpleBitmap bitmapFix = new SimpleBitmap(width, height);
 
                 int blockAmounts = (width / 128) * (height / 128);
 
@@ -372,7 +384,7 @@ namespace TPL_PS2_EXTRACT
                     {
                         for (int x = 0; x < 128; x++)
                         {
-                            Color colorGet = bitmap.GetPixel(x + copyX, y + copyY);
+                            Color colorGet = sbitmap.GetPixel(x + copyX, y + copyY);
                             bitmapFix.SetPixel(x + setX, y + setY, colorGet);
 
                         }
@@ -394,10 +406,14 @@ namespace TPL_PS2_EXTRACT
 
                 }
 
-                bitmap = bitmapFix;
+                sbitmap = bitmapFix;
 
             }
 
+
+            bitmap = new Bitmap(width, height, width * 4,
+            System.Drawing.Imaging.PixelFormat.Format32bppArgb,
+            System.Runtime.InteropServices.Marshal.UnsafeAddrOfPinnedArrayElement(sbitmap.BitmapData, 0));
 
             if (rotateInterlace1and3 && interlace == 0x3)
             {
@@ -417,11 +433,11 @@ namespace TPL_PS2_EXTRACT
         {
             int indexesbytesCount = (height * width);
 
-            br.BaseStream.Position = indexesOffset;
+            br.BaseStream.Position = indexesOffset + mainOffset;
 
             byte[] indexes = br.ReadBytes(indexesbytesCount);
 
-            br.BaseStream.Position = paletteOffset;
+            br.BaseStream.Position = paletteOffset + mainOffset;
 
             byte[] palette = br.ReadBytes(256 * 4);
 
@@ -469,14 +485,14 @@ namespace TPL_PS2_EXTRACT
 
             }
 
-            bitmap = new Bitmap(width, height);
+            SimpleBitmap sbitmap = new SimpleBitmap(width, height);
 
             int Xcont = 0;
             int Ycont = 0;
             bool flipInX = false;
             for (int IN = 0; IN < indexes.Length; IN += 32)
             {
-                preenche9(ref bitmap, Xcont, Ycont, ref colors, ref indexes, IN, flipInX);
+                preenche9(ref sbitmap, Xcont, Ycont, ref colors, ref indexes, IN, flipInX);
 
                 Xcont += 16;
 
@@ -503,6 +519,10 @@ namespace TPL_PS2_EXTRACT
 
             }
 
+            bitmap = new Bitmap(width, height, width * 4,
+            System.Drawing.Imaging.PixelFormat.Format32bppArgb,
+            System.Runtime.InteropServices.Marshal.UnsafeAddrOfPinnedArrayElement(sbitmap.BitmapData, 0));
+
             if (rotateInterlace1and3 && interlace == 0x3)
             {
                 bitmap.RotateFlip(RotateFlipType.Rotate90FlipX);
@@ -518,7 +538,7 @@ namespace TPL_PS2_EXTRACT
 
 
 
-        private static void preenche9(ref Bitmap bitmap, int Xcont, int Ycont, ref Color[] colors, ref byte[] indexes, int IN, bool flipInX)
+        private static void preenche9(ref SimpleBitmap bitmap, int Xcont, int Ycont, ref Color[] colors, ref byte[] indexes, int IN, bool flipInX)
         {
             if (flipInX == false)
             {
@@ -610,7 +630,7 @@ namespace TPL_PS2_EXTRACT
         }
 
 
-        private static void preenche8(ref Bitmap bitmap, int Xcont, int Ycont, ref Color[] colors, ref byte[] indexes, int IN, bool flipInX)
+        private static void preenche8(ref SimpleBitmap bitmap, int Xcont, int Ycont, ref Color[] colors, ref byte[] indexes, int IN, bool flipInX)
         {
             int[][] idxs = new int[0x20][]; // indice de cor;
             for (int i = 0; i < 0x20; i++)

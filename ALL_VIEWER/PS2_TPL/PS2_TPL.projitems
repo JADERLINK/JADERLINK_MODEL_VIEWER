@@ -9,6 +9,7 @@
     <Import_RootNamespace>PS2_TPL</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)SimpleBitmap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TplExtractHeaders.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TplImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TplImageHeader.cs" />

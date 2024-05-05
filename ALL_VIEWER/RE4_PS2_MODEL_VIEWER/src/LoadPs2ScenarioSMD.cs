@@ -171,9 +171,9 @@ namespace RE4_PS2_MODEL_VIEWER.src
                 try
                 {
                     br = new BinaryReader(fileStream);
-                    Teh = new TplExtractHeaders(br);
-                    var Header = Teh.MainReader(tplOffset);
-                    Tihs = Teh.Extract(Header.TplCount, Header.StartOffset + tplOffset);
+                    Teh = new TplExtractHeaders(br, tplOffset);
+                    var Header = Teh.MainReader();
+                    Tihs = Teh.Extract(Header.TplCount, Header.StartOffset);
                     TplCount = (int)Header.TplCount;
                 }
                 catch (Exception)
@@ -185,7 +185,7 @@ namespace RE4_PS2_MODEL_VIEWER.src
 
                     //texturas
                     Dictionary<string, Bitmap> itextureDic = new Dictionary<string, Bitmap>();
-                    LoadPs2Tpl.GetImages(ref itextureDic, ref Tihs, ref br, (uint)tplOffset, ScenarioTPL, false);
+                    LoadPs2Tpl.GetImages(ref itextureDic, ref Tihs, ref br, tplOffset, ScenarioTPL, false);
                     textureDic = itextureDic;
                 }
 
