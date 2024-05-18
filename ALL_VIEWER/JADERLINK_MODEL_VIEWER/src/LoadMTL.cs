@@ -77,7 +77,7 @@ namespace JADERLINK_MODEL_VIEWER.src
                         material.MatColor = Vector4.One;
                         material.DiffuseMatTex = "";
                         material.AlphaMatTex = "";
-                        material.AsAlphaTex = true;
+                        material.AsAlphaTex = false;
 
                         //-- textura principal
                         if (mat.DiffuseTextureMap != null)
@@ -117,7 +117,7 @@ namespace JADERLINK_MODEL_VIEWER.src
                         }
 
                         //---- textura transparencia
-                        if (mat.AlphaTextureMap != null && mat.DiffuseTextureMap != null && mat.AlphaTextureMap.ToLowerInvariant() != mat.DiffuseTextureMap.ToLowerInvariant())
+                        if (mat.AlphaTextureMap != null)
                         {
                             string texNameRef = "";
                             try

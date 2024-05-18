@@ -316,8 +316,8 @@ namespace RE4_PS2_MODEL_VIEWER.src
 
                 ViewerBase.Material material = new ViewerBase.Material(i.ToString());
                 material.DiffuseMatTex = ps2mat.diffuse_map.ToString();
-                material.AsAlphaTex = false;
-                material.AlphaMatTex = "";
+                material.AsAlphaTex = true;
+                material.AlphaMatTex = ps2mat.diffuse_map.ToString();
                 material.MatColor = Vector4.One;
                 materialGroup.MaterialsDic.Add(material.MaterialName, material);
             }

@@ -23,6 +23,10 @@ RE4_UHD_MODEL_VIEWER.exe -> arquivos .BIN (Re4 Uhd) + .TPL, Scenario .SMD + .SMX
 
 RE4_PS2_MODEL_VIEWER.exe -> arquivos .BIN (Re4 PS2) + .TPL, Scenario .SMD + .SMX;
 
+**Update 1.0.2**
+<br>Adicionado a opção de ativar/desativar a visualização do canal alfa da textura (Todos).
+<br>Mudado o entendimento de como é carregado o canal alfa para a versão do UHD.
+
 **Update 1.0.1b**
 <br>Reduzido o tempo de carregamento dos arquivos TPL/SMD da versão de PS2.
 
@@ -35,7 +39,7 @@ RE4_PS2_MODEL_VIEWER.exe -> arquivos .BIN (Re4 PS2) + .TPL, Scenario .SMD + .SMX
 # **_MODEL_VIEWER.exe
 
 Para abrir o programa, é necessário que sua placa de vídeo (GPU) tenha o OpenGL versão 3.3 ou superior. Caso sua versão seja inferior à requerida, o programa mostrará uma mensagem de erro.
-<br>Aviso: a versão 1.0.1 é uma versão de pré-lançamento, então os programas podem conter erros nos quais podem fechar o programa sem aviso.
+<br>Aviso: a versão 1.0.* é uma versão de pré-lançamento, então os programas podem conter erros nos quais podem fechar o programa sem aviso.
 
 # Para Desenvolvedores:
 
@@ -58,4 +62,4 @@ Encontra-se em ALL_VIEWER/CjClutter.ObjLoader.Loader, código modificado, as mod
 
 -----
 **At.te: JADERLINK**
-<br>2024-05-05
+<br>2024-05-18

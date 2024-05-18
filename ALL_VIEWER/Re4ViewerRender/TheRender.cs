@@ -22,7 +22,7 @@ namespace Re4ViewerRender
         public static bool RenderNormals = false;
         public static bool RenderOnlyFrontFace = false;
         public static bool RenderVertexColor = true;
-
+        public static bool RenderAlphaChannel = true;
 
         public static void Render(ref Matrix4 camMtx, ref Matrix4 projMatrix, RenderOrder order, ModelGroup modelGroup, Shader objShader, TextureRef whiteTex, Color SkyColor, Vector3 camPos)
         {
@@ -87,6 +87,15 @@ namespace Re4ViewerRender
             else
             {
                 objShader.SetInt("EnableVertexColors", 0);
+            }
+
+            if (RenderAlphaChannel)
+            {
+                objShader.SetInt("EnableAlphaChannel", 1);
+            }
+            else
+            {
+                objShader.SetInt("EnableAlphaChannel", 0);
             }
 
             GL.Enable(EnableCap.Blend);

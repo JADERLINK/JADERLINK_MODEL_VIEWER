@@ -442,6 +442,11 @@ namespace RE4_UHD_MODEL_VIEWER
             renderControl.GlControl.Invalidate();
         }
 
+        private void toolStripMenuItemAlphaChannel_Click(object sender, EventArgs e)
+        {
+            TheRender.RenderAlphaChannel = !TheRender.RenderAlphaChannel;
+            renderControl.GlControl.Invalidate();
+        }
 
         FormCamera cameraForm = null;
         int lastTrackBarCamSpeedValue = 50;
@@ -493,5 +498,6 @@ namespace RE4_UHD_MODEL_VIEWER
         {
             creditsForm = null;
         }
+
     }
 }

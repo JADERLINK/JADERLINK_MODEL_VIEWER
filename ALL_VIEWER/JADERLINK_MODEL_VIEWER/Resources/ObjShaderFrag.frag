@@ -16,6 +16,7 @@ uniform vec4 matColor;
 //uniform vec4 smxColor;
 uniform bool EnableNormals;
 uniform bool EnableVertexColors;
+uniform bool EnableAlphaChannel;
 
 void main()
 {
@@ -27,17 +28,23 @@ void main()
     }
 
     vec4 texColor = texture(texture0, texCoord);
-    vec4 vexAlfa = texture(texture1, texCoord);
+    vec4 texAlpha = texture(texture1, texCoord);
 
-    vec4 image_colour = texColor;
+	float alphaValue = 1.0;
 
 	if(EnableVertexColors)
 	{
-		image_colour = texColor * matColor * color; 
+		texColor = texColor * matColor * color;
+		texAlpha = texAlpha * matColor * color;
+	}
+
+	if(EnableAlphaChannel)
+	{
+		alphaValue = texAlpha.a;
 	}
 
     //ambient
-    vec4 ambient_result = vec4(image_colour.r, image_colour.g, image_colour.b, image_colour.a * vexAlfa.r);
+    vec4 ambient_result = vec4(texColor.r, texColor.g, texColor.b, alphaValue);
     if(ambient_result.a <= 0.03)
     {
         discard;
@@ -49,7 +56,7 @@ void main()
 	float LightPower = 50.0f;
 	
 	// Material properties
-	vec3 MaterialDiffuseColor = image_colour.rgb;
+	vec3 MaterialDiffuseColor = texColor.rgb;
 	vec3 MaterialAmbientColor = vec3(0.1,0.1,0.1) * MaterialDiffuseColor;
 
 	// Distance to the light
@@ -71,7 +78,7 @@ void main()
 		MaterialAmbientColor +
 		// Diffuse : "color" of the object
 		MaterialDiffuseColor * LightColor * LightPower * cosTheta / (distance*distance)
-        , image_colour.a * vexAlfa.r);
+        , alphaValue);
 
     if(!EnableNormals || NormalIsZero != 0) // sem uso de normal
 	{

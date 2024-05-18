@@ -288,8 +288,8 @@ namespace RE4_2007_MODEL_VIEWER.src
             {
                 Material material = new Material(i.ToString());
                 material.DiffuseMatTex = pmd.Materials[i].TextureName.ToLowerInvariant();
-                material.AsAlphaTex = false;
-                material.AlphaMatTex = "";
+                material.AsAlphaTex = true;
+                material.AlphaMatTex = pmd.Materials[i].TextureName.ToLowerInvariant();
                 material.MatColor = new Vector4(pmd.Materials[i].TextureData[4], pmd.Materials[i].TextureData[5], pmd.Materials[i].TextureData[6], pmd.Materials[i].TextureData[7]);
                 materialGroup.MaterialsDic.Add(material.MaterialName, material);
 
