@@ -75,7 +75,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             {
                 float newValue = getCamSpeed(trackBarCamSpeed.Value);
                 setLabelCamSpeedPercentageText(newValue);
-                renderControl.Camera.CamSpeedMultiplier = newValue / 100.0f * 3.0f;
+                renderControl.Camera.CamSpeedMultiplier = newValue / 100.0f;
                 TrackBarCamSpeedValueIsChanged?.Invoke(trackBarCamSpeed.Value);
             }
         }

@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AttribLocation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Boundary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BoundaryCalculation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GLMeshPart.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ModelGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PreFix.cs" />

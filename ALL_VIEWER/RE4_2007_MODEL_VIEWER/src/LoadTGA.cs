@@ -26,52 +26,49 @@ namespace RE4_2007_MODEL_VIEWER.src
 
         public void LoadTga(string[] TGAPath)
         {
-            Dictionary<string, Bitmap> textureDic = new Dictionary<string, Bitmap>();
             foreach (var TexPath in TGAPath)
             {
-                string key = new FileInfo(TexPath).Name.ToLowerInvariant();
+                string texId = new FileInfo(TexPath).Name.ToLowerInvariant();
+                Bitmap bitmap = null;
 
-                if (!textureDic.ContainsKey(key))
+                if (File.Exists(TexPath))
                 {
-                    if (File.Exists(TexPath))
+                    try
                     {
-                        try
-                        {
-                            TGASharpLib.TGA nTGA = new TGASharpLib.TGA(TexPath);
-                            textureDic.Add(key, nTGA.ToBitmap());
-                        }
-                        catch (Exception)
-                        {
-                        }
+                        TGASharpLib.TGA nTGA = new TGASharpLib.TGA(TexPath);
+                        bitmap = nTGA.ToBitmap();
+                    }
+                    catch (Exception)
+                    {
                     }
                 }
-            }
 
-            //------
-            // texturas
-            foreach (var texId in textureDic.Keys)
-            {
-                if (modelGroup.TextureRefDic.ContainsKey(texId))
+                if (bitmap != null)
                 {
-                    var node = tpng.Nodes.Find(texId, false).FirstOrDefault();
-                    ((NodeItem)node)?.Responsibility.ReleaseResponsibilities();
-                    node?.Remove();
+                    // texturas
+                    if (modelGroup.TextureRefDic.ContainsKey(texId))
+                    {
+                        var node = tpng.Nodes.Find(texId, false).FirstOrDefault();
+                        ((NodeItem)node)?.Responsibility.ReleaseResponsibilities();
+                        node?.Remove();
+                    }
+
+                    ResponsibilityContainer texContainer = new ResponsibilityContainer();
+                    TEX_Representation tex_representation = new TEX_Representation(texId, new List<string>() { texId });
+                    TextureGroupResponsibility textureGroupResponsibility = new TextureGroupResponsibility(modelGroup, tex_representation);
+                    texContainer.Add(textureGroupResponsibility);
+
+                    NodeTexture nodeTexture = new NodeTexture();
+                    nodeTexture.Name = texId;
+                    nodeTexture.Text = texId;
+                    nodeTexture.Responsibility = texContainer;
+                    tpng.Nodes.Add(nodeTexture);
+
+                    // GL das texturas
+                    modelGroup.AddTextureRef(new Dictionary<string, Bitmap> { { texId, bitmap } });
+
                 }
-
-                ResponsibilityContainer texContainer = new ResponsibilityContainer();
-                TEX_Representation tex_representation = new TEX_Representation(texId, new List<string>() { texId });
-                TextureGroupResponsibility textureGroupResponsibility = new TextureGroupResponsibility(modelGroup, tex_representation);
-                texContainer.Add(textureGroupResponsibility);
-
-                NodeTexture nodeTexture = new NodeTexture();
-                nodeTexture.Name = texId;
-                nodeTexture.Text = texId;
-                nodeTexture.Responsibility = texContainer;
-                tpng.Nodes.Add(nodeTexture);
             }
-
-            // GL das texturas
-            modelGroup.AddTextureRef(textureDic);
 
         }
 

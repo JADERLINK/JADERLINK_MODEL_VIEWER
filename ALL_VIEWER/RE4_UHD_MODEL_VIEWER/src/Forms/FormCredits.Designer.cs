@@ -35,6 +35,11 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.linkLabelMultiselectTreeView = new System.Windows.Forms.LinkLabel();
             this.linkLabelLicenseCodeProject = new System.Windows.Forms.LinkLabel();
             this.groupBoxAPIs = new System.Windows.Forms.GroupBox();
+            this.linkLabelLicenseDDS = new System.Windows.Forms.LinkLabel();
+            this.linkLabelDdsGitLab = new System.Windows.Forms.LinkLabel();
+            this.linkLabelDdsGitHub = new System.Windows.Forms.LinkLabel();
+            this.labelZelenskyi2 = new System.Windows.Forms.Label();
+            this.labelDDSReaderSharp = new System.Windows.Forms.Label();
             this.linkLabelLicenseOpenTK = new System.Windows.Forms.LinkLabel();
             this.linkLabelNugetGLControl = new System.Windows.Forms.LinkLabel();
             this.linkLabelNugetOpenTK = new System.Windows.Forms.LinkLabel();
@@ -52,17 +57,12 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.labelMainAuthor = new System.Windows.Forms.Label();
             this.linkLabelJaderLinkBlog = new System.Windows.Forms.LinkLabel();
             this.groupBoxProjectLinks = new System.Windows.Forms.GroupBox();
-            this.textBoxDonate = new System.Windows.Forms.TextBox();
             this.linkLabelProjectGitHub = new System.Windows.Forms.LinkLabel();
             this.groupBoxTools = new System.Windows.Forms.GroupBox();
             this.linkLabelBINTOOL = new System.Windows.Forms.LinkLabel();
             this.linkLabelSCENARIOTOOL = new System.Windows.Forms.LinkLabel();
             this.linkLabelSMXTOOL = new System.Windows.Forms.LinkLabel();
-            this.linkLabelLicenseDDS = new System.Windows.Forms.LinkLabel();
-            this.linkLabelDdsGitLab = new System.Windows.Forms.LinkLabel();
-            this.linkLabelDdsGitHub = new System.Windows.Forms.LinkLabel();
-            this.labelZelenskyi2 = new System.Windows.Forms.Label();
-            this.labelDDSReaderSharp = new System.Windows.Forms.Label();
+            this.linkLabelDonate = new System.Windows.Forms.LinkLabel();
             this.groupBoxCodeproject.SuspendLayout();
             this.groupBoxAPIs.SuspendLayout();
             this.groupBoxAuthors.SuspendLayout();
@@ -94,6 +94,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelMultiselectTreeView
             // 
+            this.linkLabelMultiselectTreeView.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelMultiselectTreeView.AutoSize = true;
             this.linkLabelMultiselectTreeView.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelMultiselectTreeView.Location = new System.Drawing.Point(8, 52);
@@ -106,6 +107,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelLicenseCodeProject
             // 
+            this.linkLabelLicenseCodeProject.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelLicenseCodeProject.AutoSize = true;
             this.linkLabelLicenseCodeProject.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelLicenseCodeProject.Location = new System.Drawing.Point(6, 17);
@@ -140,8 +142,67 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.groupBoxAPIs.TabStop = false;
             this.groupBoxAPIs.Text = "API\'s";
             // 
+            // linkLabelLicenseDDS
+            // 
+            this.linkLabelLicenseDDS.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkLabelLicenseDDS.AutoSize = true;
+            this.linkLabelLicenseDDS.LinkColor = System.Drawing.Color.Navy;
+            this.linkLabelLicenseDDS.Location = new System.Drawing.Point(8, 76);
+            this.linkLabelLicenseDDS.Name = "linkLabelLicenseDDS";
+            this.linkLabelLicenseDDS.Size = new System.Drawing.Size(395, 15);
+            this.linkLabelLicenseDDS.TabIndex = 17;
+            this.linkLabelLicenseDDS.TabStop = true;
+            this.linkLabelLicenseDDS.Text = "License:  MIT License - Copyright (c) 2017 DDSReaderSharp";
+            this.linkLabelLicenseDDS.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLicenseDDS_LinkClicked);
+            // 
+            // linkLabelDdsGitLab
+            // 
+            this.linkLabelDdsGitLab.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkLabelDdsGitLab.AutoSize = true;
+            this.linkLabelDdsGitLab.LinkColor = System.Drawing.Color.Navy;
+            this.linkLabelDdsGitLab.Location = new System.Drawing.Point(116, 56);
+            this.linkLabelDdsGitLab.Name = "linkLabelDdsGitLab";
+            this.linkLabelDdsGitLab.Size = new System.Drawing.Size(94, 15);
+            this.linkLabelDdsGitLab.TabIndex = 16;
+            this.linkLabelDdsGitLab.TabStop = true;
+            this.linkLabelDdsGitLab.Text = "Gitlab Project";
+            this.linkLabelDdsGitLab.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDdsGitLab_LinkClicked);
+            // 
+            // linkLabelDdsGitHub
+            // 
+            this.linkLabelDdsGitHub.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkLabelDdsGitHub.AutoSize = true;
+            this.linkLabelDdsGitHub.LinkColor = System.Drawing.Color.Navy;
+            this.linkLabelDdsGitHub.Location = new System.Drawing.Point(7, 56);
+            this.linkLabelDdsGitHub.Name = "linkLabelDdsGitHub";
+            this.linkLabelDdsGitHub.Size = new System.Drawing.Size(98, 15);
+            this.linkLabelDdsGitHub.TabIndex = 15;
+            this.linkLabelDdsGitHub.TabStop = true;
+            this.linkLabelDdsGitHub.Text = "Github Project";
+            this.linkLabelDdsGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDdsGitHub_LinkClicked);
+            // 
+            // labelZelenskyi2
+            // 
+            this.labelZelenskyi2.AutoSize = true;
+            this.labelZelenskyi2.Location = new System.Drawing.Point(7, 37);
+            this.labelZelenskyi2.Name = "labelZelenskyi2";
+            this.labelZelenskyi2.Size = new System.Drawing.Size(319, 15);
+            this.labelZelenskyi2.TabIndex = 14;
+            this.labelZelenskyi2.Text = "By: Zelenskyi Alexandr (Зеленський Олександр)";
+            // 
+            // labelDDSReaderSharp
+            // 
+            this.labelDDSReaderSharp.AutoSize = true;
+            this.labelDDSReaderSharp.ForeColor = System.Drawing.Color.Teal;
+            this.labelDDSReaderSharp.Location = new System.Drawing.Point(7, 18);
+            this.labelDDSReaderSharp.Name = "labelDDSReaderSharp";
+            this.labelDDSReaderSharp.Size = new System.Drawing.Size(186, 15);
+            this.labelDDSReaderSharp.TabIndex = 13;
+            this.labelDDSReaderSharp.Text = "DDSReaderSharp (In code):";
+            // 
             // linkLabelLicenseOpenTK
             // 
+            this.linkLabelLicenseOpenTK.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelLicenseOpenTK.AutoSize = true;
             this.linkLabelLicenseOpenTK.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelLicenseOpenTK.Location = new System.Drawing.Point(9, 238);
@@ -155,6 +216,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelNugetGLControl
             // 
+            this.linkLabelNugetGLControl.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelNugetGLControl.AutoSize = true;
             this.linkLabelNugetGLControl.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelNugetGLControl.Location = new System.Drawing.Point(123, 215);
@@ -167,6 +229,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelNugetOpenTK
             // 
+            this.linkLabelNugetOpenTK.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelNugetOpenTK.AutoSize = true;
             this.linkLabelNugetOpenTK.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelNugetOpenTK.Location = new System.Drawing.Point(9, 215);
@@ -179,6 +242,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelSiteOpenTK
             // 
+            this.linkLabelSiteOpenTK.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelSiteOpenTK.AutoSize = true;
             this.linkLabelSiteOpenTK.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelSiteOpenTK.Location = new System.Drawing.Point(9, 198);
@@ -201,6 +265,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelLicenseTGA
             // 
+            this.linkLabelLicenseTGA.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelLicenseTGA.AutoSize = true;
             this.linkLabelLicenseTGA.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelLicenseTGA.Location = new System.Drawing.Point(6, 156);
@@ -213,6 +278,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelTgaGitLab
             // 
+            this.linkLabelTgaGitLab.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelTgaGitLab.AutoSize = true;
             this.linkLabelTgaGitLab.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelTgaGitLab.Location = new System.Drawing.Point(114, 136);
@@ -225,6 +291,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelTgaGitHub
             // 
+            this.linkLabelTgaGitHub.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelTgaGitHub.AutoSize = true;
             this.linkLabelTgaGitHub.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelTgaGitHub.Location = new System.Drawing.Point(5, 136);
@@ -284,6 +351,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelYoutubeJaderLink
             // 
+            this.linkLabelYoutubeJaderLink.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelYoutubeJaderLink.AutoSize = true;
             this.linkLabelYoutubeJaderLink.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelYoutubeJaderLink.Location = new System.Drawing.Point(15, 104);
@@ -296,6 +364,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelJaderLinkGitHub
             // 
+            this.linkLabelJaderLinkGitHub.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelJaderLinkGitHub.AutoSize = true;
             this.linkLabelJaderLinkGitHub.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelJaderLinkGitHub.Location = new System.Drawing.Point(15, 83);
@@ -318,6 +387,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelJaderLinkBlog
             // 
+            this.linkLabelJaderLinkBlog.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelJaderLinkBlog.AutoSize = true;
             this.linkLabelJaderLinkBlog.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelJaderLinkBlog.Location = new System.Drawing.Point(15, 39);
@@ -330,7 +400,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // groupBoxProjectLinks
             // 
-            this.groupBoxProjectLinks.Controls.Add(this.textBoxDonate);
+            this.groupBoxProjectLinks.Controls.Add(this.linkLabelDonate);
             this.groupBoxProjectLinks.Controls.Add(this.linkLabelProjectGitHub);
             this.groupBoxProjectLinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxProjectLinks.Location = new System.Drawing.Point(8, 6);
@@ -340,21 +410,9 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.groupBoxProjectLinks.TabStop = false;
             this.groupBoxProjectLinks.Text = "Project Links";
             // 
-            // textBoxDonate
-            // 
-            this.textBoxDonate.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxDonate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxDonate.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxDonate.Location = new System.Drawing.Point(119, 20);
-            this.textBoxDonate.Name = "textBoxDonate";
-            this.textBoxDonate.ReadOnly = true;
-            this.textBoxDonate.Size = new System.Drawing.Size(475, 14);
-            this.textBoxDonate.TabIndex = 0;
-            this.textBoxDonate.TabStop = false;
-            this.textBoxDonate.Text = "To Donate to JaderLink Contact: jaderlinkproject@gmail.com";
-            // 
             // linkLabelProjectGitHub
             // 
+            this.linkLabelProjectGitHub.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelProjectGitHub.AutoSize = true;
             this.linkLabelProjectGitHub.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabelProjectGitHub.LinkColor = System.Drawing.Color.Navy;
@@ -380,6 +438,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelBINTOOL
             // 
+            this.linkLabelBINTOOL.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelBINTOOL.AutoSize = true;
             this.linkLabelBINTOOL.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelBINTOOL.Location = new System.Drawing.Point(6, 55);
@@ -392,6 +451,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelSCENARIOTOOL
             // 
+            this.linkLabelSCENARIOTOOL.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelSCENARIOTOOL.AutoSize = true;
             this.linkLabelSCENARIOTOOL.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelSCENARIOTOOL.Location = new System.Drawing.Point(6, 37);
@@ -404,6 +464,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelSMXTOOL
             // 
+            this.linkLabelSMXTOOL.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelSMXTOOL.AutoSize = true;
             this.linkLabelSMXTOOL.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelSMXTOOL.Location = new System.Drawing.Point(6, 18);
@@ -414,60 +475,19 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.linkLabelSMXTOOL.Text = "RE4-SMX-TOOL";
             this.linkLabelSMXTOOL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSMXTOOL_LinkClicked);
             // 
-            // linkLabelLicenseDDS
+            // linkLabelDonate
             // 
-            this.linkLabelLicenseDDS.AutoSize = true;
-            this.linkLabelLicenseDDS.LinkColor = System.Drawing.Color.Navy;
-            this.linkLabelLicenseDDS.Location = new System.Drawing.Point(8, 76);
-            this.linkLabelLicenseDDS.Name = "linkLabelLicenseDDS";
-            this.linkLabelLicenseDDS.Size = new System.Drawing.Size(395, 15);
-            this.linkLabelLicenseDDS.TabIndex = 17;
-            this.linkLabelLicenseDDS.TabStop = true;
-            this.linkLabelLicenseDDS.Text = "License:  MIT License - Copyright (c) 2017 DDSReaderSharp";
-            this.linkLabelLicenseDDS.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLicenseDDS_LinkClicked);
-            // 
-            // linkLabelDdsGitLab
-            // 
-            this.linkLabelDdsGitLab.AutoSize = true;
-            this.linkLabelDdsGitLab.LinkColor = System.Drawing.Color.Navy;
-            this.linkLabelDdsGitLab.Location = new System.Drawing.Point(116, 56);
-            this.linkLabelDdsGitLab.Name = "linkLabelDdsGitLab";
-            this.linkLabelDdsGitLab.Size = new System.Drawing.Size(94, 15);
-            this.linkLabelDdsGitLab.TabIndex = 16;
-            this.linkLabelDdsGitLab.TabStop = true;
-            this.linkLabelDdsGitLab.Text = "Gitlab Project";
-            this.linkLabelDdsGitLab.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDdsGitLab_LinkClicked);
-            // 
-            // linkLabelDdsGitHub
-            // 
-            this.linkLabelDdsGitHub.AutoSize = true;
-            this.linkLabelDdsGitHub.LinkColor = System.Drawing.Color.Navy;
-            this.linkLabelDdsGitHub.Location = new System.Drawing.Point(7, 56);
-            this.linkLabelDdsGitHub.Name = "linkLabelDdsGitHub";
-            this.linkLabelDdsGitHub.Size = new System.Drawing.Size(98, 15);
-            this.linkLabelDdsGitHub.TabIndex = 15;
-            this.linkLabelDdsGitHub.TabStop = true;
-            this.linkLabelDdsGitHub.Text = "Github Project";
-            this.linkLabelDdsGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDdsGitHub_LinkClicked);
-            // 
-            // labelZelenskyi2
-            // 
-            this.labelZelenskyi2.AutoSize = true;
-            this.labelZelenskyi2.Location = new System.Drawing.Point(7, 37);
-            this.labelZelenskyi2.Name = "labelZelenskyi2";
-            this.labelZelenskyi2.Size = new System.Drawing.Size(319, 15);
-            this.labelZelenskyi2.TabIndex = 14;
-            this.labelZelenskyi2.Text = "By: Zelenskyi Alexandr (Зеленський Олександр)";
-            // 
-            // labelDDSReaderSharp
-            // 
-            this.labelDDSReaderSharp.AutoSize = true;
-            this.labelDDSReaderSharp.ForeColor = System.Drawing.Color.Teal;
-            this.labelDDSReaderSharp.Location = new System.Drawing.Point(7, 18);
-            this.labelDDSReaderSharp.Name = "labelDDSReaderSharp";
-            this.labelDDSReaderSharp.Size = new System.Drawing.Size(186, 15);
-            this.labelDDSReaderSharp.TabIndex = 13;
-            this.labelDDSReaderSharp.Text = "DDSReaderSharp (In code):";
+            this.linkLabelDonate.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkLabelDonate.AutoSize = true;
+            this.linkLabelDonate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabelDonate.LinkColor = System.Drawing.Color.Navy;
+            this.linkLabelDonate.Location = new System.Drawing.Point(288, 19);
+            this.linkLabelDonate.Name = "linkLabelDonate";
+            this.linkLabelDonate.Size = new System.Drawing.Size(423, 15);
+            this.linkLabelDonate.TabIndex = 1;
+            this.linkLabelDonate.TabStop = true;
+            this.linkLabelDonate.Text = "To donate to JADERLINK go to: https://jaderlink.github.io/Donate/";
+            this.linkLabelDonate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDonate_LinkClicked);
             // 
             // FormCredits
             // 
@@ -529,7 +549,6 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
         private System.Windows.Forms.Label labelMainAuthor;
         private System.Windows.Forms.LinkLabel linkLabelJaderLinkBlog;
         private System.Windows.Forms.GroupBox groupBoxProjectLinks;
-        private System.Windows.Forms.TextBox textBoxDonate;
         private System.Windows.Forms.LinkLabel linkLabelProjectGitHub;
         private System.Windows.Forms.GroupBox groupBoxTools;
         private System.Windows.Forms.LinkLabel linkLabelBINTOOL;
@@ -540,5 +559,6 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
         private System.Windows.Forms.LinkLabel linkLabelDdsGitHub;
         private System.Windows.Forms.Label labelZelenskyi2;
         private System.Windows.Forms.Label labelDDSReaderSharp;
+        private System.Windows.Forms.LinkLabel linkLabelDonate;
     }
 }

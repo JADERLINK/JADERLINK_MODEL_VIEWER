@@ -85,7 +85,7 @@ namespace JADERLINK_MODEL_VIEWER.src
                         //etapa1
                         LoadModel.PopulateTreatedModel(ref treatedModel, ref startStructure, FileID);
                         //etapa 2
-                        LoadModel.BoundaryCalculationTreatedModel(ref treatedModel);
+                        BoundaryCalculation.TreatedModel(ref treatedModel);
 
                         //------------------
                         // adicionar o modelo para renderização
@@ -126,7 +126,7 @@ namespace JADERLINK_MODEL_VIEWER.src
                             //etapa1
                             LoadModel.PopulateTreatedModel(ref treatedModel, ref startStructure, key);
                             //etapa 2
-                            LoadModel.BoundaryCalculationTreatedModel(ref treatedModel);
+                            BoundaryCalculation.TreatedModel(ref treatedModel);
 
                             //------------------
                             // adicionar o modelo para renderização

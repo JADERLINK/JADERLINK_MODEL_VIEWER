@@ -51,6 +51,7 @@ namespace RE4_2007_MODEL_VIEWER
             this.toolStripMenuItemRenderNormals = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOnlyFrontFace = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemVertexColor = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemAlphaChannel = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCamera = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemMisc = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +64,6 @@ namespace RE4_2007_MODEL_VIEWER
             this.openFileDialogSMX = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogTGA = new System.Windows.Forms.OpenFileDialog();
             this.colorDialogSkyColor = new System.Windows.Forms.ColorDialog();
-            this.toolStripMenuItemAlphaChannel = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -255,6 +255,14 @@ namespace RE4_2007_MODEL_VIEWER
             this.toolStripMenuItemVertexColor.Text = "Enable/Disable Vertex Color";
             this.toolStripMenuItemVertexColor.Click += new System.EventHandler(this.toolStripMenuItemVertexColor_Click);
             // 
+            // toolStripMenuItemAlphaChannel
+            // 
+            this.toolStripMenuItemAlphaChannel.Name = "toolStripMenuItemAlphaChannel";
+            this.toolStripMenuItemAlphaChannel.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D6)));
+            this.toolStripMenuItemAlphaChannel.Size = new System.Drawing.Size(278, 22);
+            this.toolStripMenuItemAlphaChannel.Text = "Enable/Disable Alpha Channel";
+            this.toolStripMenuItemAlphaChannel.Click += new System.EventHandler(this.toolStripMenuItemAlphaChannel_Click);
+            // 
             // toolStripMenuItemCamera
             // 
             this.toolStripMenuItemCamera.Name = "toolStripMenuItemCamera";
@@ -362,14 +370,6 @@ namespace RE4_2007_MODEL_VIEWER
             this.colorDialogSkyColor.FullOpen = true;
             this.colorDialogSkyColor.SolidColorOnly = true;
             // 
-            // toolStripMenuItemAlphaChannel
-            // 
-            this.toolStripMenuItemAlphaChannel.Name = "toolStripMenuItemAlphaChannel";
-            this.toolStripMenuItemAlphaChannel.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D6)));
-            this.toolStripMenuItemAlphaChannel.Size = new System.Drawing.Size(278, 22);
-            this.toolStripMenuItemAlphaChannel.Text = "Enable/Disable Alpha Channel";
-            this.toolStripMenuItemAlphaChannel.Click += new System.EventHandler(this.toolStripMenuItemAlphaChannel_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -380,7 +380,7 @@ namespace RE4_2007_MODEL_VIEWER
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "FormMain";
-            this.Text = "RE4 2007 MODEL VIEWER | V.1.0.2 | YOUTUBE.COM/@JADERLINK";
+            this.Text = "RE4 2007 MODEL VIEWER | V.1.0.3 | YOUTUBE.COM/@JADERLINK";
             this.menuStripMenu.ResumeLayout(false);
             this.menuStripMenu.PerformLayout();
             this.splitContainerMain.Panel2.ResumeLayout(false);

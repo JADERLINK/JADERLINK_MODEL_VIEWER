@@ -23,6 +23,9 @@ RE4_UHD_MODEL_VIEWER.exe -> arquivos .BIN (Re4 Uhd) + .TPL, Scenario .SMD + .SMX
 
 RE4_PS2_MODEL_VIEWER.exe -> arquivos .BIN (Re4 PS2) + .TPL, Scenario .SMD + .SMX;
 
+**Update 1.0.3**
+<br>Melhorado a velocidade do carregamento das imagens nos programas.
+
 **Update 1.0.2**
 <br>Adicionado a opção de ativar/desativar a visualização do canal alfa da textura (Todos).
 <br>Mudado o entendimento de como é carregado o canal alfa para a versão do UHD.
@@ -62,4 +65,4 @@ Encontra-se em ALL_VIEWER/CjClutter.ObjLoader.Loader, código modificado, as mod
 
 -----
 **At.te: JADERLINK**
-<br>2024-05-18
+<br>2024-07-02

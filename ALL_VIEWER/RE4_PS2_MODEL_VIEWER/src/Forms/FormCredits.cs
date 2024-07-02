@@ -106,5 +106,10 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
         {
             To("https://github.com/JADERLINK/RE4-PS2-TPL-TOOL");
         }
+
+        private void linkLabelDonate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            To("https://jaderlink.github.io/Donate/");
+        }
     }
 }

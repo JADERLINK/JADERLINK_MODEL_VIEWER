@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using NsCamera;
 
 namespace JADERLINK_MODEL_VIEWER.src
 {

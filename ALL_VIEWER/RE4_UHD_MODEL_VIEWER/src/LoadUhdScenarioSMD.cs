@@ -16,6 +16,8 @@ namespace RE4_UHD_MODEL_VIEWER.src
 {
     public class LoadUhdScenarioSMD
     {
+        public Action<TreatedModel> ExternalAddTreatedModel;
+
         private ModelGroup modelGroup;
         private ScenarioNodeGroup sng;
 
@@ -45,7 +47,7 @@ namespace RE4_UHD_MODEL_VIEWER.src
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Error:");
             }
 
-            if (SmdLines.Length != 0)
+            if (SmdLines != null && SmdLines.Length != 0)
             {
                 string Nodekey = "SCENARIOSMD";
 
@@ -123,7 +125,10 @@ namespace RE4_UHD_MODEL_VIEWER.src
                         LoadUhdBinModel.PopulateMaterialGroup(ref materialGroup, ref uhdBin);
 
                         // calculo Boundary do objeto.
-                        LoadUhdBinModel.BoundaryCalculationTreatedModel(ref treatedModel);
+                        BoundaryCalculation.TreatedModel(ref treatedModel);
+
+                        //armazena o modelo em local externo
+                        ExternalAddTreatedModel?.Invoke(treatedModel);
 
                         //------------------
                         // adicionar o modelo para renderização

@@ -5,32 +5,32 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
 
-namespace JADERLINK_MODEL_VIEWER.src
+namespace NsCamera
 // basedo em https://github.com/DavidSM64/Quad64/blob/master/src/Viewer/Camera.cs
 // e em https://github.com/opentk/LearnOpenTK/blob/master/Common/Camera.cs
 {
 
     public class Camera
     {
-        public enum CameraMode
+        public enum CameraMode : int
         {
             FLY = 0,
             ORBIT = 1,
             LOOK_DIRECTION = 2
         }
 
-        public enum LookDirection
+        public enum LookDirection : int
         {
-            TOP,
-            BOTTOM,
-            LEFT,
-            RIGHT,
-            FRONT,
-            BACK
+            TOP = 0,
+            BOTTOM = 1,
+            LEFT = 2,
+            RIGHT = 3,
+            FRONT = 4,
+            BACK = 5
         }
 
         private readonly Vector3[] lookPositions = new Vector3[]
-        {//3280
+        {
             new Vector3(0, 1640, 0), // top
             new Vector3(0, -1640, 0), // bottom
             new Vector3(-1640, 0, 0), // left
@@ -49,7 +49,10 @@ namespace JADERLINK_MODEL_VIEWER.src
             new Vector2(90, 0)  // back
         };
 
-        private float camSpeedMultiplier = 1.0f * 3.0f;
+        private float camExtraSpeed = 3.0f;
+        public float CamExtraSpeed { get { return camExtraSpeed; } set { camExtraSpeed = value; } }
+
+        private float camSpeedMultiplier = 1.0f;
         public float CamSpeedMultiplier { get { return camSpeedMultiplier; } set { camSpeedMultiplier = value; } }
 
         private readonly Vector3 FixedUp = new Vector3(0, 1, 0);
@@ -150,8 +153,8 @@ namespace JADERLINK_MODEL_VIEWER.src
         private Vector3 moveObj_front = -Vector3.UnitZ; //front back
         private Vector3 moveObj_right = Vector3.UnitX; // right left
 
-        public Vector3 moveObjFront => moveObj_front;
-        public Vector3 moveObjRight => moveObj_right;
+        public Vector3 MoveObjFront => moveObj_front;
+        public Vector3 MoveObjRight => moveObj_right;
 
         // //
 
@@ -215,7 +218,7 @@ namespace JADERLINK_MODEL_VIEWER.src
 
         private void UpdateAnglesFromOrbit()
         {
-            Vector3 direction = Vector3.Normalize((lookat - pos) / 100);
+            Vector3 direction = Vector3.Normalize((lookat - pos) / 100f);
             _yaw = (float)Math.Atan2(direction.Z, direction.X);
             _pitch = (float)Math.Asin(direction.Y);
             UpdateVectors();
@@ -259,37 +262,37 @@ namespace JADERLINK_MODEL_VIEWER.src
 
         public void updateCameraToUp()
         {
-            pos += _up * camSpeedMultiplier; // Up
+            pos += _up * (camSpeedMultiplier * camExtraSpeed); // Up
         }
 
         public void updateCameraToDown()
         {
-            pos -= _up * camSpeedMultiplier; // Down
+            pos -= _up * (camSpeedMultiplier * camExtraSpeed); // Down
         }
 
         public void updateCameraToRight()
         {
-            pos += _right * camSpeedMultiplier; // Right
+            pos += _right * (camSpeedMultiplier * camExtraSpeed); // Right
         }
 
         public void updateCameraToLeft()
         {
-            pos -= _right * camSpeedMultiplier; // Left
+            pos -= _right * (camSpeedMultiplier * camExtraSpeed); // Left
         }
 
         public void updateCameraToFront()
         {
-            pos += _front * camSpeedMultiplier; // Forward 
+            pos += _front * (camSpeedMultiplier * camExtraSpeed); // Forward 
         }
 
         public void updateCameraToBack()
         {
-            pos -= _front * camSpeedMultiplier; // Backwards
+            pos -= _front * (camSpeedMultiplier * camExtraSpeed); // Backwards
         }
 
         public void updateCameraOffsetMatrixWithMouse(bool isControlDown, int mouseX, int mouseY, bool invert = false)
         {
-            if (camMode == CameraMode.ORBIT && getSelectedObject() != null)
+            if (camMode == CameraMode.ORBIT && getSelectedObject != null && getSelectedObject() != null)
             {
                 updateCameraOffsetWithMouse_ORBIT(mouseX, mouseY, invert);
             }
@@ -325,7 +328,6 @@ namespace JADERLINK_MODEL_VIEWER.src
                 }
 
                 const float sensitivity = 0.2f;
-                // FUNCIONA
                 //Apply the camera pitch and yaw (we clamp the pitch in the camera class)
                 YawDegrees += MousePosX * sensitivity;
                 PitchDegrees -= MousePosY * sensitivity; // reversed since y-coordinates range from bottom to top
@@ -344,10 +346,10 @@ namespace JADERLINK_MODEL_VIEWER.src
             int MousePosX = (-mouseX) + lastMouseX;
             int MousePosY = (-mouseY) + lastMouseY;
 
-            float extraSpeed = 1f;
+            float controlDownExtraSpeed = 1f;
             if (camMode == CameraMode.LOOK_DIRECTION && !isControlDown)
             {
-                extraSpeed = 4f;
+                controlDownExtraSpeed = 4f;
             }
 
             if (invert)
@@ -356,7 +358,7 @@ namespace JADERLINK_MODEL_VIEWER.src
                 MousePosY = -MousePosY;
             }
 
-            float sensitivity = 0.2f * extraSpeed * camSpeedMultiplier;
+            float sensitivity = 0.2f * controlDownExtraSpeed * (camSpeedMultiplier * camExtraSpeed);
             pos = savedCamPos + (-_right * (MousePosX) * sensitivity) + (_up * (MousePosY) * sensitivity);
         }
 
@@ -389,7 +391,7 @@ namespace JADERLINK_MODEL_VIEWER.src
             {
                 amt = -amt;
             }
-            if (camMode == CameraMode.ORBIT && getSelectedObject() != null)
+            if (camMode == CameraMode.ORBIT && getSelectedObject != null && getSelectedObject() != null)
             {
                 updateCameraMatrixWithScrollWheel_ORBIT(amt);
             }
@@ -456,7 +458,7 @@ namespace JADERLINK_MODEL_VIEWER.src
 
         public void UpdateCameraOrbitOnChangeObj()
         {
-            if (camMode == CameraMode.ORBIT && getSelectedObject() != null)
+            if (camMode == CameraMode.ORBIT && getSelectedObject != null && getSelectedObject() != null)
             {
                 //ResetOrbitToSelectedObject();
                 updateOrbitCamera();
@@ -467,7 +469,7 @@ namespace JADERLINK_MODEL_VIEWER.src
 
         public void UpdateCameraOrbitOnChangeValue()
         {
-            if (camMode == CameraMode.ORBIT && getSelectedObject() != null)
+            if (camMode == CameraMode.ORBIT && getSelectedObject != null && getSelectedObject() != null)
             {
                 updateOrbitCamera();
                 UpdateVectors();
@@ -477,7 +479,7 @@ namespace JADERLINK_MODEL_VIEWER.src
 
     }
 
-    public interface IObject3D 
+    public interface IObject3D
     {
         Vector3 GetObjPosition_ToCamera();
         float GetObjAngleY_ToCamera();

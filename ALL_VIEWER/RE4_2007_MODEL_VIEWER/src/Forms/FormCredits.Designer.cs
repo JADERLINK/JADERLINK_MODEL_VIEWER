@@ -55,12 +55,12 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.labelMainAuthor = new System.Windows.Forms.Label();
             this.linkLabelJaderLinkBlog = new System.Windows.Forms.LinkLabel();
             this.groupBoxProjectLinks = new System.Windows.Forms.GroupBox();
-            this.textBoxDonate = new System.Windows.Forms.TextBox();
             this.linkLabelProjectGitHub = new System.Windows.Forms.LinkLabel();
             this.groupBoxTools = new System.Windows.Forms.GroupBox();
+            this.linkLabelPMDTOOL = new System.Windows.Forms.LinkLabel();
             this.linkLabelSCENARIOTOOL = new System.Windows.Forms.LinkLabel();
             this.linkLabelSMXTOOL = new System.Windows.Forms.LinkLabel();
-            this.linkLabelPMDTOOL = new System.Windows.Forms.LinkLabel();
+            this.linkLabelDonate = new System.Windows.Forms.LinkLabel();
             this.groupBoxCodeproject.SuspendLayout();
             this.groupBoxAPIs.SuspendLayout();
             this.groupBoxAuthors.SuspendLayout();
@@ -92,23 +92,27 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelMultiselectTreeView
             // 
+            this.linkLabelMultiselectTreeView.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelMultiselectTreeView.AutoSize = true;
             this.linkLabelMultiselectTreeView.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelMultiselectTreeView.Location = new System.Drawing.Point(8, 52);
             this.linkLabelMultiselectTreeView.Name = "linkLabelMultiselectTreeView";
             this.linkLabelMultiselectTreeView.Size = new System.Drawing.Size(136, 15);
             this.linkLabelMultiselectTreeView.TabIndex = 1;
+            this.linkLabelMultiselectTreeView.TabStop = true;
             this.linkLabelMultiselectTreeView.Text = "MultiselectTreeView";
             this.linkLabelMultiselectTreeView.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelMultiselectTreeView_LinkClicked);
             // 
             // linkLabelLicenseCodeProject
             // 
+            this.linkLabelLicenseCodeProject.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelLicenseCodeProject.AutoSize = true;
             this.linkLabelLicenseCodeProject.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelLicenseCodeProject.Location = new System.Drawing.Point(6, 17);
             this.linkLabelLicenseCodeProject.Name = "linkLabelLicenseCodeProject";
             this.linkLabelLicenseCodeProject.Size = new System.Drawing.Size(291, 30);
             this.linkLabelLicenseCodeProject.TabIndex = 0;
+            this.linkLabelLicenseCodeProject.TabStop = true;
             this.linkLabelLicenseCodeProject.Text = "License: \r\nThe Code Project Open License (CPOL) 1.02";
             this.linkLabelLicenseCodeProject.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLicenseCodeProject_LinkClicked);
             // 
@@ -136,46 +140,54 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelLicenseOpenTK
             // 
+            this.linkLabelLicenseOpenTK.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelLicenseOpenTK.AutoSize = true;
             this.linkLabelLicenseOpenTK.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelLicenseOpenTK.Location = new System.Drawing.Point(9, 238);
             this.linkLabelLicenseOpenTK.Name = "linkLabelLicenseOpenTK";
             this.linkLabelLicenseOpenTK.Size = new System.Drawing.Size(347, 30);
             this.linkLabelLicenseOpenTK.TabIndex = 12;
+            this.linkLabelLicenseOpenTK.TabStop = true;
             this.linkLabelLicenseOpenTK.Text = "License:  MIT License Copyright (c) 2006-2020 \r\nStefanos Apostolopoulos for the O" +
     "pen Toolkit project.";
             this.linkLabelLicenseOpenTK.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLicenseOpenTK_LinkClicked);
             // 
             // linkLabelNugetGLControl
             // 
+            this.linkLabelNugetGLControl.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelNugetGLControl.AutoSize = true;
             this.linkLabelNugetGLControl.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelNugetGLControl.Location = new System.Drawing.Point(123, 215);
             this.linkLabelNugetGLControl.Name = "linkLabelNugetGLControl";
             this.linkLabelNugetGLControl.Size = new System.Drawing.Size(168, 15);
             this.linkLabelNugetGLControl.TabIndex = 11;
+            this.linkLabelNugetGLControl.TabStop = true;
             this.linkLabelNugetGLControl.Text = "Nuget OpenTK.GLControl";
             this.linkLabelNugetGLControl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNugetGLControl_LinkClicked);
             // 
             // linkLabelNugetOpenTK
             // 
+            this.linkLabelNugetOpenTK.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelNugetOpenTK.AutoSize = true;
             this.linkLabelNugetOpenTK.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelNugetOpenTK.Location = new System.Drawing.Point(9, 215);
             this.linkLabelNugetOpenTK.Name = "linkLabelNugetOpenTK";
             this.linkLabelNugetOpenTK.Size = new System.Drawing.Size(104, 15);
             this.linkLabelNugetOpenTK.TabIndex = 10;
+            this.linkLabelNugetOpenTK.TabStop = true;
             this.linkLabelNugetOpenTK.Text = "Nuget. OpenTK";
             this.linkLabelNugetOpenTK.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNugetOpenTK_LinkClicked);
             // 
             // linkLabelSiteOpenTK
             // 
+            this.linkLabelSiteOpenTK.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelSiteOpenTK.AutoSize = true;
             this.linkLabelSiteOpenTK.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelSiteOpenTK.Location = new System.Drawing.Point(9, 198);
             this.linkLabelSiteOpenTK.Name = "linkLabelSiteOpenTK";
             this.linkLabelSiteOpenTK.Size = new System.Drawing.Size(107, 15);
             this.linkLabelSiteOpenTK.TabIndex = 9;
+            this.linkLabelSiteOpenTK.TabStop = true;
             this.linkLabelSiteOpenTK.Text = "Site: opentk.net";
             this.linkLabelSiteOpenTK.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSiteOpenTK_LinkClicked);
             // 
@@ -191,34 +203,40 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelLicenseTGA
             // 
+            this.linkLabelLicenseTGA.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelLicenseTGA.AutoSize = true;
             this.linkLabelLicenseTGA.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelLicenseTGA.Location = new System.Drawing.Point(6, 156);
             this.linkLabelLicenseTGA.Name = "linkLabelLicenseTGA";
             this.linkLabelLicenseTGA.Size = new System.Drawing.Size(365, 15);
             this.linkLabelLicenseTGA.TabIndex = 7;
+            this.linkLabelLicenseTGA.TabStop = true;
             this.linkLabelLicenseTGA.Text = "License:  MIT License - Copyright (c) 2017 TGASharpLib";
             this.linkLabelLicenseTGA.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLicenseTGA_LinkClicked);
             // 
             // linkLabelTgaGitLab
             // 
+            this.linkLabelTgaGitLab.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelTgaGitLab.AutoSize = true;
             this.linkLabelTgaGitLab.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelTgaGitLab.Location = new System.Drawing.Point(114, 136);
             this.linkLabelTgaGitLab.Name = "linkLabelTgaGitLab";
             this.linkLabelTgaGitLab.Size = new System.Drawing.Size(94, 15);
             this.linkLabelTgaGitLab.TabIndex = 6;
+            this.linkLabelTgaGitLab.TabStop = true;
             this.linkLabelTgaGitLab.Text = "Gitlab Project";
             this.linkLabelTgaGitLab.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelTgaGitLab_LinkClicked);
             // 
             // linkLabelTgaGitHub
             // 
+            this.linkLabelTgaGitHub.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelTgaGitHub.AutoSize = true;
             this.linkLabelTgaGitHub.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelTgaGitHub.Location = new System.Drawing.Point(5, 136);
             this.linkLabelTgaGitHub.Name = "linkLabelTgaGitHub";
             this.linkLabelTgaGitHub.Size = new System.Drawing.Size(98, 15);
             this.linkLabelTgaGitHub.TabIndex = 5;
+            this.linkLabelTgaGitHub.TabStop = true;
             this.linkLabelTgaGitHub.Text = "Github Project";
             this.linkLabelTgaGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelTgaGitHub_LinkClicked);
             // 
@@ -299,23 +317,27 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelYoutubeJaderLink
             // 
+            this.linkLabelYoutubeJaderLink.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelYoutubeJaderLink.AutoSize = true;
             this.linkLabelYoutubeJaderLink.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelYoutubeJaderLink.Location = new System.Drawing.Point(15, 104);
             this.linkLabelYoutubeJaderLink.Name = "linkLabelYoutubeJaderLink";
             this.linkLabelYoutubeJaderLink.Size = new System.Drawing.Size(278, 15);
             this.linkLabelYoutubeJaderLink.TabIndex = 4;
+            this.linkLabelYoutubeJaderLink.TabStop = true;
             this.linkLabelYoutubeJaderLink.Text = "YouTube: www.youtube.com/@JADERLINK";
             this.linkLabelYoutubeJaderLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelYoutubeJaderLink_LinkClicked);
             // 
             // linkLabelJaderLinkGitHub
             // 
+            this.linkLabelJaderLinkGitHub.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelJaderLinkGitHub.AutoSize = true;
             this.linkLabelJaderLinkGitHub.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelJaderLinkGitHub.Location = new System.Drawing.Point(15, 83);
             this.linkLabelJaderLinkGitHub.Name = "linkLabelJaderLinkGitHub";
             this.linkLabelJaderLinkGitHub.Size = new System.Drawing.Size(209, 15);
             this.linkLabelJaderLinkGitHub.TabIndex = 3;
+            this.linkLabelJaderLinkGitHub.TabStop = true;
             this.linkLabelJaderLinkGitHub.Text = "GitHub: github.com/JADERLINK";
             this.linkLabelJaderLinkGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelJaderLinkGitHub_LinkClicked);
             // 
@@ -331,18 +353,20 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             // 
             // linkLabelJaderLinkBlog
             // 
+            this.linkLabelJaderLinkBlog.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelJaderLinkBlog.AutoSize = true;
             this.linkLabelJaderLinkBlog.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelJaderLinkBlog.Location = new System.Drawing.Point(15, 39);
             this.linkLabelJaderLinkBlog.Name = "linkLabelJaderLinkBlog";
             this.linkLabelJaderLinkBlog.Size = new System.Drawing.Size(221, 15);
             this.linkLabelJaderLinkBlog.TabIndex = 1;
+            this.linkLabelJaderLinkBlog.TabStop = true;
             this.linkLabelJaderLinkBlog.Text = "Blog Link: jaderlink.blogspot.com";
             this.linkLabelJaderLinkBlog.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelJaderLinkBlog_LinkClicked);
             // 
             // groupBoxProjectLinks
             // 
-            this.groupBoxProjectLinks.Controls.Add(this.textBoxDonate);
+            this.groupBoxProjectLinks.Controls.Add(this.linkLabelDonate);
             this.groupBoxProjectLinks.Controls.Add(this.linkLabelProjectGitHub);
             this.groupBoxProjectLinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxProjectLinks.Location = new System.Drawing.Point(8, 6);
@@ -352,21 +376,9 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.groupBoxProjectLinks.TabStop = false;
             this.groupBoxProjectLinks.Text = "Project Links";
             // 
-            // textBoxDonate
-            // 
-            this.textBoxDonate.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxDonate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxDonate.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxDonate.Location = new System.Drawing.Point(119, 20);
-            this.textBoxDonate.Name = "textBoxDonate";
-            this.textBoxDonate.ReadOnly = true;
-            this.textBoxDonate.Size = new System.Drawing.Size(475, 14);
-            this.textBoxDonate.TabIndex = 0;
-            this.textBoxDonate.TabStop = false;
-            this.textBoxDonate.Text = "To Donate to JaderLink Contact: jaderlinkproject@gmail.com";
-            // 
             // linkLabelProjectGitHub
             // 
+            this.linkLabelProjectGitHub.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelProjectGitHub.AutoSize = true;
             this.linkLabelProjectGitHub.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabelProjectGitHub.LinkColor = System.Drawing.Color.Navy;
@@ -374,6 +386,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.linkLabelProjectGitHub.Name = "linkLabelProjectGitHub";
             this.linkLabelProjectGitHub.Size = new System.Drawing.Size(100, 15);
             this.linkLabelProjectGitHub.TabIndex = 0;
+            this.linkLabelProjectGitHub.TabStop = true;
             this.linkLabelProjectGitHub.Text = "Project GitHub";
             this.linkLabelProjectGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelProjectGitHub_LinkClicked);
             // 
@@ -389,38 +402,58 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.groupBoxTools.TabStop = false;
             this.groupBoxTools.Text = "JADERLINK TOOLS";
             // 
-            // linkLabelSCENARIOTOOL
-            // 
-            this.linkLabelSCENARIOTOOL.AutoSize = true;
-            this.linkLabelSCENARIOTOOL.LinkColor = System.Drawing.Color.Navy;
-            this.linkLabelSCENARIOTOOL.Location = new System.Drawing.Point(6, 37);
-            this.linkLabelSCENARIOTOOL.Name = "linkLabelSCENARIOTOOL";
-            this.linkLabelSCENARIOTOOL.Size = new System.Drawing.Size(222, 15);
-            this.linkLabelSCENARIOTOOL.TabIndex = 1;
-            this.linkLabelSCENARIOTOOL.Text = "RE4-2007-SCENARIO-SMD-TOOL";
-            this.linkLabelSCENARIOTOOL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSCENARIOTOOL_LinkClicked);
-            // 
-            // linkLabelSMXTOOL
-            // 
-            this.linkLabelSMXTOOL.AutoSize = true;
-            this.linkLabelSMXTOOL.LinkColor = System.Drawing.Color.Navy;
-            this.linkLabelSMXTOOL.Location = new System.Drawing.Point(6, 18);
-            this.linkLabelSMXTOOL.Name = "linkLabelSMXTOOL";
-            this.linkLabelSMXTOOL.Size = new System.Drawing.Size(110, 15);
-            this.linkLabelSMXTOOL.TabIndex = 0;
-            this.linkLabelSMXTOOL.Text = "RE4-SMX-TOOL";
-            this.linkLabelSMXTOOL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSMXTOOL_LinkClicked);
-            // 
             // linkLabelPMDTOOL
             // 
+            this.linkLabelPMDTOOL.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkLabelPMDTOOL.AutoSize = true;
             this.linkLabelPMDTOOL.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelPMDTOOL.Location = new System.Drawing.Point(6, 55);
             this.linkLabelPMDTOOL.Name = "linkLabelPMDTOOL";
             this.linkLabelPMDTOOL.Size = new System.Drawing.Size(148, 15);
             this.linkLabelPMDTOOL.TabIndex = 2;
+            this.linkLabelPMDTOOL.TabStop = true;
             this.linkLabelPMDTOOL.Text = "RE4-2007-PMD-TOOL";
             this.linkLabelPMDTOOL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelPMDTOOL_LinkClicked);
+            // 
+            // linkLabelSCENARIOTOOL
+            // 
+            this.linkLabelSCENARIOTOOL.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkLabelSCENARIOTOOL.AutoSize = true;
+            this.linkLabelSCENARIOTOOL.LinkColor = System.Drawing.Color.Navy;
+            this.linkLabelSCENARIOTOOL.Location = new System.Drawing.Point(6, 37);
+            this.linkLabelSCENARIOTOOL.Name = "linkLabelSCENARIOTOOL";
+            this.linkLabelSCENARIOTOOL.Size = new System.Drawing.Size(222, 15);
+            this.linkLabelSCENARIOTOOL.TabIndex = 1;
+            this.linkLabelSCENARIOTOOL.TabStop = true;
+            this.linkLabelSCENARIOTOOL.Text = "RE4-2007-SCENARIO-SMD-TOOL";
+            this.linkLabelSCENARIOTOOL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSCENARIOTOOL_LinkClicked);
+            // 
+            // linkLabelSMXTOOL
+            // 
+            this.linkLabelSMXTOOL.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkLabelSMXTOOL.AutoSize = true;
+            this.linkLabelSMXTOOL.LinkColor = System.Drawing.Color.Navy;
+            this.linkLabelSMXTOOL.Location = new System.Drawing.Point(6, 18);
+            this.linkLabelSMXTOOL.Name = "linkLabelSMXTOOL";
+            this.linkLabelSMXTOOL.Size = new System.Drawing.Size(110, 15);
+            this.linkLabelSMXTOOL.TabIndex = 0;
+            this.linkLabelSMXTOOL.TabStop = true;
+            this.linkLabelSMXTOOL.Text = "RE4-SMX-TOOL";
+            this.linkLabelSMXTOOL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSMXTOOL_LinkClicked);
+            // 
+            // linkLabelDonate
+            // 
+            this.linkLabelDonate.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkLabelDonate.AutoSize = true;
+            this.linkLabelDonate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabelDonate.LinkColor = System.Drawing.Color.Navy;
+            this.linkLabelDonate.Location = new System.Drawing.Point(286, 19);
+            this.linkLabelDonate.Name = "linkLabelDonate";
+            this.linkLabelDonate.Size = new System.Drawing.Size(423, 15);
+            this.linkLabelDonate.TabIndex = 1;
+            this.linkLabelDonate.TabStop = true;
+            this.linkLabelDonate.Text = "To donate to JADERLINK go to: https://jaderlink.github.io/Donate/";
+            this.linkLabelDonate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDonate_LinkClicked);
             // 
             // FormCredits
             // 
@@ -485,11 +518,11 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
         private System.Windows.Forms.Label labelMainAuthor;
         private System.Windows.Forms.LinkLabel linkLabelJaderLinkBlog;
         private System.Windows.Forms.GroupBox groupBoxProjectLinks;
-        private System.Windows.Forms.TextBox textBoxDonate;
         private System.Windows.Forms.LinkLabel linkLabelProjectGitHub;
         private System.Windows.Forms.GroupBox groupBoxTools;
         private System.Windows.Forms.LinkLabel linkLabelPMDTOOL;
         private System.Windows.Forms.LinkLabel linkLabelSCENARIOTOOL;
         private System.Windows.Forms.LinkLabel linkLabelSMXTOOL;
+        private System.Windows.Forms.LinkLabel linkLabelDonate;
     }
 }

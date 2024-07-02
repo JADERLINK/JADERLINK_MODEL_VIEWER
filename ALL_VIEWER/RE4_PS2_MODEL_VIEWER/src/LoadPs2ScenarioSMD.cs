@@ -17,6 +17,8 @@ namespace RE4_PS2_MODEL_VIEWER.src
 {
     public class LoadPs2ScenarioSMD
     {
+        public Action<TreatedModel> ExternalAddTreatedModel;
+
         private ModelGroup modelGroup;
         private ScenarioNodeGroup sng;
 
@@ -130,7 +132,10 @@ namespace RE4_PS2_MODEL_VIEWER.src
                         LoadPs2BinModel.PopulateMaterialGroup(ref materialGroup, ref uhdBin);
 
                         // calculo Boundary do objeto.
-                        LoadPs2BinModel.BoundaryCalculationTreatedModel(ref treatedModel);
+                        BoundaryCalculation.TreatedModel(ref treatedModel);
+
+                        //armazena o modelo em local externo
+                        ExternalAddTreatedModel?.Invoke(treatedModel);
 
                         //------------------
                         // adicionar o modelo para renderização

@@ -141,5 +141,10 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
         {
             To("https://github.com/JADERLINK/SMD_READER_API/blob/main/LICENSE");
         }
+
+        private void linkLabelDonate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            To("https://jaderlink.github.io/Donate/");
+        }
     }
 }

@@ -31,9 +31,6 @@ namespace RE4_UHD_MODEL_VIEWER.src
             FileInfo fileInfo = new FileInfo(packPath);
             string FileID = fileInfo.Name.ToUpperInvariant();
 
-            Dictionary<string, Bitmap> textureDic = new Dictionary<string, Bitmap>();
-            Dictionary<string, string> textureExtension = new Dictionary<string, string>();
-
             try
             {
                 var pack = new BinaryReader(fileInfo.OpenRead());
@@ -53,6 +50,8 @@ namespace RE4_UHD_MODEL_VIEWER.src
                 {
                     if (offsets[i] != 0)
                     {
+                        Bitmap bitmap = null;
+
                         pack.BaseStream.Position = offsets[i];
                         uint fileLength = pack.ReadUInt32();
                         uint ff_ff_ff_ff = pack.ReadUInt32();
@@ -72,13 +71,11 @@ namespace RE4_UHD_MODEL_VIEWER.src
 
                             try
                             {
-                                Bitmap bitmap = DDSReaderSharp.ToBitmap(imagebytes);
-                                textureDic.Add(texkey, bitmap);
+                                bitmap = DDSReaderSharp.ToBitmap(imagebytes);
                             }
                             catch (Exception)
                             {
                             }
-                          
                         }
                         else
                         {
@@ -87,7 +84,7 @@ namespace RE4_UHD_MODEL_VIEWER.src
                             try
                             {
                                 TGASharpLib.TGA nTGA = new TGASharpLib.TGA(imagebytes);
-                                textureDic.Add(texkey, nTGA.ToBitmap(true));
+                                bitmap = nTGA.ToBitmap(true);
                             }
                             catch (Exception)
                             {
@@ -95,33 +92,32 @@ namespace RE4_UHD_MODEL_VIEWER.src
                           
                         }
 
-                        textureExtension.Add(texkey, Extension);
+                        if (bitmap != null)
+                        {
+                            if (modelGroup.TextureRefDic.ContainsKey(texkey))
+                            {
+                                var node = tpng.Nodes.Find(texkey, false).FirstOrDefault();
+                                ((NodeItem)node)?.Responsibility.ReleaseResponsibilities();
+                                node?.Remove();
+                            }
+
+                            ResponsibilityContainer texContainer = new ResponsibilityContainer();
+                            TEX_Representation tex_representation = new TEX_Representation(texkey, new List<string>() { texkey });
+                            TextureGroupResponsibility textureGroupResponsibility = new TextureGroupResponsibility(modelGroup, tex_representation);
+                            texContainer.Add(textureGroupResponsibility);
+
+                            NodeTexture nodeTexture = new NodeTexture();
+                            nodeTexture.Name = texkey;
+                            nodeTexture.Text = texkey + "." + Extension;
+                            nodeTexture.Responsibility = texContainer;
+                            tpng.Nodes.Add(nodeTexture);
+
+                            // GL da textura
+                            modelGroup.AddTextureRef(new Dictionary<string, Bitmap> { { texkey, bitmap } });
+                        }
+
                     }
                 }
-
-                foreach (var texId in textureDic.Keys)
-                {
-                    if (modelGroup.TextureRefDic.ContainsKey(texId))
-                    {
-                        var node = tpng.Nodes.Find(texId, false).FirstOrDefault();
-                        ((NodeItem)node)?.Responsibility.ReleaseResponsibilities();
-                        node?.Remove();
-                    }
-
-                    ResponsibilityContainer texContainer = new ResponsibilityContainer();
-                    TEX_Representation tex_representation = new TEX_Representation(texId, new List<string>() { texId });
-                    TextureGroupResponsibility textureGroupResponsibility = new TextureGroupResponsibility(modelGroup, tex_representation);
-                    texContainer.Add(textureGroupResponsibility);
-
-                    NodeTexture nodeTexture = new NodeTexture();
-                    nodeTexture.Name = texId;
-                    nodeTexture.Text = texId + "." + textureExtension[texId];
-                    nodeTexture.Responsibility = texContainer;
-                    tpng.Nodes.Add(nodeTexture);
-                }
-
-                // GL das texturas
-                modelGroup.AddTextureRef(textureDic);
 
                 pack.Close();
             }
