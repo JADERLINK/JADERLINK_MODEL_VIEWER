@@ -426,6 +426,27 @@ namespace RE4_2007_MODEL_VIEWER
             renderControl.GlControl.Invalidate();
         }
 
+        private void toolStripMenuItemTextureNearestLinear_Click(object sender, EventArgs e)
+        {
+            if (TextureRef.LoadTextureLinear)
+            {
+                TextureRef.LoadTextureLinear = false;
+                foreach (var item in modelGroup.TextureRefDic)
+                {
+                    item.Value.SetNearest();
+                }
+            }
+            else
+            {
+                TextureRef.LoadTextureLinear = true;
+                foreach (var item in modelGroup.TextureRefDic)
+                {
+                    item.Value.SetLinear();
+                }
+            }
+            renderControl.GlControl.Invalidate();
+        }
+
         FormCamera cameraForm = null;
         int lastTrackBarCamSpeedValue = 50;
 
@@ -476,6 +497,5 @@ namespace RE4_2007_MODEL_VIEWER
         {
             creditsForm = null;
         }
-
     }
 }

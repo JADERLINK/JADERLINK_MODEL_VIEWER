@@ -61,6 +61,7 @@ namespace RE4_PS2_MODEL_VIEWER
             this.openFileDialogSMD = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogSMX = new System.Windows.Forms.OpenFileDialog();
             this.colorDialogSkyColor = new System.Windows.Forms.ColorDialog();
+            this.toolStripMenuItemTextureNearestLinear = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -183,6 +184,7 @@ namespace RE4_PS2_MODEL_VIEWER
             this.toolStripMenuItemOnlyFrontFace,
             this.toolStripMenuItemVertexColor,
             this.toolStripMenuItemAlphaChannel,
+            this.toolStripMenuItemTextureNearestLinear,
             this.toolStripMenuItemCamera,
             this.toolStripMenuItemRefresh});
             this.toolStripMenuItemView.Name = "toolStripMenuItemView";
@@ -343,6 +345,14 @@ namespace RE4_PS2_MODEL_VIEWER
             this.colorDialogSkyColor.FullOpen = true;
             this.colorDialogSkyColor.SolidColorOnly = true;
             // 
+            // toolStripMenuItemTextureNearestLinear
+            // 
+            this.toolStripMenuItemTextureNearestLinear.Name = "toolStripMenuItemTextureNearestLinear";
+            this.toolStripMenuItemTextureNearestLinear.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D7)));
+            this.toolStripMenuItemTextureNearestLinear.Size = new System.Drawing.Size(278, 22);
+            this.toolStripMenuItemTextureNearestLinear.Text = "Use Texture Nearest/Linear";
+            this.toolStripMenuItemTextureNearestLinear.Click += new System.EventHandler(this.toolStripMenuItemTextureNearestLinear_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,7 +363,7 @@ namespace RE4_PS2_MODEL_VIEWER
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "FormMain";
-            this.Text = "RE4 PS2 MODEL VIEWER | V.1.0.3 | YOUTUBE.COM/@JADERLINK";
+            this.Text = "RE4 PS2 MODEL VIEWER | V.1.0.4 | YOUTUBE.COM/@JADERLINK";
             this.menuStripMenu.ResumeLayout(false);
             this.menuStripMenu.PerformLayout();
             this.splitContainerMain.Panel2.ResumeLayout(false);
@@ -397,6 +407,7 @@ namespace RE4_PS2_MODEL_VIEWER
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCamera;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemVertexColor;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAlphaChannel;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTextureNearestLinear;
     }
 }
 

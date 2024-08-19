@@ -165,7 +165,7 @@ namespace RE4_UHD_MODEL_VIEWER
                 objShader.SetInt("texture1", 1);
                 whitetex = new TextureRef(Properties.Resources.WhiteTexture);
                 whitetex2 = new TextureRef(Properties.Resources.WhiteTexture);// fix bind error
-            }       
+            }
         }
 
         private void GlControl_Paint(object sender, PaintEventArgs e)
@@ -445,6 +445,27 @@ namespace RE4_UHD_MODEL_VIEWER
         private void toolStripMenuItemAlphaChannel_Click(object sender, EventArgs e)
         {
             TheRender.RenderAlphaChannel = !TheRender.RenderAlphaChannel;
+            renderControl.GlControl.Invalidate();
+        }
+
+        private void toolStripMenuItemTextureNearestLinear_Click(object sender, EventArgs e)
+        {
+            if (TextureRef.LoadTextureLinear)
+            {
+                TextureRef.LoadTextureLinear = false;
+                foreach (var item in modelGroup.TextureRefDic)
+                {
+                    item.Value.SetNearest();
+                }
+            }
+            else
+            {
+                TextureRef.LoadTextureLinear = true;
+                foreach (var item in modelGroup.TextureRefDic)
+                {
+                    item.Value.SetLinear();
+                }
+            }
             renderControl.GlControl.Invalidate();
         }
 

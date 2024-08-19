@@ -2,7 +2,7 @@
 
 View the 3d models, from the files: .obj, .smd, Re4 Uhd .BIN, Re4 PS2 .BIN, Re4 2007 .PMD, and your Re4 .SMD scenario files (PS2/UHD/2007).
 
-![](https://i.imgur.com/tL1reYS.png)
+![](https://i.imgur.com/sibStHB.png)
 
 **Info:**
 <br>License: MIT Licence
@@ -22,6 +22,10 @@ RE4_2007_MODEL_VIEWER.exe -> Arquivos .PMD (Re4 2007), Scenario .SMD + .SMX, com
 RE4_UHD_MODEL_VIEWER.exe -> arquivos .BIN (Re4 Uhd) + .TPL, Scenario .SMD + .SMX, com suporte a arquivos .PACK e PACK.YZ2;
 
 RE4_PS2_MODEL_VIEWER.exe -> arquivos .BIN (Re4 PS2) + .TPL, Scenario .SMD + .SMX;
+
+**Update 1.0.4**
+<br>Adicionada a opção "Use Texture Nearest/Linear", que alterna a exibição da textura entre "Linear" (desfocado) e "Nearest" (Pixelado), para todas as versões.
+<br>Para o UHD, adicionado mais compatibilidade de BINs e TPLs;
 
 **Update 1.0.3**
 <br>Melhorado a velocidade do carregamento das imagens nos programas.
@@ -65,4 +69,4 @@ Encontra-se em ALL_VIEWER/CjClutter.ObjLoader.Loader, código modificado, as mod
 
 -----
 **At.te: JADERLINK**
-<br>2024-07-02
+<br>2024-08-19
