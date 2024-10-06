@@ -15,6 +15,7 @@ using JADERLINK_MODEL_VIEWER.src.Nodes;
 using JADERLINK_MODEL_VIEWER.src.Forms;
 using System.IO;
 using Re4ViewerRender;
+using LoadUhdPs4Ns.src;
 
 namespace RE4_UHD_MODEL_VIEWER
 {
@@ -207,8 +208,8 @@ namespace RE4_UHD_MODEL_VIEWER
         {
             treeViewObjs.SuspendLayout();
 
-            LoadUhdBinModel loadBinModel = new LoadUhdBinModel(modelGroup, mng);
-            LoadUhdTpl loadTpl = new LoadUhdTpl(modelGroup, mng);
+            LoadUhdBinModel loadBinModel = new LoadUhdBinModel(modelGroup, mng, false);
+            LoadUhdTpl loadTpl = new LoadUhdTpl(modelGroup, mng, false);
             for (int i = 0; i < openFileDialogBINTPL.FileNames.Length; i++)
             {
                 string file = openFileDialogBINTPL.FileNames[i];
@@ -259,7 +260,7 @@ namespace RE4_UHD_MODEL_VIEWER
         {
             treeViewObjs.SuspendLayout();
 
-            LoadUhdScenarioSMD loadScenarioSMD = new LoadUhdScenarioSMD(modelGroup, sng);
+            LoadUhdScenarioSMD loadScenarioSMD = new LoadUhdScenarioSMD(modelGroup, sng, false);
             loadScenarioSMD.LoadScenario(openFileDialogSMD.FileName);
 
             modelNodeOrder.GetNodeOrder();

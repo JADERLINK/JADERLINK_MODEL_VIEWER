@@ -134,12 +134,12 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
 
         private void linkLabelSmdGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            To("https://github.com/JADERLINK/SMD_READER_API");
+            To("https://github.com/JADERLINK/SMD_READER_LIB");
         }
 
         private void linkLabelLicenceSmd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            To("https://github.com/JADERLINK/SMD_READER_API/blob/main/LICENSE");
+            To("https://github.com/JADERLINK/SMD_READER_LIB/blob/main/LICENSE");
         }
 
         private void linkLabelDonate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

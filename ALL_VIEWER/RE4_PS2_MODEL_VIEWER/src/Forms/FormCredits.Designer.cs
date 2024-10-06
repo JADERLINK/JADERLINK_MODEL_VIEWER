@@ -121,7 +121,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.groupBoxAPIs.Size = new System.Drawing.Size(358, 119);
             this.groupBoxAPIs.TabIndex = 5;
             this.groupBoxAPIs.TabStop = false;
-            this.groupBoxAPIs.Text = "API\'s";
+            this.groupBoxAPIs.Text = "LIB\'s";
             // 
             // linkLabelLicenseOpenTK
             // 

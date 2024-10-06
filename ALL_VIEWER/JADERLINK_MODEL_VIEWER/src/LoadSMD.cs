@@ -38,15 +38,18 @@ namespace JADERLINK_MODEL_VIEWER.src
 
             if (!modelGroup.Objects.ContainsKey(FileID))
             {
-                SMD_READER_API.SMD smd = null;
+                SMD_READER_LIB.SMD smd = null;
                 StreamReader stream = null;
 
                 try
                 {
-                     stream = new StreamReader(Path, Encoding.ASCII);
-                     smd = SMD_READER_API.SmdReader.Reader(stream);
+                    stream = new StreamReader(Path, Encoding.ASCII);
+                    smd = SMD_READER_LIB.SmdReader.Reader(stream);
                 }
                 catch (Exception)
+                {
+                }
+                finally
                 {
                     if (stream != null)
                     {
@@ -97,7 +100,7 @@ namespace JADERLINK_MODEL_VIEWER.src
 
         }
 
-        private void PopulateStartStructure(ref StartStructure startStructure, ref SMD_READER_API.SMD smd)
+        private void PopulateStartStructure(ref StartStructure startStructure, ref SMD_READER_LIB.SMD smd)
         {
             Vector4 color = new Vector4(1, 1, 1, 1);
 

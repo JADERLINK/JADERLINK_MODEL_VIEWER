@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ViewerBase;
-using TGASharpLib;
 using System.IO;
 using System.Drawing;
-using OpenTK;
 using JADERLINK_MODEL_VIEWER.src.Nodes;
-using System.Drawing.Imaging;
-using System.Runtime.InteropServices;
 
 namespace RE4_UHD_MODEL_VIEWER.src
 {
@@ -25,15 +21,14 @@ namespace RE4_UHD_MODEL_VIEWER.src
             this.tpng = tpng;
         }
 
-        public void LoadPack(string packPath) 
+        public void LoadPack(string packPath)
         {
-
-            FileInfo fileInfo = new FileInfo(packPath);
-            string FileID = fileInfo.Name.ToUpperInvariant();
+            BinaryReader pack = null;
 
             try
             {
-                var pack = new BinaryReader(fileInfo.OpenRead());
+                FileInfo fileInfo = new FileInfo(packPath);
+                pack = new BinaryReader(fileInfo.OpenRead());
 
                 uint PackID = pack.ReadUInt32();
                 uint Amount = pack.ReadUInt32();
@@ -77,7 +72,7 @@ namespace RE4_UHD_MODEL_VIEWER.src
                             {
                             }
                         }
-                        else
+                        else if (imagemagic == 0x00020000 || imagemagic == 0x000A0000)
                         {
                             Extension = "TGA";
 
@@ -89,7 +84,7 @@ namespace RE4_UHD_MODEL_VIEWER.src
                             catch (Exception)
                             {
                             }
-                          
+
                         }
 
                         if (bitmap != null)
@@ -119,11 +114,16 @@ namespace RE4_UHD_MODEL_VIEWER.src
                     }
                 }
 
-                pack.Close();
             }
             catch (Exception)
             {
-
+            }
+            finally
+            {
+                if (pack != null)
+                {
+                    pack.Close();
+                }
             }
 
         }

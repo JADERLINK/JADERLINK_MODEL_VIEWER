@@ -66,8 +66,8 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.labelMainAuthor = new System.Windows.Forms.Label();
             this.linkLabelJaderLinkBlog = new System.Windows.Forms.LinkLabel();
             this.groupBoxProjectLinks = new System.Windows.Forms.GroupBox();
-            this.linkLabelProjectGitHub = new System.Windows.Forms.LinkLabel();
             this.linkLabelDonate = new System.Windows.Forms.LinkLabel();
+            this.linkLabelProjectGitHub = new System.Windows.Forms.LinkLabel();
             this.groupBoxCodeproject.SuspendLayout();
             this.groupBoxAPIs.SuspendLayout();
             this.groupBoxAuthors.SuspendLayout();
@@ -153,7 +153,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.groupBoxAPIs.Size = new System.Drawing.Size(407, 451);
             this.groupBoxAPIs.TabIndex = 5;
             this.groupBoxAPIs.TabStop = false;
-            this.groupBoxAPIs.Text = "API\'s";
+            this.groupBoxAPIs.Text = "LIB\'s";
             // 
             // linkLabelLicenceSmd
             // 
@@ -269,7 +269,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(196, 15);
             this.label4.TabIndex = 18;
-            this.label4.Text = "SMD_READER_API (In code):";
+            this.label4.Text = "SMD_READER_LIB (In code):";
             // 
             // labelDDSReaderSharp
             // 
@@ -526,20 +526,6 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.groupBoxProjectLinks.TabStop = false;
             this.groupBoxProjectLinks.Text = "Project Links";
             // 
-            // linkLabelProjectGitHub
-            // 
-            this.linkLabelProjectGitHub.ActiveLinkColor = System.Drawing.Color.Black;
-            this.linkLabelProjectGitHub.AutoSize = true;
-            this.linkLabelProjectGitHub.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabelProjectGitHub.LinkColor = System.Drawing.Color.Navy;
-            this.linkLabelProjectGitHub.Location = new System.Drawing.Point(10, 19);
-            this.linkLabelProjectGitHub.Name = "linkLabelProjectGitHub";
-            this.linkLabelProjectGitHub.Size = new System.Drawing.Size(100, 15);
-            this.linkLabelProjectGitHub.TabIndex = 0;
-            this.linkLabelProjectGitHub.TabStop = true;
-            this.linkLabelProjectGitHub.Text = "Project GitHub";
-            this.linkLabelProjectGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelProjectGitHub_LinkClicked);
-            // 
             // linkLabelDonate
             // 
             this.linkLabelDonate.ActiveLinkColor = System.Drawing.Color.Black;
@@ -553,6 +539,20 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.linkLabelDonate.TabStop = true;
             this.linkLabelDonate.Text = "To donate to JADERLINK go to: https://jaderlink.github.io/Donate/";
             this.linkLabelDonate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDonate_LinkClicked);
+            // 
+            // linkLabelProjectGitHub
+            // 
+            this.linkLabelProjectGitHub.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkLabelProjectGitHub.AutoSize = true;
+            this.linkLabelProjectGitHub.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabelProjectGitHub.LinkColor = System.Drawing.Color.Navy;
+            this.linkLabelProjectGitHub.Location = new System.Drawing.Point(10, 19);
+            this.linkLabelProjectGitHub.Name = "linkLabelProjectGitHub";
+            this.linkLabelProjectGitHub.Size = new System.Drawing.Size(100, 15);
+            this.linkLabelProjectGitHub.TabIndex = 0;
+            this.linkLabelProjectGitHub.TabStop = true;
+            this.linkLabelProjectGitHub.Text = "Project GitHub";
+            this.linkLabelProjectGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelProjectGitHub_LinkClicked);
             // 
             // FormCredits
             // 

@@ -22,7 +22,7 @@
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -80,10 +80,7 @@
     <Compile Include="src\Forms\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\LoadUhdBinModel.cs" />
     <Compile Include="src\LoadUhdPack.cs" />
-    <Compile Include="src\LoadUhdTpl.cs" />
-    <Compile Include="src\LoadUhdScenarioSMD.cs" />
     <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -139,5 +136,6 @@
   <Import Project="..\UhdScenarioSMD\UhdScenarioSMD.projitems" Label="Shared" />
   <Import Project="..\ControlUtils\ControlUtils.projitems" Label="Shared" />
   <Import Project="..\Re4ViewerRender\Re4ViewerRender.projitems" Label="Shared" />
+  <Import Project="..\LoadUhdPs4Ns\LoadUhdPs4Ns.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

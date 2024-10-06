@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associadas a um assembly.
 [assembly: AssemblyTitle("RE4_UHD_MODEL_VIEWER")]
-[assembly: AssemblyDescription("RE4_UHD_MODEL_VIEWER")]
+[assembly: AssemblyDescription("RE4_UHD_MODEL_VIEWER by JADERLINK")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("JADERLINK")]
 [assembly: AssemblyProduct("RE4_UHD_MODEL_VIEWER")]

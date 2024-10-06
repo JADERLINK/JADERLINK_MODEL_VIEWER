@@ -34,7 +34,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.groupBoxCodeproject = new System.Windows.Forms.GroupBox();
             this.linkLabelMultiselectTreeView = new System.Windows.Forms.LinkLabel();
             this.linkLabelLicenseCodeProject = new System.Windows.Forms.LinkLabel();
-            this.groupBoxAPIs = new System.Windows.Forms.GroupBox();
+            this.groupBoxLIBs = new System.Windows.Forms.GroupBox();
             this.linkLabelLicenseDDS = new System.Windows.Forms.LinkLabel();
             this.linkLabelDdsGitLab = new System.Windows.Forms.LinkLabel();
             this.linkLabelDdsGitHub = new System.Windows.Forms.LinkLabel();
@@ -57,14 +57,14 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.labelMainAuthor = new System.Windows.Forms.Label();
             this.linkLabelJaderLinkBlog = new System.Windows.Forms.LinkLabel();
             this.groupBoxProjectLinks = new System.Windows.Forms.GroupBox();
+            this.linkLabelDonate = new System.Windows.Forms.LinkLabel();
             this.linkLabelProjectGitHub = new System.Windows.Forms.LinkLabel();
             this.groupBoxTools = new System.Windows.Forms.GroupBox();
             this.linkLabelBINTOOL = new System.Windows.Forms.LinkLabel();
             this.linkLabelSCENARIOTOOL = new System.Windows.Forms.LinkLabel();
             this.linkLabelSMXTOOL = new System.Windows.Forms.LinkLabel();
-            this.linkLabelDonate = new System.Windows.Forms.LinkLabel();
             this.groupBoxCodeproject.SuspendLayout();
-            this.groupBoxAPIs.SuspendLayout();
+            this.groupBoxLIBs.SuspendLayout();
             this.groupBoxAuthors.SuspendLayout();
             this.groupBoxProjectLinks.SuspendLayout();
             this.groupBoxTools.SuspendLayout();
@@ -118,29 +118,29 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.linkLabelLicenseCodeProject.Text = "License: \r\nThe Code Project Open License (CPOL) 1.02";
             this.linkLabelLicenseCodeProject.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLicenseCodeProject_LinkClicked);
             // 
-            // groupBoxAPIs
+            // groupBoxLIBs
             // 
-            this.groupBoxAPIs.Controls.Add(this.linkLabelLicenseDDS);
-            this.groupBoxAPIs.Controls.Add(this.linkLabelDdsGitLab);
-            this.groupBoxAPIs.Controls.Add(this.linkLabelDdsGitHub);
-            this.groupBoxAPIs.Controls.Add(this.labelZelenskyi2);
-            this.groupBoxAPIs.Controls.Add(this.labelDDSReaderSharp);
-            this.groupBoxAPIs.Controls.Add(this.linkLabelLicenseOpenTK);
-            this.groupBoxAPIs.Controls.Add(this.linkLabelNugetGLControl);
-            this.groupBoxAPIs.Controls.Add(this.linkLabelNugetOpenTK);
-            this.groupBoxAPIs.Controls.Add(this.linkLabelSiteOpenTK);
-            this.groupBoxAPIs.Controls.Add(this.labelOpenTK);
-            this.groupBoxAPIs.Controls.Add(this.linkLabelLicenseTGA);
-            this.groupBoxAPIs.Controls.Add(this.linkLabelTgaGitLab);
-            this.groupBoxAPIs.Controls.Add(this.linkLabelTgaGitHub);
-            this.groupBoxAPIs.Controls.Add(this.labelZelenskyi);
-            this.groupBoxAPIs.Controls.Add(this.labelTGASharpLib);
-            this.groupBoxAPIs.Location = new System.Drawing.Point(316, 54);
-            this.groupBoxAPIs.Name = "groupBoxAPIs";
-            this.groupBoxAPIs.Size = new System.Drawing.Size(407, 295);
-            this.groupBoxAPIs.TabIndex = 5;
-            this.groupBoxAPIs.TabStop = false;
-            this.groupBoxAPIs.Text = "API\'s";
+            this.groupBoxLIBs.Controls.Add(this.linkLabelLicenseDDS);
+            this.groupBoxLIBs.Controls.Add(this.linkLabelDdsGitLab);
+            this.groupBoxLIBs.Controls.Add(this.linkLabelDdsGitHub);
+            this.groupBoxLIBs.Controls.Add(this.labelZelenskyi2);
+            this.groupBoxLIBs.Controls.Add(this.labelDDSReaderSharp);
+            this.groupBoxLIBs.Controls.Add(this.linkLabelLicenseOpenTK);
+            this.groupBoxLIBs.Controls.Add(this.linkLabelNugetGLControl);
+            this.groupBoxLIBs.Controls.Add(this.linkLabelNugetOpenTK);
+            this.groupBoxLIBs.Controls.Add(this.linkLabelSiteOpenTK);
+            this.groupBoxLIBs.Controls.Add(this.labelOpenTK);
+            this.groupBoxLIBs.Controls.Add(this.linkLabelLicenseTGA);
+            this.groupBoxLIBs.Controls.Add(this.linkLabelTgaGitLab);
+            this.groupBoxLIBs.Controls.Add(this.linkLabelTgaGitHub);
+            this.groupBoxLIBs.Controls.Add(this.labelZelenskyi);
+            this.groupBoxLIBs.Controls.Add(this.labelTGASharpLib);
+            this.groupBoxLIBs.Location = new System.Drawing.Point(316, 54);
+            this.groupBoxLIBs.Name = "groupBoxLIBs";
+            this.groupBoxLIBs.Size = new System.Drawing.Size(407, 295);
+            this.groupBoxLIBs.TabIndex = 5;
+            this.groupBoxLIBs.TabStop = false;
+            this.groupBoxLIBs.Text = "LIB\'s";
             // 
             // linkLabelLicenseDDS
             // 
@@ -410,6 +410,20 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.groupBoxProjectLinks.TabStop = false;
             this.groupBoxProjectLinks.Text = "Project Links";
             // 
+            // linkLabelDonate
+            // 
+            this.linkLabelDonate.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkLabelDonate.AutoSize = true;
+            this.linkLabelDonate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabelDonate.LinkColor = System.Drawing.Color.Navy;
+            this.linkLabelDonate.Location = new System.Drawing.Point(288, 19);
+            this.linkLabelDonate.Name = "linkLabelDonate";
+            this.linkLabelDonate.Size = new System.Drawing.Size(423, 15);
+            this.linkLabelDonate.TabIndex = 1;
+            this.linkLabelDonate.TabStop = true;
+            this.linkLabelDonate.Text = "To donate to JADERLINK go to: https://jaderlink.github.io/Donate/";
+            this.linkLabelDonate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDonate_LinkClicked);
+            // 
             // linkLabelProjectGitHub
             // 
             this.linkLabelProjectGitHub.ActiveLinkColor = System.Drawing.Color.Black;
@@ -475,20 +489,6 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.linkLabelSMXTOOL.Text = "RE4-SMX-TOOL";
             this.linkLabelSMXTOOL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSMXTOOL_LinkClicked);
             // 
-            // linkLabelDonate
-            // 
-            this.linkLabelDonate.ActiveLinkColor = System.Drawing.Color.Black;
-            this.linkLabelDonate.AutoSize = true;
-            this.linkLabelDonate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabelDonate.LinkColor = System.Drawing.Color.Navy;
-            this.linkLabelDonate.Location = new System.Drawing.Point(288, 19);
-            this.linkLabelDonate.Name = "linkLabelDonate";
-            this.linkLabelDonate.Size = new System.Drawing.Size(423, 15);
-            this.linkLabelDonate.TabIndex = 1;
-            this.linkLabelDonate.TabStop = true;
-            this.linkLabelDonate.Text = "To donate to JADERLINK go to: https://jaderlink.github.io/Donate/";
-            this.linkLabelDonate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDonate_LinkClicked);
-            // 
             // FormCredits
             // 
             this.AcceptButton = this.buttonClose;
@@ -498,7 +498,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.ClientSize = new System.Drawing.Size(731, 388);
             this.Controls.Add(this.groupBoxTools);
             this.Controls.Add(this.groupBoxCodeproject);
-            this.Controls.Add(this.groupBoxAPIs);
+            this.Controls.Add(this.groupBoxLIBs);
             this.Controls.Add(this.groupBoxAuthors);
             this.Controls.Add(this.groupBoxProjectLinks);
             this.Controls.Add(this.buttonClose);
@@ -513,8 +513,8 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormCredits_KeyDown);
             this.groupBoxCodeproject.ResumeLayout(false);
             this.groupBoxCodeproject.PerformLayout();
-            this.groupBoxAPIs.ResumeLayout(false);
-            this.groupBoxAPIs.PerformLayout();
+            this.groupBoxLIBs.ResumeLayout(false);
+            this.groupBoxLIBs.PerformLayout();
             this.groupBoxAuthors.ResumeLayout(false);
             this.groupBoxAuthors.PerformLayout();
             this.groupBoxProjectLinks.ResumeLayout(false);
@@ -531,7 +531,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
         private System.Windows.Forms.GroupBox groupBoxCodeproject;
         private System.Windows.Forms.LinkLabel linkLabelMultiselectTreeView;
         private System.Windows.Forms.LinkLabel linkLabelLicenseCodeProject;
-        private System.Windows.Forms.GroupBox groupBoxAPIs;
+        private System.Windows.Forms.GroupBox groupBoxLIBs;
         private System.Windows.Forms.LinkLabel linkLabelLicenseOpenTK;
         private System.Windows.Forms.LinkLabel linkLabelNugetGLControl;
         private System.Windows.Forms.LinkLabel linkLabelNugetOpenTK;

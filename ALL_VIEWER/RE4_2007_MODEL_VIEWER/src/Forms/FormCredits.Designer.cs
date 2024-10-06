@@ -55,12 +55,12 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.labelMainAuthor = new System.Windows.Forms.Label();
             this.linkLabelJaderLinkBlog = new System.Windows.Forms.LinkLabel();
             this.groupBoxProjectLinks = new System.Windows.Forms.GroupBox();
+            this.linkLabelDonate = new System.Windows.Forms.LinkLabel();
             this.linkLabelProjectGitHub = new System.Windows.Forms.LinkLabel();
             this.groupBoxTools = new System.Windows.Forms.GroupBox();
             this.linkLabelPMDTOOL = new System.Windows.Forms.LinkLabel();
             this.linkLabelSCENARIOTOOL = new System.Windows.Forms.LinkLabel();
             this.linkLabelSMXTOOL = new System.Windows.Forms.LinkLabel();
-            this.linkLabelDonate = new System.Windows.Forms.LinkLabel();
             this.groupBoxCodeproject.SuspendLayout();
             this.groupBoxAPIs.SuspendLayout();
             this.groupBoxAuthors.SuspendLayout();
@@ -136,7 +136,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.groupBoxAPIs.Size = new System.Drawing.Size(385, 295);
             this.groupBoxAPIs.TabIndex = 5;
             this.groupBoxAPIs.TabStop = false;
-            this.groupBoxAPIs.Text = "API\'s";
+            this.groupBoxAPIs.Text = "LIB\'s";
             // 
             // linkLabelLicenseOpenTK
             // 
@@ -376,6 +376,20 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.groupBoxProjectLinks.TabStop = false;
             this.groupBoxProjectLinks.Text = "Project Links";
             // 
+            // linkLabelDonate
+            // 
+            this.linkLabelDonate.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkLabelDonate.AutoSize = true;
+            this.linkLabelDonate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabelDonate.LinkColor = System.Drawing.Color.Navy;
+            this.linkLabelDonate.Location = new System.Drawing.Point(286, 19);
+            this.linkLabelDonate.Name = "linkLabelDonate";
+            this.linkLabelDonate.Size = new System.Drawing.Size(423, 15);
+            this.linkLabelDonate.TabIndex = 1;
+            this.linkLabelDonate.TabStop = true;
+            this.linkLabelDonate.Text = "To donate to JADERLINK go to: https://jaderlink.github.io/Donate/";
+            this.linkLabelDonate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDonate_LinkClicked);
+            // 
             // linkLabelProjectGitHub
             // 
             this.linkLabelProjectGitHub.ActiveLinkColor = System.Drawing.Color.Black;
@@ -440,20 +454,6 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.linkLabelSMXTOOL.TabStop = true;
             this.linkLabelSMXTOOL.Text = "RE4-SMX-TOOL";
             this.linkLabelSMXTOOL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSMXTOOL_LinkClicked);
-            // 
-            // linkLabelDonate
-            // 
-            this.linkLabelDonate.ActiveLinkColor = System.Drawing.Color.Black;
-            this.linkLabelDonate.AutoSize = true;
-            this.linkLabelDonate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabelDonate.LinkColor = System.Drawing.Color.Navy;
-            this.linkLabelDonate.Location = new System.Drawing.Point(286, 19);
-            this.linkLabelDonate.Name = "linkLabelDonate";
-            this.linkLabelDonate.Size = new System.Drawing.Size(423, 15);
-            this.linkLabelDonate.TabIndex = 1;
-            this.linkLabelDonate.TabStop = true;
-            this.linkLabelDonate.Text = "To donate to JADERLINK go to: https://jaderlink.github.io/Donate/";
-            this.linkLabelDonate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDonate_LinkClicked);
             // 
             // FormCredits
             // 
