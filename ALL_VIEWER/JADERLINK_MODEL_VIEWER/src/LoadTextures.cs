@@ -33,6 +33,13 @@ namespace JADERLINK_MODEL_VIEWER.src
                 string folder = fileInfo.Directory.Name.ToLowerInvariant();
                 string texId = folder + "/" + name;
 
+                if (modelGroup.TextureRefDic.ContainsKey(texId))
+                {
+                    var node = tpng.Nodes.Find(texId, false).FirstOrDefault();
+                    ((NodeItem)node)?.Responsibility.ReleaseResponsibilities();
+                    node?.Remove();
+                }
+
                 Bitmap bitmap = null;
 
                 if (File.Exists(TexPath))
@@ -59,6 +66,17 @@ namespace JADERLINK_MODEL_VIEWER.src
                             {
                             }
                             break;
+                        case ".GNF":
+                            try
+                            {
+                                Scarlet.IO.ImageFormats.GNF gnf = new Scarlet.IO.ImageFormats.GNF();
+                                gnf.Open(TexPath, Scarlet.IO.Endian.LittleEndian);
+                                bitmap = gnf.GetBitmap();
+                            }
+                            catch (Exception)
+                            {
+                            }
+                            break;
                         case ".PNG":
                         case ".GIF":
                         case ".BMP":
@@ -66,8 +84,10 @@ namespace JADERLINK_MODEL_VIEWER.src
                         case ".JPEG":
                             try
                             {
-                                Stream stream = fileInfo.OpenRead();
-                               bitmap = new Bitmap(stream, false);
+                                using (Stream stream = fileInfo.OpenRead()) 
+                                {
+                                    bitmap = new Bitmap(stream, false);
+                                }
                             }
                             catch (Exception)
                             {
@@ -82,13 +102,6 @@ namespace JADERLINK_MODEL_VIEWER.src
                 if (bitmap != null)
                 {
                     // texturas
-                    if (modelGroup.TextureRefDic.ContainsKey(texId))
-                    {
-                        var node = tpng.Nodes.Find(texId, false).FirstOrDefault();
-                        ((NodeItem)node)?.Responsibility.ReleaseResponsibilities();
-                        node?.Remove();
-                    }
-
                     ResponsibilityContainer texContainer = new ResponsibilityContainer();
                     TEX_Representation tex_representation = new TEX_Representation(texId, new List<string>() { texId });
                     TextureGroupResponsibility textureGroupResponsibility = new TextureGroupResponsibility(modelGroup, tex_representation);

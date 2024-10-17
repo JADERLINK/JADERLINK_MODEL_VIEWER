@@ -136,5 +136,15 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
         {
             To("https://jaderlink.github.io/Donate/");
         }
+
+        private void linkLabelScarletGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            To("https://github.com/xdanieldzd/Scarlet");
+        }
+
+        private void linkLabelLicenceScarlet_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            To("https://github.com/xdanieldzd/Scarlet/blob/master/LICENSE.md");
+        }
     }
 }

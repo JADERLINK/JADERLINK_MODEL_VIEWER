@@ -2,7 +2,7 @@
 
 View the 3d models, from the files: Wavefront OBJ, StudioModelData SMD, Re4 Uhd BIN, Re4 Ps4/Ns BIN, Re4 PS2 BIN, Re4 2007 PMD, and your Re4 Scenario SMD files (PS2/UHD/2007/PS4/NS).
 
-![](https://i.imgur.com/qXUzz8m.png)
+![](https://i.imgur.com/GEkB1x4.png)
 
 **Info:**
 <br>License: MIT Licence
@@ -15,17 +15,21 @@ View the 3d models, from the files: Wavefront OBJ, StudioModelData SMD, Re4 Uhd 
 
 Programas destinados a visualizar modelos 3D dos arquivos:
 
-JADERLINK_MODEL_VIEWER.exe -> Arquivos .OBJ (Wavefront), .SMD (StudioModelData), com suporte a .MTL, e as texturas: DDS, TGA, PNG, BMP e JPG.
+JADERLINK_MODEL_VIEWER.exe -> Arquivos .OBJ (Wavefront), .SMD (StudioModelData), com suporte a .MTL, e as texturas: DDS, GNF, TGA, PNG, BMP, JPG e JPEG.
 
 RE4_2007_MODEL_VIEWER.exe -> Arquivos .PMD (Re4 2007), Scenario .SMD + .SMX, com suporte a texturas .TGA;
 
-RE4_UHD_MODEL_VIEWER.exe -> arquivos .BIN (Re4 Uhd) + .TPL, Scenario .SMD + .SMX, com suporte a arquivos .PACK e PACK.YZ2;
+RE4_UHD_MODEL_VIEWER.exe -> arquivos .BIN (Re4 Uhd) + .TPL, Scenario .SMD + .SMX, com suporte a arquivos .PACK e .PACK.YZ2 (texturas: DDS e TGA);
 
 RE4_PS2_MODEL_VIEWER.exe -> arquivos .BIN (Re4 Ps2) + .TPL, Scenario .SMD + .SMX;
 
-RE4_PS4NS_MODEL_VIEWER.exe -> arquivos .BIN (Re4 Ps4/Ns) + .TPL, Scenario .SMD + .SMX, com suporte a arquivos .PACK;
+RE4_PS4NS_MODEL_VIEWER.exe -> arquivos .BIN (Re4 Ps4/Ns) + .TPL, Scenario .SMD + .SMX, com suporte a arquivos .PACK (texturas: DDS, GNF e TGA);
 
 ## Updates
+
+**Update 1.0.6**
+<br>Adicionado suporte para imagem GNF para "RE4_PS4NS_MODEL_VIEWER" e "JADERLINK_MODEL_VIEWER".
+<br>Feito algumas melhorias.
 
 **Update 1.0.5**
 <br>Adicionado o visualizador da versão de Ps4/Ns: RE4_PS4NS_MODEL_VIEWER;
@@ -70,11 +74,12 @@ Requisitos: Visual Studio 2019 ou 2022, com suporte a Csharp;
 
 [ObjLoader by chrisjansson](https://github.com/chrisjansson/ObjLoader):
 Encontra-se em ALL_VIEWER/CjClutter.ObjLoader.Loader, código modificado, as modificações podem ser vistas aqui: [link](https://github.com/JADERLINK/ObjLoader).
-<br>[SMD_READER_API by JADERLINK](https://github.com/JADERLINK/SMD_READER_API).
+<br>[SMD_READER_LIB by JADERLINK](https://github.com/JADERLINK/SMD_READER_LIB).
 <br>[TGASharpLib by ALEXGREENALEX](https://github.com/ALEXGREENALEX/TGASharpLib).
 <br>[DDSReaderSharp by ALEXGREENALEX](https://github.com/ALEXGREENALEX/DDSReaderSharp).
+<br>[Scarlet by xdaniel (Daniel R.) / DigitalZero Domain](https://github.com/xdanieldzd/Scarlet): Adiciona suporte a texturas GNF.
 <br>[OpenTK](https://github.com/opentk/opentk/blob/master/LICENSE.md).
 
 -----
 **At.te: JADERLINK**
-<br>2024-10-06
+<br>2024-10-16

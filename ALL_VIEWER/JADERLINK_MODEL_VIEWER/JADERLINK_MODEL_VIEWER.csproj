@@ -141,5 +141,6 @@
   <Import Project="..\TreeNode\TreeNode.projitems" Label="Shared" />
   <Import Project="..\CjClutter.ObjLoader.Loader\CjClutter.ObjLoader.Loader.projitems" Label="Shared" />
   <Import Project="..\StudioMdlDataReader\StudioMdlDataReader.projitems" Label="Shared" />
+  <Import Project="..\ScarletLibrary\ScarletLibrary.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

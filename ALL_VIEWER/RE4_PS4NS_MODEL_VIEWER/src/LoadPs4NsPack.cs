@@ -43,6 +43,15 @@ namespace RE4_PS4NS_MODEL_VIEWER.src
 
                 for (int i = 0; i < offsets.Count; i++)
                 {
+                    string texkey = PackID.ToString("X8") + "/" + i.ToString("D4");
+                    
+                    if (modelGroup.TextureRefDic.ContainsKey(texkey))
+                    {
+                        var node = tpng.Nodes.Find(texkey, false).FirstOrDefault();
+                        ((NodeItem)node)?.Responsibility.ReleaseResponsibilities();
+                        node?.Remove();
+                    }
+
                     if (offsets[i] != 0)
                     {
                         Bitmap bitmap = null;
@@ -54,8 +63,7 @@ namespace RE4_PS4NS_MODEL_VIEWER.src
                         uint Type = pack.ReadUInt32();
 
                         string Extension = "NULL";
-                        string texkey = PackID.ToString("X8") + "/" + i.ToString("D4");
-
+                        
                         byte[] imagebytes = new byte[fileLength];
                         pack.BaseStream.Read(imagebytes, 0, (int)fileLength);
 
@@ -67,6 +75,23 @@ namespace RE4_PS4NS_MODEL_VIEWER.src
                             try
                             {
                                 bitmap = DDSReaderSharp.ToBitmap(imagebytes);
+                            }
+                            catch (Exception)
+                            {
+                            }
+                        }
+                        else if (imagemagic == 0x20464E47)
+                        {
+                            Extension = "GNF";
+
+                            try
+                            {
+                                using (MemoryStream ms = new MemoryStream(imagebytes)) 
+                                {
+                                    Scarlet.IO.ImageFormats.GNF gnf = new Scarlet.IO.ImageFormats.GNF();
+                                    gnf.Open(ms);
+                                    bitmap = gnf.GetBitmap();
+                                }
                             }
                             catch (Exception)
                             {
@@ -89,13 +114,6 @@ namespace RE4_PS4NS_MODEL_VIEWER.src
 
                         if (bitmap != null)
                         {
-                            if (modelGroup.TextureRefDic.ContainsKey(texkey))
-                            {
-                                var node = tpng.Nodes.Find(texkey, false).FirstOrDefault();
-                                ((NodeItem)node)?.Responsibility.ReleaseResponsibilities();
-                                node?.Remove();
-                            }
-
                             ResponsibilityContainer texContainer = new ResponsibilityContainer();
                             TEX_Representation tex_representation = new TEX_Representation(texkey, new List<string>() { texkey });
                             TextureGroupResponsibility textureGroupResponsibility = new TextureGroupResponsibility(modelGroup, tex_representation);

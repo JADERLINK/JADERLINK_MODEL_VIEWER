@@ -55,6 +55,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LoadUhdPs4Ns", "LoadUhdPs4N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RE4_PS4NS_MODEL_VIEWER", "RE4_PS4NS_MODEL_VIEWER\RE4_PS4NS_MODEL_VIEWER.csproj", "{53B09866-BE22-4E63-949D-F52BE239F88C}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ScarletLibrary", "ScarletLibrary\ScarletLibrary.shproj", "{4CB24A8B-C71F-48C9-AA4E-7038EBFCA3CE}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		PMD_LIB\PMD_LIB.projitems*{02864b5e-f21e-4cf1-a287-3ac34656f7bc}*SharedItemsImports = 13
@@ -62,6 +64,7 @@ Global
 		TreeNode\TreeNode.projitems*{1e326a97-f359-4c43-9bf0-8781a011b1f4}*SharedItemsImports = 13
 		SMX\SMX.projitems*{1e471265-f147-4c2d-a710-034db7459707}*SharedItemsImports = 13
 		TGA_LIB\TGA_LIB.projitems*{32983cb7-1c40-45f0-8d06-c04a245f892e}*SharedItemsImports = 13
+		ScarletLibrary\ScarletLibrary.projitems*{4cb24a8b-c71f-48c9-aa4e-7038ebfca3ce}*SharedItemsImports = 13
 		StudioMdlDataReader\StudioMdlDataReader.projitems*{52026703-41a2-4837-a833-4ce835dfae44}*SharedItemsImports = 13
 		Camera\Camera.projitems*{53b09866-be22-4e63-949d-f52be239f88c}*SharedItemsImports = 4
 		ControlUtils\ControlUtils.projitems*{53b09866-be22-4e63-949d-f52be239f88c}*SharedItemsImports = 4
@@ -70,6 +73,7 @@ Global
 		LoadUhdPs4Ns\LoadUhdPs4Ns.projitems*{53b09866-be22-4e63-949d-f52be239f88c}*SharedItemsImports = 4
 		MultiselectTree\MultiselectTree.projitems*{53b09866-be22-4e63-949d-f52be239f88c}*SharedItemsImports = 4
 		Re4ViewerRender\Re4ViewerRender.projitems*{53b09866-be22-4e63-949d-f52be239f88c}*SharedItemsImports = 4
+		ScarletLibrary\ScarletLibrary.projitems*{53b09866-be22-4e63-949d-f52be239f88c}*SharedItemsImports = 4
 		ShaderLoader\ShaderLoader.projitems*{53b09866-be22-4e63-949d-f52be239f88c}*SharedItemsImports = 4
 		SMX\SMX.projitems*{53b09866-be22-4e63-949d-f52be239f88c}*SharedItemsImports = 4
 		TGA_LIB\TGA_LIB.projitems*{53b09866-be22-4e63-949d-f52be239f88c}*SharedItemsImports = 4
@@ -134,6 +138,7 @@ Global
 		ControlUtils\ControlUtils.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
 		DDS_LIB\DDS_LIB.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
 		MultiselectTree\MultiselectTree.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
+		ScarletLibrary\ScarletLibrary.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
 		ShaderLoader\ShaderLoader.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
 		StudioMdlDataReader\StudioMdlDataReader.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4
 		TGA_LIB\TGA_LIB.projitems*{e2a7dac9-19dd-4775-83b3-131aa4943240}*SharedItemsImports = 4

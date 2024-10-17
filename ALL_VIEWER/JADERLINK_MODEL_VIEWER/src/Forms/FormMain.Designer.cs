@@ -372,7 +372,7 @@ namespace JADERLINK_MODEL_VIEWER
             // 
             // openFileDialogTEXTURES
             // 
-            this.openFileDialogTEXTURES.Filter = "TEXTURES| *.DDS;*.TGA;*.PNG;*.BMP;*.GIF;*.JPG;*.JPEG";
+            this.openFileDialogTEXTURES.Filter = "TEXTURES| *.DDS;*.GNF;*.TGA;*.PNG;*.BMP;*.GIF;*.JPG;*.JPEG";
             this.openFileDialogTEXTURES.Multiselect = true;
             this.openFileDialogTEXTURES.Title = "LOAD TEXTURES";
             this.openFileDialogTEXTURES.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogTEXTURES_FileOk);
@@ -392,7 +392,7 @@ namespace JADERLINK_MODEL_VIEWER
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "FormMain";
-            this.Text = "JADERLINK MODEL VIEWER | V.1.0.5 | YOUTUBE.COM/@JADERLINK";
+            this.Text = "JADERLINK MODEL VIEWER | V.1.0.6 | YOUTUBE.COM/@JADERLINK";
             this.menuStripMenu.ResumeLayout(false);
             this.menuStripMenu.PerformLayout();
             this.splitContainerMain.Panel2.ResumeLayout(false);

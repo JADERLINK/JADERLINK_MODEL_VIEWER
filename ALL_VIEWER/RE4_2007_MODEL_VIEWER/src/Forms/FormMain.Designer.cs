@@ -390,7 +390,7 @@ namespace RE4_2007_MODEL_VIEWER
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "FormMain";
-            this.Text = "RE4 2007 MODEL VIEWER | V.1.0.5 | YOUTUBE.COM/@JADERLINK";
+            this.Text = "RE4 2007 MODEL VIEWER | V.1.0.6 | YOUTUBE.COM/@JADERLINK";
             this.menuStripMenu.ResumeLayout(false);
             this.menuStripMenu.PerformLayout();
             this.splitContainerMain.Panel2.ResumeLayout(false);
