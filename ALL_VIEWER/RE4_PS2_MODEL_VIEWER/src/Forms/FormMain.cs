@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using JADERLINK_MODEL_VIEWER.src;
 using ViewerBase;
@@ -69,35 +67,43 @@ namespace RE4_PS2_MODEL_VIEWER
             mng = new ModelNodeGroup("BIN/TPL MODELS");
             mng.Name = "MODELGROUP";
             mng.ForeColor = Color.DarkSlateGray;
-            mng.NodeFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            mng.NodeFont = new Font("Segoe UI", 8.25F, FontStyle.Bold);
             treeViewObjs.Nodes.Add(mng);
 
             sng = new ScenarioNodeGroup("PS2 SCENARIO");
             sng.Name = "SCENARIOGROUP";
             sng.ForeColor = Color.DarkSlateGray;
-            sng.NodeFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            sng.NodeFont = new Font("Segoe UI", 8.25F, FontStyle.Bold);
             treeViewObjs.Nodes.Add(sng);
+
+            if (MultiPlatformOS.PlatformUtils.GetPlaformOS == MultiPlatformOS.PlaformOS.MonoLinux)
+            {
+                openFileDialogBINTPL.Filter = MultiPlatformOS.LinuxFileDialogHelper.BuildLinuxFilterFromFilter(openFileDialogBINTPL.Filter);
+                openFileDialogSMD.Filter = MultiPlatformOS.LinuxFileDialogHelper.BuildLinuxFilterFromFilter(openFileDialogSMD.Filter);
+                openFileDialogSMX.Filter = MultiPlatformOS.LinuxFileDialogHelper.BuildLinuxFilterFromFilter(openFileDialogSMX.Filter);
+            }
         }
 
-        private void InitializeTreeView() 
+        private void InitializeTreeView()
         {
             treeViewObjs = new NsMultiselectTreeView.MultiselectTreeView();
-            treeViewObjs.BackColor = System.Drawing.SystemColors.Control;
-            treeViewObjs.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            treeViewObjs.Dock = System.Windows.Forms.DockStyle.Fill;
-            treeViewObjs.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            treeViewObjs.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            treeViewObjs.BackColor = SystemColors.Control;
+            treeViewObjs.BorderStyle = BorderStyle.None;
+            treeViewObjs.Dock = DockStyle.Fill;
+            treeViewObjs.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
             treeViewObjs.HideSelection = false;
-            treeViewObjs.LineColor = System.Drawing.Color.DarkGray;
-            treeViewObjs.Location = new System.Drawing.Point(0, 0);
+            int lcR = SystemColors.Control.R - 20;
+            int lcG = SystemColors.Control.G - 20;
+            int lcB = SystemColors.Control.B - 20;
+            treeViewObjs.LineColor = Color.FromArgb(lcR, lcG, lcB);
+            treeViewObjs.Location = new Point(0, 0);
             treeViewObjs.Name = "treeViewObjs";
             treeViewObjs.ShowNodeToolTips = true;
-            treeViewObjs.Size = new System.Drawing.Size(208, 216);
+            treeViewObjs.Size = new Size(208, 216);
             treeViewObjs.TabIndex = 0;
-            treeViewObjs.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewObjs_AfterSelect);
+            treeViewObjs.AfterSelect += new TreeViewEventHandler(this.treeViewObjs_AfterSelect);
             treeViewObjs.SelectedNodeBackColor = Color.FromArgb(0x70, 0xBB, 0xDB);
             splitContainerMain.Panel1.Controls.Add(treeViewObjs);
-                
         }
 
         private void GlControl_Load(object sender, EventArgs e)
@@ -232,8 +238,8 @@ namespace RE4_PS2_MODEL_VIEWER
         {
             treeViewObjs.SuspendLayout();
 
-            LoadSMX loadSMX = new LoadSMX(modelGroup, sng);
-            loadSMX.LoadSmx(openFileDialogSMX.FileName, true);
+            LoadSMX_2007PS2 loadSMX = new LoadSMX_2007PS2(modelGroup, sng);
+            loadSMX.LoadSmx(openFileDialogSMX.FileName);
 
             modelNodeOrder.GetNodeOrder();
             order.ToOrder(ref modelGroup, modelNodeOrder.NodeOrder);
@@ -477,5 +483,9 @@ namespace RE4_PS2_MODEL_VIEWER
             creditsForm = null;
         }
 
+        private void toolStripMenuItemJaderlink_Click(object sender, EventArgs e)
+        {
+            MultiPlatformOS.OpenLink.To("https://www.youtube.com/@JADERLINK");
+        }
     }
 }

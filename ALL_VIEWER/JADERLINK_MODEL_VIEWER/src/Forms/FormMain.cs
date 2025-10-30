@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ViewerBase;
 using ShaderLoader;
@@ -69,36 +67,44 @@ namespace JADERLINK_MODEL_VIEWER
             mng = new ModelNodeGroup("MODELS");
             mng.Name = "MODELGROUP";
             mng.ForeColor = Color.DarkSlateGray;
-            mng.NodeFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            mng.NodeFont = new Font("Segoe UI", 8.25F, FontStyle.Bold);
             treeViewObjs.Nodes.Add(mng);
 
             tpng = new TexturePackNodeGroup("TEXTURES");
             tpng.Name = "TEXTUREGROUP";
             tpng.ForeColor = Color.DarkSlateGray;
-            tpng.NodeFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            tpng.NodeFont = new Font("Segoe UI", 8.25F, FontStyle.Bold);
             treeViewObjs.Nodes.Add(tpng);
 
+            if (MultiPlatformOS.PlatformUtils.GetPlaformOS == MultiPlatformOS.PlaformOS.MonoLinux)
+            {
+                openFileDialogMTL.Filter = MultiPlatformOS.LinuxFileDialogHelper.BuildLinuxFilterFromFilter(openFileDialogMTL.Filter);
+                openFileDialogSMD.Filter = MultiPlatformOS.LinuxFileDialogHelper.BuildLinuxFilterFromFilter(openFileDialogSMD.Filter);
+                openFileDialogOBJ.Filter = MultiPlatformOS.LinuxFileDialogHelper.BuildLinuxFilterFromFilter(openFileDialogOBJ.Filter);
+                openFileDialogTEXTURES.Filter = MultiPlatformOS.LinuxFileDialogHelper.BuildLinuxFilterFromFilter(openFileDialogTEXTURES.Filter);
+            }
         }
 
         private void InitializeTreeView() 
         {
             treeViewObjs = new NsMultiselectTreeView.MultiselectTreeView();
-            treeViewObjs.BackColor = System.Drawing.SystemColors.Control;
-            treeViewObjs.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            treeViewObjs.Dock = System.Windows.Forms.DockStyle.Fill;
-            treeViewObjs.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            treeViewObjs.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            treeViewObjs.BackColor = SystemColors.Control;
+            treeViewObjs.BorderStyle = BorderStyle.None;
+            treeViewObjs.Dock = DockStyle.Fill;
+            treeViewObjs.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
             treeViewObjs.HideSelection = false;
-            treeViewObjs.LineColor = System.Drawing.Color.DarkGray;
-            treeViewObjs.Location = new System.Drawing.Point(0, 0);
+            int lcR = SystemColors.Control.R - 20;
+            int lcG = SystemColors.Control.G - 20;
+            int lcB = SystemColors.Control.B - 20;
+            treeViewObjs.LineColor = Color.FromArgb(lcR, lcG, lcB);
+            treeViewObjs.Location = new Point(0, 0);
             treeViewObjs.Name = "treeViewObjs";
             treeViewObjs.ShowNodeToolTips = true;
-            treeViewObjs.Size = new System.Drawing.Size(208, 216);
+            treeViewObjs.Size = new Size(208, 216);
             treeViewObjs.TabIndex = 0;
-            treeViewObjs.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewObjs_AfterSelect);
+            treeViewObjs.AfterSelect += new TreeViewEventHandler(this.treeViewObjs_AfterSelect);
             treeViewObjs.SelectedNodeBackColor = Color.FromArgb(0x70, 0xBB, 0xDB);
             splitContainerMain.Panel1.Controls.Add(treeViewObjs);
-                
         }
 
         private void GlControl_Load(object sender, EventArgs e)
@@ -170,6 +176,7 @@ namespace JADERLINK_MODEL_VIEWER
         ModelNodeLinker modelNodeLinker;
 
         private bool SplitObj = false;
+        private bool IsDescSplitObj = false;
 
         private void toolStripMenuItemLoadObj_Click(object sender, EventArgs e)
         {
@@ -187,9 +194,17 @@ namespace JADERLINK_MODEL_VIEWER
             openFileDialogMTL.ShowDialog();
         }
 
-        private void toolStripMenuItemLoadObjSplit_Click(object sender, EventArgs e)
+        private void toolStripMenuItemLoadObjSplitDesc_Click(object sender, EventArgs e)
         {
             SplitObj = true;
+            IsDescSplitObj = true;
+            openFileDialogOBJ.ShowDialog();
+        }
+
+        private void toolStripMenuItemLoadObjSplitAsc_Click(object sender, EventArgs e)
+        {
+            SplitObj = true;
+            IsDescSplitObj = false;
             openFileDialogOBJ.ShowDialog();
         }
 
@@ -211,7 +226,7 @@ namespace JADERLINK_MODEL_VIEWER
                 string extension = info.Extension.ToUpperInvariant();
                 if (extension.Contains("OBJ"))
                 {
-                    obj.Load(file, SplitObj);
+                    obj.Load(file, SplitObj, IsDescSplitObj);
                 }
                 else if (extension.Contains("MTL"))
                 {
@@ -528,5 +543,9 @@ namespace JADERLINK_MODEL_VIEWER
             creditsForm = null;
         }
 
+        private void toolStripMenuItemJaderlink_Click(object sender, EventArgs e)
+        {
+            MultiPlatformOS.OpenLink.To("https://www.youtube.com/@JADERLINK");
+        }
     }
 }

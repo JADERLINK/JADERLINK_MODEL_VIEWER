@@ -29,7 +29,6 @@ namespace RE4_PS4NS_MODEL_VIEWER
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.menuStripMenu = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemLoadBINTPL = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +57,7 @@ namespace RE4_PS4NS_MODEL_VIEWER
             this.toolStripMenuItemMisc = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemChangeSkyColor = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCredits = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemJaderlink = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.panelGL = new System.Windows.Forms.Panel();
             this.openFileDialogBINTPL = new System.Windows.Forms.OpenFileDialog();
@@ -73,12 +73,14 @@ namespace RE4_PS4NS_MODEL_VIEWER
             // 
             // menuStripMenu
             // 
-            this.menuStripMenu.BackColor = System.Drawing.Color.Gainsboro;
+            this.menuStripMenu.BackColor = System.Drawing.Color.Transparent;
+            this.menuStripMenu.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemFile,
             this.toolStripMenuItemActions,
             this.toolStripMenuItemView,
-            this.toolStripMenuItemMisc});
+            this.toolStripMenuItemMisc,
+            this.toolStripMenuItemJaderlink});
             this.menuStripMenu.Location = new System.Drawing.Point(0, 0);
             this.menuStripMenu.Name = "menuStripMenu";
             this.menuStripMenu.Size = new System.Drawing.Size(784, 24);
@@ -123,7 +125,7 @@ namespace RE4_PS4NS_MODEL_VIEWER
             // toolStripMenuItemLoadScenarioSMD
             // 
             this.toolStripMenuItemLoadScenarioSMD.Name = "toolStripMenuItemLoadScenarioSMD";
-            this.toolStripMenuItemLoadScenarioSMD.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
+            this.toolStripMenuItemLoadScenarioSMD.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
             this.toolStripMenuItemLoadScenarioSMD.Size = new System.Drawing.Size(260, 22);
             this.toolStripMenuItemLoadScenarioSMD.Text = "Load PS4/NS Scenario SMD";
             this.toolStripMenuItemLoadScenarioSMD.Click += new System.EventHandler(this.toolStripMenuItemLoadScenarioSMD_Click);
@@ -131,7 +133,7 @@ namespace RE4_PS4NS_MODEL_VIEWER
             // toolStripMenuItemLoadSmx
             // 
             this.toolStripMenuItemLoadSmx.Name = "toolStripMenuItemLoadSmx";
-            this.toolStripMenuItemLoadSmx.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this.toolStripMenuItemLoadSmx.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.K)));
             this.toolStripMenuItemLoadSmx.Size = new System.Drawing.Size(260, 22);
             this.toolStripMenuItemLoadSmx.Text = "Load SMX";
             this.toolStripMenuItemLoadSmx.Click += new System.EventHandler(this.toolStripMenuItemLoadSmx_Click);
@@ -314,6 +316,15 @@ namespace RE4_PS4NS_MODEL_VIEWER
             this.toolStripMenuItemCredits.Text = "Credits";
             this.toolStripMenuItemCredits.Click += new System.EventHandler(this.toolStripMenuItemCredits_Click);
             // 
+            // toolStripMenuItemJaderlink
+            // 
+            this.toolStripMenuItemJaderlink.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripMenuItemJaderlink.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItemJaderlink.Name = "toolStripMenuItemJaderlink";
+            this.toolStripMenuItemJaderlink.Size = new System.Drawing.Size(314, 20);
+            this.toolStripMenuItemJaderlink.Text = "Subscribe on my channel: youtube.com/@JADERLINK";
+            this.toolStripMenuItemJaderlink.Click += new System.EventHandler(this.toolStripMenuItemJaderlink_Click);
+            // 
             // splitContainerMain
             // 
             this.splitContainerMain.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -347,7 +358,7 @@ namespace RE4_PS4NS_MODEL_VIEWER
             // 
             // openFileDialogBINTPL
             // 
-            this.openFileDialogBINTPL.Filter = "BIN and TPL | *.BIN;*.TPL";
+            this.openFileDialogBINTPL.Filter = "BIN and TPL|*.BIN;*.TPL";
             this.openFileDialogBINTPL.Multiselect = true;
             this.openFileDialogBINTPL.Title = "LOAD PS4/NS BIN/TPL";
             this.openFileDialogBINTPL.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogBINTPL_FileOk);
@@ -355,20 +366,20 @@ namespace RE4_PS4NS_MODEL_VIEWER
             // openFileDialogSMD
             // 
             this.openFileDialogSMD.DefaultExt = "SMD";
-            this.openFileDialogSMD.Filter = "Scenario SMD | *.SMD";
+            this.openFileDialogSMD.Filter = "Scenario SMD|*.SMD";
             this.openFileDialogSMD.Title = "LOAD PS4/NS SCENARIO SMD";
             this.openFileDialogSMD.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogSMD_FileOk);
             // 
             // openFileDialogSMX
             // 
             this.openFileDialogSMX.DefaultExt = "SMX";
-            this.openFileDialogSMX.Filter = "SMX | *.SMX";
+            this.openFileDialogSMX.Filter = "SMX|*.SMX";
             this.openFileDialogSMX.Title = "LOAD SMX";
             this.openFileDialogSMX.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogSMX_FileOk);
             // 
             // openFileDialogPACK
             // 
-            this.openFileDialogPACK.Filter = " PACK| *.PACK";
+            this.openFileDialogPACK.Filter = " PACK|*.PACK";
             this.openFileDialogPACK.Multiselect = true;
             this.openFileDialogPACK.Title = "LOAD PS4/NS PACK";
             this.openFileDialogPACK.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogPACK_FileOk);
@@ -382,13 +393,14 @@ namespace RE4_PS4NS_MODEL_VIEWER
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.splitContainerMain);
             this.Controls.Add(this.menuStripMenu);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = global::RE4_PS4NS_MODEL_VIEWER.Properties.Resources.icon;
             this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "FormMain";
-            this.Text = "RE4 PS4NS MODEL VIEWER | V.1.0.6 | YOUTUBE.COM/@JADERLINK";
+            this.Text = "RE4 PS4NS MODEL VIEWER | V.1.0.7 | YOUTUBE.COM/@JADERLINK";
             this.menuStripMenu.ResumeLayout(false);
             this.menuStripMenu.PerformLayout();
             this.splitContainerMain.Panel2.ResumeLayout(false);
@@ -436,6 +448,7 @@ namespace RE4_PS4NS_MODEL_VIEWER
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemVertexColor;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAlphaChannel;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTextureNearestLinear;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemJaderlink;
     }
 }
 

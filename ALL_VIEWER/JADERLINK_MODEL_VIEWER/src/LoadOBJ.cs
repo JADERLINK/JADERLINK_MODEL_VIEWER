@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
 using ViewerBase;
 using System.IO;
 using OpenTK;
@@ -23,13 +21,12 @@ namespace JADERLINK_MODEL_VIEWER.src
             this.mng = mng;
         }
 
-        public void Load(string Path, bool SplitGroups)
+        public void Load(string Path, bool SplitGroups, bool IsDescSplit)
         {
 
             FileInfo fileInfo = new FileInfo(Path);
             string FileID = fileInfo.Name.ToUpperInvariant();
             string FileName = fileInfo.Name;
-
 
             var nodes = mng.Nodes.Find(FileID, false);
             foreach (var node in nodes)
@@ -40,25 +37,23 @@ namespace JADERLINK_MODEL_VIEWER.src
 
             if (!modelGroup.Objects.ContainsKey(FileID))
             {
-                ObjLoader.Loader.Loaders.LoadResult arqObj = null;
+                // load .obj file
+                var objLoaderFactory = new ObjLoader.Loader.Loaders.ObjLoaderFactory();
+                var objLoader = objLoaderFactory.Create();
                 StreamReader streamReader = null;
+                ObjLoader.Loader.Loaders.LoadResult arqObj = null;
 
                 try
                 {
-                    // load .obj file
-                    var objLoaderFactory = new ObjLoader.Loader.Loaders.ObjLoaderFactory();
-                    var objLoader = objLoaderFactory.Create();
-                    streamReader = new StreamReader(Path, Encoding.ASCII);
+                    streamReader = new StreamReader(new FileInfo(Path).OpenRead(), Encoding.UTF8);
                     arqObj = objLoader.Load(streamReader);
-                    streamReader.Close();
                 }
-                catch (Exception)
+                catch (Exception) { }
+                finally
                 {
-                    if (streamReader != null)
-                    {
-                        streamReader.Close();
-                    }
+                    streamReader?.Close();
                 }
+
 
                 if (arqObj != null)
                 {
@@ -103,7 +98,11 @@ namespace JADERLINK_MODEL_VIEWER.src
                     }
                     else  // varios
                     {
-                        string[] GroupNames = ObjList.Keys.OrderByDescending(x => x).ToArray();
+                        string[] GroupNames = ObjList.Keys.OrderBy(x => x).ToArray();
+                        if (IsDescSplit)
+                        {
+                            GroupNames = ObjList.Keys.OrderByDescending(x => x).ToArray();
+                        }
 
                         for (int i = 0; i < GroupNames.Length; i++)
                         {
@@ -187,7 +186,7 @@ namespace JADERLINK_MODEL_VIEWER.src
 
                         if (arqObj.Groups[iG].Faces[iF][iI].VertexIndex <= 0 || arqObj.Groups[iG].Faces[iF][iI].VertexIndex - 1 >= arqObj.Vertices.Count)
                         {
-                            throw new ArgumentException("Vertex Position Index is invalid! Value: " + arqObj.Groups[iG].Faces[iF][iI].VertexIndex);
+                            throw new ApplicationException("Vertex Position Index is invalid! Value: " + arqObj.Groups[iG].Faces[iF][iI].VertexIndex);
                         }
 
                         Vector3 position = new Vector3(
@@ -278,7 +277,7 @@ namespace JADERLINK_MODEL_VIEWER.src
                     }
                     else
                     {
-                        StartStructure startStructure = new StartStructure(); ;
+                        StartStructure startStructure = new StartStructure();
                         startStructure.FacesByMaterial.Add(materialNameInvariant, new StartFacesGroup(facesList));
                         ObjList.Add(GroupName, startStructure);
                     }

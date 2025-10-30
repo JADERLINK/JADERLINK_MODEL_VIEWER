@@ -29,7 +29,6 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCredits));
             this.buttonClose = new System.Windows.Forms.Button();
             this.groupBoxCodeproject = new System.Windows.Forms.GroupBox();
             this.linkLabelMultiselectTreeView = new System.Windows.Forms.LinkLabel();
@@ -457,10 +456,10 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.linkLabelBINTOOL.LinkColor = System.Drawing.Color.Navy;
             this.linkLabelBINTOOL.Location = new System.Drawing.Point(6, 55);
             this.linkLabelBINTOOL.Name = "linkLabelBINTOOL";
-            this.linkLabelBINTOOL.Size = new System.Drawing.Size(138, 15);
+            this.linkLabelBINTOOL.Size = new System.Drawing.Size(168, 15);
             this.linkLabelBINTOOL.TabIndex = 2;
             this.linkLabelBINTOOL.TabStop = true;
-            this.linkLabelBINTOOL.Text = "RE4-UHD-BIN-TOOL";
+            this.linkLabelBINTOOL.Text = "RE4-UHD-BIN-TPL-TOOL";
             this.linkLabelBINTOOL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelBINTOOL_LinkClicked);
             // 
             // linkLabelSCENARIOTOOL
@@ -504,7 +503,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.Controls.Add(this.buttonClose);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = global::RE4_UHD_MODEL_VIEWER.Properties.Resources.icon;
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FormCredits";

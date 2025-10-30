@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using ViewerBase;
 using System.IO;
 using OpenTK;
 using JADERLINK_MODEL_VIEWER.src.Nodes;
-using RE4_PS2_SCENARIO_SMD_TOOL.SCENARIO;
-using RE4_PS2_BIN_TOOL.ALL;
-using RE4_PS2_BIN_TOOL.EXTRACT;
 using TPL_PS2_EXTRACT;
 using System.Drawing;
+using SHARED_PS2_BIN.EXTRACT;
+using SHARED_2007PS2_SCENARIO_SMD.SCENARIO_EXTRACT;
+using SHARED_PS2_SCENARIO_SMD.SCENARIO_EXTRACT;
 
 namespace RE4_PS2_MODEL_VIEWER.src
 {
@@ -31,21 +30,40 @@ namespace RE4_PS2_MODEL_VIEWER.src
         public void LoadScenario(string SmdPath)
         {
             FileInfo fileInfo = new FileInfo(SmdPath);
+            Stream smdStream = null;
 
-            Dictionary<int, PS2BIN> uhdBinDic = null;
-            int binAmount = 0;
+            Dictionary<int, PS2BIN> BinDic = null;
             SMDLine[] SmdLines = null;
             TplExtras extras = new TplExtras();
 
             try
             {
-                Ps2ScenarioExtract extract = new Ps2ScenarioExtract();
-                extract.ToFileTpl += extras.ToFileTpl;
-                SmdLines = extract.Extract(fileInfo, out uhdBinDic, out _, out binAmount);
+                uint binOffset = 0;
+                uint tplOffset = 0;
+
+                smdStream = fileInfo.OpenRead();
+                SmdLines = SmdExtract2007PS2.Extract(smdStream, out _, out binOffset, out tplOffset);
+
+                CounterBinTpl.Calc(SmdLines, out int BinFilesCount, out int TplFilesCount);
+
+                Extract_BIN_Inside_SMD_PS2 extract_BIN_Inside_SMD_PS2 = new Extract_BIN_Inside_SMD_PS2();
+                Extract_BIN_Content_PS2_ALT extract_BIN_Content_PS2_ALT = new Extract_BIN_Content_PS2_ALT();
+                extract_BIN_Inside_SMD_PS2.ToExtractBin = extract_BIN_Content_PS2_ALT.ToExtractBin;
+                extract_BIN_Inside_SMD_PS2.ExtractBINs(smdStream, binOffset, BinFilesCount);
+                BinDic = extract_BIN_Content_PS2_ALT.BIN_DIC;
+
+                Extract_TPL_Inside_SMD_PS2 extract_TPL_Inside_SMD_PS2 = new Extract_TPL_Inside_SMD_PS2();
+                extract_TPL_Inside_SMD_PS2.ToFileTpl = extras.ToFileTpl;
+                extract_TPL_Inside_SMD_PS2.ExtractTPLs(smdStream, tplOffset, TplFilesCount);
+
             }
             catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Error:");
+            }
+            finally
+            {
+                smdStream?.Close();
             }
 
             if (SmdLines != null && SmdLines.Length != 0)
@@ -63,12 +81,12 @@ namespace RE4_PS2_MODEL_VIEWER.src
                 {
                     SmdEntry entry = new SmdEntry();
                     entry.SMD_ID = i;
-                    entry.BIN_ID = SmdLines[i].BinID;
+                    entry.BIN_ID = SmdLines[i].BinFileID;
                     entry.SMX_ID = SmdLines[i].SmxID;
                     PreFix fix = new PreFix();
-                    fix.Angle = new Vector3(SmdLines[i].angleX, SmdLines[i].angleY, SmdLines[i].angleZ);
-                    fix.Position = new Vector3(SmdLines[i].positionX / 100.0f, SmdLines[i].positionY / 100.0f, SmdLines[i].positionZ / 100.0f);
-                    fix.Scale = new Vector3(SmdLines[i].scaleX, SmdLines[i].scaleY, SmdLines[i].scaleZ);
+                    fix.Angle = new Vector3(SmdLines[i].AngleX, SmdLines[i].AngleY, SmdLines[i].AngleZ);
+                    fix.Position = new Vector3(SmdLines[i].PositionX / 100.0f, SmdLines[i].PositionY / 100.0f, SmdLines[i].PositionZ / 100.0f);
+                    fix.Scale = new Vector3(SmdLines[i].ScaleX, SmdLines[i].ScaleY, SmdLines[i].ScaleZ);
                     entry.Fix = fix;
                     smdGroup.SmdEntries.Add(i, entry);
                 }
@@ -104,9 +122,9 @@ namespace RE4_PS2_MODEL_VIEWER.src
                 } 
 
                 //== bins
-                if (uhdBinDic != null)
+                if (BinDic != null)
                 {
-                    foreach (var item in uhdBinDic)
+                    foreach (var item in BinDic)
                     {
                         var binkey = Nodekey + "_" + item.Key.ToString();
 
@@ -167,8 +185,13 @@ namespace RE4_PS2_MODEL_VIEWER.src
               textureDic = new Dictionary<string, Bitmap>();
             }
 
-            public void ToFileTpl(Stream fileStream, long tplOffset, long endOffset)
+            public void ToFileTpl(Stream fileStream, long tplOffset, long endOffset, int tplFileID)
             {
+                if (tplFileID != 0)
+                {
+                    return;
+                }
+
                 TplImageHeader[] Tihs = null;
                 TplExtractHeaders Teh = null;
                 BinaryReader br = null;
@@ -196,7 +219,37 @@ namespace RE4_PS2_MODEL_VIEWER.src
 
             }
 
-        }    
+        }
+
+        private class Extract_BIN_Content_PS2_ALT
+        {
+            public Dictionary<int, PS2BIN> BIN_DIC { get; private set; }
+
+            public Extract_BIN_Content_PS2_ALT()
+            {
+                BIN_DIC = new Dictionary<int, PS2BIN>();
+            }
+
+            public long ToExtractBin(int BinID, Stream fileStream, long StartOffset)
+            {
+                long endOffset = StartOffset;
+
+                if (StartOffset > 0)
+                {
+                    try
+                    {
+                        var bin = BINdecoder.Decode(fileStream, StartOffset, out endOffset);
+                        BIN_DIC.Add(BinID, bin);
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+
+                return endOffset;
+            }
+
+        }
     }
 
    

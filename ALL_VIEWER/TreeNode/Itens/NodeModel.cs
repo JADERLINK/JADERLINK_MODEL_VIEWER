@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
-using System.Windows.Forms;
 
 namespace JADERLINK_MODEL_VIEWER.src.Nodes
 {
-    public class NodeModel : NodeItem, NsMultiselectTreeView.IAltNode    {
+    public class NodeModel : NodeItem, NsMultiselectTreeView.IAltNode
+    {
         public NodeModel() : base() { }
-        public NodeModel(string text) : base(text) { }
-        public NodeModel(string text, TreeNode[] children) : base(text, children) { }
 
         public string FileID { get; private set; } = null;
         public bool ModelIsEnable { get; private set; } = true;

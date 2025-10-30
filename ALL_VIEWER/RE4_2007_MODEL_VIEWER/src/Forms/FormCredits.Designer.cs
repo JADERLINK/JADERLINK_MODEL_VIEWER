@@ -29,7 +29,6 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCredits));
             this.buttonClose = new System.Windows.Forms.Button();
             this.groupBoxCodeproject = new System.Windows.Forms.GroupBox();
             this.linkLabelMultiselectTreeView = new System.Windows.Forms.LinkLabel();
@@ -113,7 +112,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.linkLabelLicenseCodeProject.Size = new System.Drawing.Size(291, 30);
             this.linkLabelLicenseCodeProject.TabIndex = 0;
             this.linkLabelLicenseCodeProject.TabStop = true;
-            this.linkLabelLicenseCodeProject.Text = "License: \r\nThe Code Project Open License (CPOL) 1.02";
+            this.linkLabelLicenseCodeProject.Text = "License:\r\nThe Code Project Open License (CPOL) 1.02";
             this.linkLabelLicenseCodeProject.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLicenseCodeProject_LinkClicked);
             // 
             // groupBoxAPIs
@@ -148,8 +147,8 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.linkLabelLicenseOpenTK.Size = new System.Drawing.Size(347, 30);
             this.linkLabelLicenseOpenTK.TabIndex = 12;
             this.linkLabelLicenseOpenTK.TabStop = true;
-            this.linkLabelLicenseOpenTK.Text = "License:  MIT License Copyright (c) 2006-2020 \r\nStefanos Apostolopoulos for the O" +
-    "pen Toolkit project.";
+            this.linkLabelLicenseOpenTK.Text = "License:  MIT License Copyright (c) 2006-2020\r\nStefanos Apostolopoulos for the Op" +
+    "en Toolkit project.";
             this.linkLabelLicenseOpenTK.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLicenseOpenTK_LinkClicked);
             // 
             // linkLabelNugetGLControl
@@ -470,7 +469,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.Controls.Add(this.buttonClose);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = global::RE4_2007_MODEL_VIEWER.Properties.Resources.icon;
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FormCredits";

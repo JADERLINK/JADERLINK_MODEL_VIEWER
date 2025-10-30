@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using RE4_PS2_BIN_TOOL.ALL;
 
-namespace RE4_PS2_BIN_TOOL.EXTRACT
+namespace SHARED_PS2_BIN.EXTRACT
 {
     /*
     Codigo feito por JADERLINK
@@ -24,35 +22,34 @@ namespace RE4_PS2_BIN_TOOL.EXTRACT
             PS2BIN bin = new PS2BIN();
             BinType binType = BinType.Default;
 
-            //Magic //fixed 0x3000 //unknown0
+            //Magic //fixed 0x3000
             //offset 0x00 and 0x01
             bin.Magic = br.ReadUInt16();
-           
-            //unknown1
+
+            //Tex_count
             //offset 0x02 and 0x03
-            bin.Unknown1 = br.ReadUInt16();
+            bin.Tex_count = br.ReadUInt16();
 
             //bones Point
             //offset 0x07, 0x06, 0x05 and 0x04
             uint bonesPoint = br.ReadUInt32();
             bin.BonesPoint = bonesPoint;
-            
-            //unknown2
+
+            //Vertex_Scale
             //offset 0x08
-            byte unknown2 = br.ReadByte();
-            bin.Unknown2 = unknown2;
-          
+            bin.Vertex_Scale = br.ReadByte();
+
             //BonesCount
             //offset 0x09
             byte BonesCount = br.ReadByte();
             bin.BonesCount = BonesCount;
 
-            //MaterialCount //table1_count
+            //MaterialCount
             //offset 0x0B, 0x0A
             ushort MaterialCount = br.ReadUInt16();
             bin.MaterialCount = MaterialCount;
           
-            //MaterialsPoint //table1_addr
+            //MaterialsPoint
             //offset 0x0F, 0x0E, 0x0D and 0x0C 
             uint MaterialOffset = br.ReadUInt32();
             bin.MaterialOffset = MaterialOffset;
@@ -61,68 +58,68 @@ namespace RE4_PS2_BIN_TOOL.EXTRACT
             //offset 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16 and 0x17 
             bin.Padding1 = br.ReadUInt32();
             bin.Padding2 = br.ReadUInt32();
-         
-            //unknown4_B
+
+            //Version_flags
             //offset 0x18, 0x19, 0x1A and 0x1B
-            bin.VersionFlag = br.ReadUInt32();
-           
-            //bonepair_addr
+            bin.Version_flags = br.ReadUInt32();
+
+            //BonepairPoint
             //offset 0x1F, 0x1E, 0x1D and 0x1C
-            uint bonepair_addr_ = br.ReadUInt32();
-            bin.BonepairPoint = bonepair_addr_;
-        
-            //unknown4_unk008
+            uint BonepairPoint = br.ReadUInt32();
+            bin.BonepairPoint = BonepairPoint;
+
+            //UnusedOffset1
             //offset 0x20, 0x21, 0x22 and 0x23
-            bin.Unknown408 = br.ReadUInt32();
+            bin.UnusedOffset1 = br.ReadUInt32();
 
-            //unknown4_unk009
+            //Bin_flags
             //offset 0x24, 0x25, 0x26 and 0x27
-            bin.TextureFlags = br.ReadUInt32();
+            bin.Bin_flags = br.ReadUInt32();
         
-            //boundbox_addr_
+            //boundbox_addr
             //offset 0x2B, 0x2A, 0x29 and 0x28
-            uint boundbox_addr_ = br.ReadUInt32();
-            bin.BoundboxPoint = boundbox_addr_;
-          
-            //unknown4_unk010
+            uint boundbox_addr = br.ReadUInt32();
+            bin.BoundboxPoint = boundbox_addr;
+
+            //UnusedOffset2
             //offset 0x2C, 0x2D, 0x2E and 0x2F
-            bin.Unknown410 = br.ReadUInt32();
-          
-            //unk012_floatX // DrawDistanceNegativeX
+            bin.UnusedOffset2 = br.ReadUInt32();
+
+            //BoundingBoxPosX
             //offset 0x33, 0x32, 0x31 and 0x30
-            float DrawDistanceNegativeX = br.ReadSingle();
-            bin.DrawDistanceNegativeX = DrawDistanceNegativeX;
-         
-            //unk012_floatY // DrawDistanceNegativeY
+            float BoundingBoxPosX = br.ReadSingle();
+            bin.BoundingBoxPosX = BoundingBoxPosX;
+
+            //BoundingBoxPosY
             //offset 0x37, 0x36, 0x35 and 0x34
-            float DrawDistanceNegativeY = br.ReadSingle();
-            bin.DrawDistanceNegativeY = DrawDistanceNegativeY;
-           
+            float BoundingBoxPosY = br.ReadSingle();
+            bin.BoundingBoxPosY = BoundingBoxPosY;
 
-            //unk012_floatZ // DrawDistanceNegativeZ
+
+            //BoundingBoxPosZ
             //offset 0x3B, 0x3A, 0x39 and 0x38
-            float DrawDistanceNegativeZ = br.ReadSingle();
-            bin.DrawDistanceNegativeZ = DrawDistanceNegativeZ;
+            float BoundingBoxPosZ = br.ReadSingle();
+            bin.BoundingBoxPosZ = BoundingBoxPosZ;
 
-            //unk012_floatW // DrawDistanceNegativePadding
+            //BoundingBoxPosW
             //offset 0x3F, 0x3E, 0x3D and 0x3C
-            float DrawDistanceNegativePadding = br.ReadSingle();
-            bin.DrawDistanceNegativePadding = DrawDistanceNegativePadding;
-        
-            //unk013_floatX // DrawDistancePositiveX
+            float BoundingBoxPosW = br.ReadSingle();
+            bin.BoundingBoxPosW = BoundingBoxPosW;
+
+            //BoundingBoxWidth
             //offset 0x43, 0x42, 0x41 and 0x40
-            float DrawDistancePositiveX = br.ReadSingle();
-            bin.DrawDistancePositiveX = DrawDistancePositiveX;
-       
-            //unk013_floatY // DrawDistancePositiveY
+            float BoundingBoxWidth = br.ReadSingle();
+            bin.BoundingBoxWidth = BoundingBoxWidth;
+
+            //BoundingBoxHeight
             //offset 0x47, 0x46, 0x45 and 0x44
-            float DrawDistancePositiveY = br.ReadSingle();
-            bin.DrawDistancePositiveY = DrawDistancePositiveY;
-         
-            //unk013_floatZ // DrawDistancePositiveZ
+            float BoundingBoxHeight = br.ReadSingle();
+            bin.BoundingBoxHeight = BoundingBoxHeight;
+
+            //BoundingBoxDepth
             //offset 0x4B, 0x4A, 0x49 and 0x48
-            float DrawDistancePositiveZ = br.ReadSingle();
-            bin.DrawDistancePositiveZ = DrawDistancePositiveZ;
+            float BoundingBoxDepth = br.ReadSingle();
+            bin.BoundingBoxDepth = BoundingBoxDepth;
             
             //padding
             //offset 0x4C, 0x4D, 0x4E and 0x4F
@@ -133,26 +130,31 @@ namespace RE4_PS2_BIN_TOOL.EXTRACT
             if (bin.Magic != 0x0030 && bin.Padding1 != 0xCDCDCDCD)
             {           
                 br.Close();
-                throw new ArgumentException("Invalid bin file, not supported!");
+                throw new ApplicationException("Invalid BIN file, not supported!");
             }
 
             //---------------------------------------------
 
-            //bonepair_addr_
-            if (bonepair_addr_ != 0x0)
+            //BonepairPoint
+            if (BonepairPoint != 0x0)
             {
-                br.BaseStream.Position = startOffset + bonepair_addr_;
+                br.BaseStream.Position = startOffset + BonepairPoint;
              
                 uint bonepairCount = br.ReadUInt32();
-                bin.BonepairCount = bonepairCount;
-          
-                List<byte[]> bonepairLines = new List<byte[]>();
+
+                BonePair[] Bonepairs = new BonePair[bonepairCount];
+
                 for (int i = 0; i < bonepairCount; i++)
                 {
-                    byte[] bonepairLine = br.ReadBytes(0x8);
-                    bonepairLines.Add(bonepairLine);
+                    BonePair bonePair = new BonePair();
+                    bonePair.Bone1 = br.ReadUInt16();
+                    bonePair.Bone2 = br.ReadUInt16();
+                    bonePair.Bone3 = br.ReadUInt16();
+                    bonePair.Bone4 = br.ReadUInt16();
+                    Bonepairs[i] = bonePair;
                 }
-                bin.bonepairLines = bonepairLines.ToArray();
+
+                bin.BonePairs = Bonepairs;
             }
 
             //---------------------------------------------
@@ -169,7 +171,7 @@ namespace RE4_PS2_BIN_TOOL.EXTRACT
                 bone.boneLine = boneLine;
                 bones[i] = bone;
             }
-            bin.bones = bones;
+            bin.Bones = bones;
 
 
             //---------------------------------------------
@@ -241,7 +243,7 @@ namespace RE4_PS2_BIN_TOOL.EXTRACT
                 //------------
                 Segment[] segments = new Segment[TotalNumberOfSegments];
 
-                for (int i = 0; i < TotalNumberOfSegments; i++) // SubMesh //Segment
+                for (int i = 0; i < TotalNumberOfSegments; i++) //Segment
                 {
 
                     Segment segment = new Segment();
@@ -312,7 +314,6 @@ namespace RE4_PS2_BIN_TOOL.EXTRACT
                         // as linhas são compostas por 24 bytes
                         byte[] line = subMeshChunk.Skip(tempOffset).Take(24).ToArray();
                         VertexLine v = new VertexLine();
-                        v.line = line;
 
                         if (segment.IsScenarioColor)
                         {

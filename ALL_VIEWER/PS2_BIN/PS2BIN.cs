@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace RE4_PS2_BIN_TOOL.EXTRACT
+namespace SHARED_PS2_BIN.EXTRACT
 {
     #region representação do bin
 
@@ -12,36 +11,34 @@ namespace RE4_PS2_BIN_TOOL.EXTRACT
     {
         //binHeader
         public ushort Magic;
-        public ushort Unknown1; //nTex
+        public ushort Tex_count; //nTex
         public uint BonesPoint;
-        public byte Unknown2; //frac
+        public byte Vertex_Scale; //frac
         public byte BonesCount;
         public ushort MaterialCount;
         public uint MaterialOffset;
         public uint Padding1; //CD-CD-CD-CD
         public uint Padding2; //CD-CD-CD-CD
-        public uint VersionFlag; //18-08-03-20 or 01-08-01-20 //unknown4_B
+        public uint Version_flags; //18-08-03-20 or 01-08-01-20
         public uint BonepairPoint; // normalmente é 0x0
-        public uint Unknown408; // padding, sempre 0x00
-        public uint TextureFlags; //unknown4_unk009
+        public uint UnusedOffset1; // padding, sempre 0x00
+        public uint Bin_flags;
         public uint BoundboxPoint; //fixo 0x30
-        public uint Unknown410; // padding, sempre 0x00
-        public float DrawDistanceNegativeX;
-        public float DrawDistanceNegativeY;
-        public float DrawDistanceNegativeZ;
-        public float DrawDistanceNegativePadding;
-        public float DrawDistancePositiveX;
-        public float DrawDistancePositiveY;
-        public float DrawDistancePositiveZ;
+        public uint UnusedOffset2; // padding, sempre 0x00
+        public float BoundingBoxPosX;
+        public float BoundingBoxPosY;
+        public float BoundingBoxPosZ;
+        public float BoundingBoxPosW;
+        public float BoundingBoxWidth;
+        public float BoundingBoxHeight;
+        public float BoundingBoxDepth;
         public uint Padding3; // CD-CD-CD-CD
         //end binHeader
 
-        //bonepair
-        public uint BonepairCount;
-        public byte[][] bonepairLines;
+        public BonePair[] BonePairs;
 
         //bonesList
-        public Bone[] bones;
+        public Bone[] Bones;
 
         //materialsList
         public Material[] materials;
@@ -53,12 +50,21 @@ namespace RE4_PS2_BIN_TOOL.EXTRACT
         public BinType binType = BinType.Default;
     }
 
+    public struct BonePair
+    {
+        public ushort Bone1;
+        public ushort Bone2;
+        public ushort Bone3;
+        public ushort Bone4;
+    }
+
+
     public class Bone
     {
-        public byte[] boneLine;  // new byte[16];
+        public byte[] boneLine; // new byte[16];
 
-        public sbyte BoneID { get { return (sbyte)boneLine[0x0]; } }
-        public sbyte BoneParent { get { return (sbyte)boneLine[0x1]; } }
+        public byte BoneID { get { return boneLine[0x0]; } }
+        public byte BoneParent { get { return boneLine[0x1]; } }
 
         public float PositionX { get { return BitConverter.ToSingle(boneLine, 0x4); } }
         public float PositionY { get { return BitConverter.ToSingle(boneLine, 0x8); } }
@@ -84,7 +90,7 @@ namespace RE4_PS2_BIN_TOOL.EXTRACT
         public byte BonesIdAmount;
         public byte[] NodeBoneList;
 
-        //segmentos no node (valorTotalDePartes), tinha sido nomeado como subMesh
+        //segmentos no node
         public Segment[] Segments;
     }
 
@@ -129,33 +135,42 @@ namespace RE4_PS2_BIN_TOOL.EXTRACT
 
     public class VertexLine
     {
-        // linha total
-        public byte[] line;
+        public short VerticeX;
+        public short VerticeY;
+        public short VerticeZ;
 
-        public short VerticeX = 0;
-        public short VerticeY = 0;
-        public short VerticeZ = 0;
+        public ushort UnknownB; // WightMap ID or ColorA
 
-        public ushort UnknownB = 0;
+        public short NormalX; // or ColorR
+        public short NormalY; // or ColorG
+        public short NormalZ; // or ColorB
 
-        public short NormalX = 0;
-        public short NormalY = 0;
-        public short NormalZ = 0;
+        public ushort IndexComplement;
 
-        public ushort IndexComplement = 0;
+        public short TextureU;
+        public short TextureV;
 
-        public short TextureU = 0;
-        public short TextureV = 0;
+        public ushort UnknownA; // sempre 0x01
 
-        public ushort UnknownA = 0;
-
-        public ushort IndexMount = 0;
+        public ushort IndexMount;
     }
 
     public enum BinType
     {
         Default,
         ScenarioWithColors
+    }
+
+    [Flags]
+    public enum BinFlags : uint
+    {
+        Empty = 0x00_00_00_00,
+        AlwaysActivated = 0x80_00_00_00,
+        EnableUnkFlag4 = 0x40_00_00_00,
+        EnableUnkFlag2 = 0x20_00_00_00,
+        EnableUnkFlag1 = 0x10_00_00_00,
+        EnableAdjacentBoneTag = 0x00_00_02_00,
+        EnableBonepairTag = 0x00_00_01_00,
     }
 
     #endregion

@@ -8,20 +8,28 @@ namespace RE4_SMX_TOOL
 {
     public class SMX
     {
-        public byte UseSMXID;
-        public byte Mode;
-        public byte OpacityHierarchy;
-        public byte FaceCulling;
-        public uint LightSwitch;
+        public byte UseSMXID; //uint8_t ModelNo; // Index
+        public byte Mode; // uint8_t Id; // Type (enum MOVE_TYPE)
+        public byte OpacityHierarchy; //uint8_t OtType; // Render Heirarchy (enum OT_TYPES)
+        public byte FaceCulling; //uint8_t CullMode; (enum CULL_MODE)
+        public uint LightSwitch; //uint32_t LitSelectMask;
+        //uint32_t Flag; (enum SMX_FLAGS)
         public byte AlphaHierarchy;
         public byte UnknownX09;
         public byte UnknownX0A;
         public byte UnknownX0B;
-        public byte[] ColorRGB; // 3 bytes
-        public byte ColorAlpha;
+        //---------------------
+        public byte[] ColorRGB; // 3 bytes //GXColor MaterialColor; (struct GXColor) no alpha
+        public byte ColorAlpha; // (enum BLENDING_TYPES)
+
+        /* "union" fields here */
+
+        public uint UnknownU84; //GXColor SpecularColor; (struct GXColor + enum BLENDING_TYPES)
+        public float TextureMovement_X; //TexU; (float value)
+        public float TextureMovement_Y; //TexV; (float value)
 
         //----------
-        //mode 0x00       
+        //mode 0x00
         public uint UnknownU10;
         public uint UnknownU14;
         public uint UnknownU18;
@@ -51,36 +59,33 @@ namespace RE4_SMX_TOOL
         public uint UnknownU78;
         public uint UnknownU7C;
         public uint UnknownU80;
-        public uint UnknownU84;
-        public float TextureMovement_X;
-        public float TextureMovement_Y;
 
         //----------
         //mode 0x01
 
-        public float RotationSpeed_X;
-        public float RotationSpeed_Y;
-        public float RotationSpeed_Z;
-        public float RotationSpeed_W;
-        public uint Unknown_GTU;
-        public uint Unknown_GTV;
+        public float RotationSpeed_X; //m_tagVec Rot; (x) float
+        public float RotationSpeed_Y; //m_tagVec Rot; (y) float
+        public float RotationSpeed_Z; //m_tagVec Rot; (z) float
+        public float RotationSpeed_W; //m_tagVec Rot; (w) float
+        public uint Unknown_GTU; //uint8_t m_Flag; (unknown type, can be 0 or 1)
+        public uint Unknown_GTV; //nada, o mesmo que UnknownU20
 
         //----------
         //mode 0x02
 
-        public float Swing0;
-        public float Swing1;
-        public float Swing2;
-        public float Swing3;
-        public float Swing4;
-        public float Swing5;
-        public float Swing6;
-        public float Swing7;
-        public float Swing8;
-        public float Swing9;
-        public float SwingA;
-        public float SwingB;
-        public float SwingC;
+        public float Swing0; //m_StartZ
+        public float Swing1; //m_RangeZ
+        public float Swing2; //m_SpeedZ
+        public float Swing3; //m_Time
+        public float Swing4; //m_StartX
+        public float Swing5; //m_RangeX
+        public float Swing6; //m_SpeedX
+        public float Swing7; //m_StartY
+        public float Swing8; //m_RangeY
+        public float Swing9; //m_SpeedY
+        public float SwingA; //m_InitAngX
+        public float SwingB; //m_InitAngY
+        public float SwingC; //m_InitAngZ
 
     }
 }

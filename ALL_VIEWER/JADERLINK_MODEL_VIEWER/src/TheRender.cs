@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using System.Drawing;
 using OpenTK;
-using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using ShaderLoader;
 using ViewerBase;
@@ -69,7 +63,6 @@ namespace JADERLINK_MODEL_VIEWER.src
 
             objShader.SetVector3("CameraPosition", camPos);
             objShader.SetVector4("matColor", Vector4.One);
-            //objShader.SetVector4("smxColor", Vector4.One);
 
             if (RenderNormals)
             {

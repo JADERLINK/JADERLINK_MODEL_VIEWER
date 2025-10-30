@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
 using ViewerBase;
-using PMD_API;
-using TGASharpLib;
 using System.IO;
 using OpenTK;
-using RE4_2007_SCENARIO_SMD_EXTRACT;
 using JADERLINK_MODEL_VIEWER.src.Nodes;
+using SHARED_2007PS2_SCENARIO_SMD.SCENARIO_EXTRACT;
 
 namespace RE4_2007_MODEL_VIEWER.src
 {
@@ -28,15 +24,21 @@ namespace RE4_2007_MODEL_VIEWER.src
         public void LoadScenario(string SmdPath)
         {
             FileInfo fileInfo = new FileInfo(SmdPath);
+            Stream smdStream = null;
 
             SMDLine[] lines = new SMDLine[0];
             try
             {
-                lines = SmdExtract.Extrator(SmdPath, out _);
+                smdStream = fileInfo.OpenRead();
+                lines = SmdExtract2007PS2.Extract(smdStream, out _, out _, out _);
             }
             catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Error:");
+            }
+            finally 
+            {
+                smdStream?.Close();
             }
 
             if (lines.Length != 0)
@@ -57,8 +59,8 @@ namespace RE4_2007_MODEL_VIEWER.src
                     entry.BIN_ID = i;
                     entry.SMX_ID = lines[i].SmxID;
                     PreFix fix = new PreFix();
-                    fix.Angle = new Vector3(lines[i].angleX, lines[i].angleY, lines[i].angleZ);
-                    fix.Position = new Vector3(lines[i].positionX / 100.0f, lines[i].positionY / 100.0f, lines[i].positionZ / 100.0f);
+                    fix.Angle = new Vector3(lines[i].AngleX, lines[i].AngleY, lines[i].AngleZ);
+                    fix.Position = new Vector3(lines[i].PositionX / 100.0f, lines[i].PositionY / 100.0f, lines[i].PositionZ / 100.0f);
                     fix.Scale = new Vector3(10.0f);
                     entry.Fix = fix;
                     smdGroup.SmdEntries.Add(i, entry);

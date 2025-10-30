@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
 using OpenTK;
 using ViewerBase;
 using System.IO;
@@ -46,15 +44,10 @@ namespace JADERLINK_MODEL_VIEWER.src
                     stream = new StreamReader(Path, Encoding.ASCII);
                     smd = SMD_READER_LIB.SmdReader.Reader(stream);
                 }
-                catch (Exception)
-                {
-                }
+                catch (Exception) { }
                 finally
                 {
-                    if (stream != null)
-                    {
-                        stream.Close();
-                    }
+                    stream?.Close();
                 }
 
                 if (smd != null)

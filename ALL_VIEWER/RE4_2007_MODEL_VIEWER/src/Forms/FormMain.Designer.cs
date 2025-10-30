@@ -29,7 +29,6 @@ namespace RE4_2007_MODEL_VIEWER
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.menuStripMenu = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemLoadPmd = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +57,7 @@ namespace RE4_2007_MODEL_VIEWER
             this.toolStripMenuItemMisc = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemChangeSkyColor = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCredits = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemJaderlink = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.panelGL = new System.Windows.Forms.Panel();
             this.openFileDialogPMD = new System.Windows.Forms.OpenFileDialog();
@@ -73,12 +73,14 @@ namespace RE4_2007_MODEL_VIEWER
             // 
             // menuStripMenu
             // 
-            this.menuStripMenu.BackColor = System.Drawing.Color.Gainsboro;
+            this.menuStripMenu.BackColor = System.Drawing.Color.Transparent;
+            this.menuStripMenu.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemFile,
             this.toolStripMenuItemActions,
             this.toolStripMenuItemView,
-            this.toolStripMenuItemMisc});
+            this.toolStripMenuItemMisc,
+            this.toolStripMenuItemJaderlink});
             this.menuStripMenu.Location = new System.Drawing.Point(0, 0);
             this.menuStripMenu.Name = "menuStripMenu";
             this.menuStripMenu.Size = new System.Drawing.Size(784, 24);
@@ -103,7 +105,7 @@ namespace RE4_2007_MODEL_VIEWER
             // 
             this.toolStripMenuItemLoadPmd.Name = "toolStripMenuItemLoadPmd";
             this.toolStripMenuItemLoadPmd.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.toolStripMenuItemLoadPmd.Size = new System.Drawing.Size(218, 22);
+            this.toolStripMenuItemLoadPmd.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItemLoadPmd.Text = "Load PMD (Model)";
             this.toolStripMenuItemLoadPmd.Click += new System.EventHandler(this.toolStripMenuItemLoadPmd_Click);
             // 
@@ -111,41 +113,41 @@ namespace RE4_2007_MODEL_VIEWER
             // 
             this.toolStripMenuItemLoadTga.Name = "toolStripMenuItemLoadTga";
             this.toolStripMenuItemLoadTga.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.toolStripMenuItemLoadTga.Size = new System.Drawing.Size(218, 22);
+            this.toolStripMenuItemLoadTga.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItemLoadTga.Text = "Load TGA (Texture)";
             this.toolStripMenuItemLoadTga.Click += new System.EventHandler(this.toolStripMenuItemLoadTga_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(215, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(214, 6);
             // 
             // toolStripMenuItemLoadScenarioSMD
             // 
             this.toolStripMenuItemLoadScenarioSMD.Name = "toolStripMenuItemLoadScenarioSMD";
-            this.toolStripMenuItemLoadScenarioSMD.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
-            this.toolStripMenuItemLoadScenarioSMD.Size = new System.Drawing.Size(218, 22);
+            this.toolStripMenuItemLoadScenarioSMD.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.toolStripMenuItemLoadScenarioSMD.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItemLoadScenarioSMD.Text = "Load Scenario SMD";
             this.toolStripMenuItemLoadScenarioSMD.Click += new System.EventHandler(this.toolStripMenuItemLoadScenarioSMD_Click);
             // 
             // toolStripMenuItemLoadSmx
             // 
             this.toolStripMenuItemLoadSmx.Name = "toolStripMenuItemLoadSmx";
-            this.toolStripMenuItemLoadSmx.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.toolStripMenuItemLoadSmx.Size = new System.Drawing.Size(218, 22);
+            this.toolStripMenuItemLoadSmx.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.K)));
+            this.toolStripMenuItemLoadSmx.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItemLoadSmx.Text = "Load SMX";
             this.toolStripMenuItemLoadSmx.Click += new System.EventHandler(this.toolStripMenuItemLoadSmx_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(215, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(214, 6);
             // 
             // toolStripMenuItemExit
             // 
             this.toolStripMenuItemExit.Name = "toolStripMenuItemExit";
             this.toolStripMenuItemExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.toolStripMenuItemExit.Size = new System.Drawing.Size(218, 22);
+            this.toolStripMenuItemExit.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItemExit.Text = "Exit";
             this.toolStripMenuItemExit.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -314,6 +316,15 @@ namespace RE4_2007_MODEL_VIEWER
             this.toolStripMenuItemCredits.Text = "Credits";
             this.toolStripMenuItemCredits.Click += new System.EventHandler(this.toolStripMenuItemCredits_Click);
             // 
+            // toolStripMenuItemJaderlink
+            // 
+            this.toolStripMenuItemJaderlink.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripMenuItemJaderlink.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenuItemJaderlink.Name = "toolStripMenuItemJaderlink";
+            this.toolStripMenuItemJaderlink.Size = new System.Drawing.Size(314, 20);
+            this.toolStripMenuItemJaderlink.Text = "Subscribe on my channel: youtube.com/@JADERLINK";
+            this.toolStripMenuItemJaderlink.Click += new System.EventHandler(this.toolStripMenuItemJaderlink_Click);
+            // 
             // splitContainerMain
             // 
             this.splitContainerMain.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -348,7 +359,7 @@ namespace RE4_2007_MODEL_VIEWER
             // openFileDialogPMD
             // 
             this.openFileDialogPMD.DefaultExt = "PMD";
-            this.openFileDialogPMD.Filter = "PMD | *.PMD";
+            this.openFileDialogPMD.Filter = "PMD|*.PMD";
             this.openFileDialogPMD.Multiselect = true;
             this.openFileDialogPMD.Title = "LOAD PMD";
             this.openFileDialogPMD.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogPMD_FileOk);
@@ -356,21 +367,21 @@ namespace RE4_2007_MODEL_VIEWER
             // openFileDialogSMD
             // 
             this.openFileDialogSMD.DefaultExt = "SMD";
-            this.openFileDialogSMD.Filter = "Scenario SMD | *.SMD";
+            this.openFileDialogSMD.Filter = "Scenario SMD|*.SMD";
             this.openFileDialogSMD.Title = "LOAD SCENARIO SMD (2007)";
             this.openFileDialogSMD.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogSMD_FileOk);
             // 
             // openFileDialogSMX
             // 
             this.openFileDialogSMX.DefaultExt = "SMX";
-            this.openFileDialogSMX.Filter = "SMX | *.SMX";
+            this.openFileDialogSMX.Filter = "SMX|*.SMX";
             this.openFileDialogSMX.Title = "LOAD SMX";
             this.openFileDialogSMX.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogSMX_FileOk);
             // 
             // openFileDialogTGA
             // 
             this.openFileDialogTGA.DefaultExt = "TGA";
-            this.openFileDialogTGA.Filter = "TGA | *.TGA";
+            this.openFileDialogTGA.Filter = "TGA|*.TGA";
             this.openFileDialogTGA.Multiselect = true;
             this.openFileDialogTGA.Title = "LOAD TGA";
             this.openFileDialogTGA.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogTGA_FileOk);
@@ -384,13 +395,14 @@ namespace RE4_2007_MODEL_VIEWER
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.splitContainerMain);
             this.Controls.Add(this.menuStripMenu);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = global::RE4_2007_MODEL_VIEWER.Properties.Resources.icon;
             this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "FormMain";
-            this.Text = "RE4 2007 MODEL VIEWER | V.1.0.6 | YOUTUBE.COM/@JADERLINK";
+            this.Text = "RE4 2007 MODEL VIEWER | V.1.0.7 | YOUTUBE.COM/@JADERLINK";
             this.menuStripMenu.ResumeLayout(false);
             this.menuStripMenu.PerformLayout();
             this.splitContainerMain.Panel2.ResumeLayout(false);
@@ -438,6 +450,7 @@ namespace RE4_2007_MODEL_VIEWER
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemVertexColor;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAlphaChannel;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTextureNearestLinear;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemJaderlink;
     }
 }
 

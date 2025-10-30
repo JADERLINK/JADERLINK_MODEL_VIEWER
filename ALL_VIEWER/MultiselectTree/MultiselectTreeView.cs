@@ -29,7 +29,7 @@ namespace NsMultiselectTreeView // from https://github.com/DavidSM64/Quad64/blob
 
 		public Color SelectedNodeBackColor { get => selectedNodeBackColor; set => selectedNodeBackColor = value; }
 
-		private System.Collections.Generic.Dictionary<int, TreeNode> m_SelectedNodes = null;
+		private Dictionary<int, TreeNode> m_SelectedNodes = null;
 		/// <summary>
 		/// hashCode, TreeNode
 		/// </summary>
@@ -44,7 +44,6 @@ namespace NsMultiselectTreeView // from https://github.com/DavidSM64/Quad64/blob
 				if (value != null)
 				{
 					m_SelectedNodes.Clear();
-                    //m_SelectedNodes.AddRange(value);
                     foreach (var item in value)
                     {
 						m_SelectedNodes.Add(item.Key, item.Value);
@@ -52,7 +51,6 @@ namespace NsMultiselectTreeView // from https://github.com/DavidSM64/Quad64/blob
 					m_SelectedNode = null;
 					if (m_SelectedNodes.Count != 0)
                     {
-						//m_SelectedNode = m_SelectedNodes[m_SelectedNodes.Count - 1];
 						m_SelectedNode = m_SelectedNodes.Last().Value;
 					}
 					OnAfterSelect(new TreeViewEventArgs(m_SelectedNode));
@@ -88,13 +86,19 @@ namespace NsMultiselectTreeView // from https://github.com/DavidSM64/Quad64/blob
 			}
 		}
 
+		public void SelectedNodesClearNoRedraw()
+		{
+			ClearSelectedNodes();
+		}
+
 		#endregion
 
 		public MultiselectTreeView()
 		{
 			m_SelectedNodes = new Dictionary<int, TreeNode>();
+			m_SelectedNode = null;
 			base.SelectedNode = null;
-			DrawMode = TreeViewDrawMode.OwnerDrawText;
+			DrawMode = TreeViewDrawMode.OwnerDrawAll;
 		}
 
 		#region Overridden Events
@@ -143,9 +147,17 @@ namespace NsMultiselectTreeView // from https://github.com/DavidSM64/Quad64/blob
 						altText = obj.AltText;
 					}
 
-					int leftBound = node.Bounds.X; // - 20; // Allow user to click on image
-					int rightBound = TextRenderer.MeasureText(altText, font).Width + node.Bounds.X; //node.Bounds.Right + 10; // Give a little extra room
-					if ( e.Location.X > leftBound && e.Location.X < rightBound )
+
+					int leftMargin = 16;
+					if (node.Parent != null)
+					{
+						leftMargin = 32;
+
+					}
+
+					int rightBound = TextRenderer.MeasureText(altText, font).Width + leftMargin;
+
+					if ( e.Location.X > leftMargin && e.Location.X < rightBound )
 					{
 						if (ModifierKeys == Keys.None && (m_SelectedNodes.ContainsValue(node)))
 						{
@@ -193,9 +205,14 @@ namespace NsMultiselectTreeView // from https://github.com/DavidSM64/Quad64/blob
 							altText = obj.AltText;
 						}
 
-						int leftBound = node.Bounds.X; // -20; // Allow user to click on image
-						int rightBound = TextRenderer.MeasureText(altText, font).Width + node.Bounds.X; //node.Bounds.Right + 10; // Give a little extra room
-						if( e.Location.X > leftBound && e.Location.X < rightBound )
+						int leftMargin = 16;
+						if (node.Parent != null)
+						{
+							leftMargin = 32;
+						}
+
+						int rightBound = TextRenderer.MeasureText(altText, font).Width + leftMargin;
+						if( e.Location.X > leftMargin && e.Location.X < rightBound )
 						{
 							SelectNode( node );
 						}
@@ -422,26 +439,7 @@ namespace NsMultiselectTreeView // from https://github.com/DavidSM64/Quad64/blob
 					}
 					SelectSingleNode(ndCurrent);
 				}
-				else
-				{
-					// Assume this is a search character a-z, A-Z, 0-9, etc.
-					// Select the first node after the current node that
-					// starts with this character
-					/*string sSearch = ((char)e.KeyValue).ToString();
-
-					TreeNode ndCurrent = m_SelectedNode;
-					while ((ndCurrent.NextVisibleNode != null))
-					{
-						ndCurrent = ndCurrent.NextVisibleNode;
-						if (ndCurrent.Text.StartsWith(sSearch))
-						{
-							SelectSingleNode(ndCurrent);
-							break;
-						}
-					}
-					*/
-				}
-
+				// else não usado
 			}
 			catch( Exception ex )
 			{
@@ -454,21 +452,37 @@ namespace NsMultiselectTreeView // from https://github.com/DavidSM64/Quad64/blob
 			}
 		}
 
-		
+		public void EnableDrawNode() 
+		{
+			DrawNodeRender = true;
+		}
+		public void DisableDrawNode() 
+		{
+			DrawNodeRender = false;
+		}
+
+		private bool DrawNodeRender = true;
+
 		// devido de ao limpar nodes e colocar, fica selecinados no design, os que não estão selecionados, então subistitu-o a pintura
 		// tive muito problema com a propriedade "Text", que causave muito lag, no treeview.
 		// descobri que a melhor solução é pegar o texto de outro lugar e deixar o "Text" em branco. 
-        protected override void OnDrawNode(DrawTreeNodeEventArgs e)
+		protected override void OnDrawNode(DrawTreeNodeEventArgs e)
         {
-			//Console.WriteLine(e.Node.Name + ' ' + e.Bounds.Y);
-			e.DrawDefault = false;
-			if (e.Bounds.Y <= this.Height && e.Bounds.Y >= 0)
+			//Console.WriteLine("AutoScrollOffset  " + this.AutoScrollOffset.X + "  " + this.AutoScrollOffset.Y);
+
+			//Console.WriteLine("e.Node: " + e.Node + "e.Bounds: " + e.Bounds);
+
+			//base.OnDrawNode(e); // não usado
+
+			e.DrawDefault = false; // false o sistema não renderiza, true é renderizado o texto
+
+			if (DrawNodeRender)
 			{
-				//base.OnDrawNode(e);
-				//e.DrawDefault = false;
-				if (m_SelectedNodes.ContainsValue(e.Node) && e.Node.Parent != null)
+				if (e.Bounds.Y <= Height && e.Bounds.Y >= 0)
 				{
-					Font font = this.Font;
+					int Xstart = 0;//e.Bounds.X;
+
+					Font font = Font;
 					if (e.Node.NodeFont != null)
 					{
 						font = e.Node.NodeFont;
@@ -477,39 +491,82 @@ namespace NsMultiselectTreeView // from https://github.com/DavidSM64/Quad64/blob
 					string altText = e.Node.Text;
 					Color altForeColor = e.Node.ForeColor;
 					if (e.Node is IAltNode obj)
+					{
+						altText = obj.AltText;
+						altForeColor = obj.AltForeColor;
+					}
+
+					int leftMargin = 16 + Xstart;
+                    if (e.Node.Parent != null)
                     {
-						altText = obj.AltText;
-						altForeColor = obj.AltForeColor;
+						leftMargin = 32 + Xstart;
+
 					}
 
-					//e.Graphics.FillRectangle(new SolidBrush(selectedNodeBackColor), e.Bounds);
-					//e.Graphics.DrawString(altText, font, new SolidBrush(altForeColor), e.Bounds.Left, e.Bounds.Top);
+					//tampa o texto/seleção de fundo
+					e.Graphics.FillRectangle(new SolidBrush(BackColor), e.Bounds); // não tem mais nada no fundo, porem te que colocar, pois se não no mono linux fica branco o fundo
 
-					e.Graphics.FillRectangle(new SolidBrush(selectedNodeBackColor), new Rectangle(e.Bounds.X, e.Bounds.Y, TextRenderer.MeasureText(altText, font).Width, e.Bounds.Height));
-					TextRenderer.DrawText(e.Graphics, altText, font, new Point(e.Bounds.Left, e.Bounds.Top), altForeColor, TextFormatFlags.GlyphOverhangPadding);
-				}
-				else
-				{
-					//e.DrawDefault = true;
-					Font font = this.Font;
-					if (e.Node.NodeFont != null)
+					//renderiza os icones
+					if (e.Node.Parent != null)
 					{
-						font = e.Node.NodeFont;
-					}
+						Point[] points = {
+							new Point(15 + Xstart, 7 + e.Bounds.Top),
+							new Point(23 + Xstart, 7 + e.Bounds.Top),
+							new Point(23 + Xstart, 1 + e.Bounds.Top),
+							new Point(30 + Xstart, 8 + e.Bounds.Top),
+							new Point(23 + Xstart, 15 + e.Bounds.Top),
+							new Point(23 + Xstart, 10 + e.Bounds.Top),
+							new Point(15 + Xstart, 10 + e.Bounds.Top)
+						};
 
-					string altText = e.Node.Text;
-					Color altForeColor = e.Node.ForeColor;
-					if (e.Node is IAltNode obj)
+						e.Graphics.FillPolygon(new SolidBrush(LineColor), points);
+					}
+					else 
 					{
-						altText = obj.AltText;
-						altForeColor = obj.AltForeColor;
+						if (e.Node.Nodes.Count == 0)
+						{
+							Point[] points = {
+							new Point(5 + Xstart, 2 + e.Bounds.Top),
+							new Point(7 + Xstart, 2 + e.Bounds.Top),
+							new Point(13 + Xstart, 8 + e.Bounds.Top),
+							new Point(6 + Xstart, 15 + e.Bounds.Top),
+							new Point(5 + Xstart, 15 + e.Bounds.Top)
+						};
+							e.Graphics.FillPolygon(new SolidBrush(LineColor), points);
+						}
+						else if (e.Node.IsExpanded)
+						{
+							Point[] points = {
+							new Point(2 + Xstart, 5 + e.Bounds.Top),
+							new Point(2 + Xstart, 6 + e.Bounds.Top),
+							new Point(8 + Xstart, 13 + e.Bounds.Top),
+							new Point(15 + Xstart, 6 + e.Bounds.Top),
+							new Point(15 + Xstart, 5 + e.Bounds.Top)
+						};
+							e.Graphics.FillPolygon(new SolidBrush(LineColor), points);
+						}
+						else 
+						{
+							Point[] points = {
+							new Point(2 + Xstart, 11 + e.Bounds.Top),
+							new Point(2 + Xstart, 9 + e.Bounds.Top),
+							new Point(8 + Xstart, 2 + e.Bounds.Top),
+							new Point(15 + Xstart, 9 + e.Bounds.Top),
+							new Point(15 + Xstart, 11 + e.Bounds.Top)
+						};
+							e.Graphics.FillPolygon(new SolidBrush(LineColor), points);
+						}
 					}
 
-					e.Graphics.FillRectangle(new SolidBrush(BackColor), e.Bounds);
-					//e.Graphics.DrawString(altText, font, new SolidBrush(altForeColor), e.Bounds.Left, e.Bounds.Top);
+					//se é um node selecionado
+					if (m_SelectedNodes.ContainsValue(e.Node) && e.Node.Parent != null)
+					{
+						e.Graphics.FillRectangle(new SolidBrush(selectedNodeBackColor), 
+							new Rectangle(leftMargin, e.Bounds.Top, TextRenderer.MeasureText(altText, font).Width, e.Bounds.Height));
+					}
 
-					//e.Graphics.FillRectangle(new SolidBrush(BackColor), new Rectangle(e.Bounds.X, e.Bounds.Y, TextRenderer.MeasureText(altText, font).Width, e.Bounds.Height));
-					TextRenderer.DrawText(e.Graphics, altText, font, new Point(e.Bounds.Left, e.Bounds.Top), altForeColor, TextFormatFlags.GlyphOverhangPadding);		
+					//renderiza o texto
+					TextRenderer.DrawText(e.Graphics, altText, font, new Point(leftMargin, e.Bounds.Top), altForeColor, TextFormatFlags.GlyphOverhangPadding);
 				}
 			}
         }
@@ -543,7 +600,6 @@ namespace NsMultiselectTreeView // from https://github.com/DavidSM64/Quad64/blob
 					m_SelectedNodes.Remove(node.GetHashCode());
 					if (m_SelectedNodes.Count >= 1)
 					{
-						//m_SelectedNode = m_SelectedNodes[m_SelectedNodes.Count - 1];
 						m_SelectedNode = m_SelectedNodes.Last().Value;
 						m_SelectedNode.EnsureVisible();
 					}

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
 using ViewerBase;
 using System.IO;
 using OpenTK;
@@ -24,12 +22,11 @@ namespace JADERLINK_MODEL_VIEWER.src
             this.tpng = tpng;
         }
 
-        public void Load(string Path)
+        public void Load(string MtlPath)
         {
 
-            FileInfo fileInfo = new FileInfo(Path);
+            FileInfo fileInfo = new FileInfo(MtlPath);
             string FileID = fileInfo.Name.ToUpperInvariant();
-            string diretory = fileInfo.DirectoryName + "\\";
 
             if (modelGroup.MaterialGroupDic.ContainsKey(FileID))
             {
@@ -42,17 +39,19 @@ namespace JADERLINK_MODEL_VIEWER.src
             {
                 List<ObjLoader.Loader.Data.Material> MtlMaterials = new List<ObjLoader.Loader.Data.Material>();
 
+                StreamReader streamReaderMtl = null;
                 try
                 {
                     var mtlLoaderFactory = new ObjLoader.Loader.Loaders.MtlLoaderFactory();
                     var mtlLoader = mtlLoaderFactory.Create();
-                    var streamReaderMtl = new StreamReader(fileInfo.OpenRead(), Encoding.ASCII);
+                    streamReaderMtl = new StreamReader(fileInfo.OpenRead(), Encoding.UTF8);
                     ObjLoader.Loader.Loaders.LoadResultMtl arqMtl = mtlLoader.Load(streamReaderMtl);
-                    streamReaderMtl.Close();
                     MtlMaterials = arqMtl.Materials.ToList();
                 }
-                catch (Exception)
+                catch (Exception){ }
+                finally
                 {
+                    streamReaderMtl?.Close();
                 }
 
                 if (MtlMaterials.Count != 0)
@@ -69,6 +68,7 @@ namespace JADERLINK_MODEL_VIEWER.src
                     MaterialGroup materialGroup = new MaterialGroup(FileID);
 
                     List<string> texturesList = new List<string>();
+                    List<string> InvariantTexturesList = new List<string>();
                     foreach (var mat in MtlMaterials)
                     {
                         string materialName = mat.Name.ToUpperInvariant();
@@ -88,7 +88,7 @@ namespace JADERLINK_MODEL_VIEWER.src
                                 FileInfo texInfo = new FileInfo(mat.DiffuseTextureMap);
                                 string texname = texInfo.Name.ToLowerInvariant();
                                 string texfolder = texInfo.Directory.Name.ToLowerInvariant();
-                                string texfolderToFullFolder = texInfo.Directory.Name.ToLowerInvariant() + "\\";
+                                string texfolderToFullFolder = texInfo.Directory.Name;
                                 string fullfolder = texInfo.Directory.FullName;
                                 if (fullfolder == Directory.GetCurrentDirectory())
                                 {
@@ -96,9 +96,11 @@ namespace JADERLINK_MODEL_VIEWER.src
                                     texfolderToFullFolder = "";
                                 }
                                 texNameRef = texfolder + "/" + texname;
-                                string texFullFolder = diretory + texfolderToFullFolder + texname;
-                                if (!texturesList.Contains(texFullFolder))
+                                string texFullFolder = Path.Combine(fileInfo.DirectoryName, texfolderToFullFolder, texInfo.Name);
+                                string invTexFullFolder = texFullFolder.ToLowerInvariant();
+                                if (!InvariantTexturesList.Contains(invTexFullFolder))
                                 {
+                                    InvariantTexturesList.Add(invTexFullFolder);
                                     texturesList.Add(texFullFolder);
                                 }
                             }
@@ -125,7 +127,7 @@ namespace JADERLINK_MODEL_VIEWER.src
                                 FileInfo texInfo = new FileInfo(mat.AlphaTextureMap);
                                 string texname = texInfo.Name.ToLowerInvariant();
                                 string texfolder = texInfo.Directory.Name.ToLowerInvariant();
-                                string texfolderToFullFolder = texInfo.Directory.Name.ToLowerInvariant() + "\\";
+                                string texfolderToFullFolder = texInfo.Directory.Name;
                                 string fullfolder = texInfo.Directory.FullName;
                                 if (fullfolder == Directory.GetCurrentDirectory())
                                 {
@@ -133,9 +135,11 @@ namespace JADERLINK_MODEL_VIEWER.src
                                     texfolderToFullFolder = "";
                                 }
                                 texNameRef = texfolder + "/" + texname;
-                                string texFullFolder = diretory + texfolderToFullFolder + texname;
-                                if (!texturesList.Contains(texFullFolder))
+                                string texFullFolder = Path.Combine(fileInfo.DirectoryName, texfolderToFullFolder, texInfo.Name);
+                                string invTexFullFolder = texFullFolder.ToLowerInvariant();
+                                if (!InvariantTexturesList.Contains(invTexFullFolder))
                                 {
+                                    InvariantTexturesList.Add(invTexFullFolder);
                                     texturesList.Add(texFullFolder);
                                 }
                             }

@@ -249,7 +249,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.Controls.Add(this.buttonResetCam);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = global::RE4_PS4NS_MODEL_VIEWER.Properties.Resources.icon;
             this.KeyPreview = true;
             this.Name = "FormCamera";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

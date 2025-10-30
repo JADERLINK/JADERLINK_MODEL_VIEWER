@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using ViewerBase;
 using System.IO;
 using OpenTK;
 using JADERLINK_MODEL_VIEWER.src.Nodes;
-using RE4_PS2_BIN_TOOL.ALL;
-using RE4_PS2_BIN_TOOL.EXTRACT;
+using SHARED_PS2_BIN.EXTRACT;
+using SHARED_PS2_BIN.ALL;
 
 namespace RE4_PS2_MODEL_VIEWER.src
 {

@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
-using System.Windows.Forms;
 
 namespace JADERLINK_MODEL_VIEWER.src.Nodes
 {
-    public class NodeTexture : NodeItem
+    public class NodeTexture : NodeItem, NsMultiselectTreeView.IAltNode
     {
         public NodeTexture() : base() { }
-        public NodeTexture(string text) : base(text) { }
-        public NodeTexture(string text, TreeNode[] children) : base(text, children) { }
 
+        public string AltText { get { return Text; } }
+
+        public Color AltForeColor { get { return Color.Black; } }
     }
 }

@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace RE4_PS2_BIN_TOOL.ALL
+namespace SHARED_PS2_BIN.ALL
 {
     /// <summary>
-    /// representa um material do .bin
+    /// representa um material do BIN PS2
     /// </summary>
     public class MaterialPart
     {

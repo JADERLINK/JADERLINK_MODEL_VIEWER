@@ -29,12 +29,15 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCredits));
             this.buttonClose = new System.Windows.Forms.Button();
             this.groupBoxCodeproject = new System.Windows.Forms.GroupBox();
             this.linkLabelMultiselectTreeView = new System.Windows.Forms.LinkLabel();
             this.linkLabelLicenseCodeProject = new System.Windows.Forms.LinkLabel();
             this.groupBoxAPIs = new System.Windows.Forms.GroupBox();
+            this.linkLabelLicenceScarlet = new System.Windows.Forms.LinkLabel();
+            this.linkLabelScarletGitHub = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelScarlet = new System.Windows.Forms.Label();
             this.linkLabelLicenceSmd = new System.Windows.Forms.LinkLabel();
             this.linkLabelLicenseDDS = new System.Windows.Forms.LinkLabel();
             this.linkLabelLicenceObj = new System.Windows.Forms.LinkLabel();
@@ -68,10 +71,6 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.groupBoxProjectLinks = new System.Windows.Forms.GroupBox();
             this.linkLabelDonate = new System.Windows.Forms.LinkLabel();
             this.linkLabelProjectGitHub = new System.Windows.Forms.LinkLabel();
-            this.linkLabelLicenceScarlet = new System.Windows.Forms.LinkLabel();
-            this.linkLabelScarletGitHub = new System.Windows.Forms.LinkLabel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.labelScarlet = new System.Windows.Forms.Label();
             this.groupBoxCodeproject.SuspendLayout();
             this.groupBoxAPIs.SuspendLayout();
             this.groupBoxAuthors.SuspendLayout();
@@ -162,6 +161,52 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.groupBoxAPIs.TabIndex = 5;
             this.groupBoxAPIs.TabStop = false;
             this.groupBoxAPIs.Text = "LIB\'s";
+            // 
+            // linkLabelLicenceScarlet
+            // 
+            this.linkLabelLicenceScarlet.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkLabelLicenceScarlet.AutoSize = true;
+            this.linkLabelLicenceScarlet.LinkColor = System.Drawing.Color.Navy;
+            this.linkLabelLicenceScarlet.Location = new System.Drawing.Point(6, 234);
+            this.linkLabelLicenceScarlet.Name = "linkLabelLicenceScarlet";
+            this.linkLabelLicenceScarlet.Size = new System.Drawing.Size(277, 30);
+            this.linkLabelLicenceScarlet.TabIndex = 26;
+            this.linkLabelLicenceScarlet.TabStop = true;
+            this.linkLabelLicenceScarlet.Text = "License:  MIT License - Copyright (c) 2016\r\n xdaniel (Daniel R.) / DigitalZero Do" +
+    "main";
+            this.linkLabelLicenceScarlet.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLicenceScarlet_LinkClicked);
+            // 
+            // linkLabelScarletGitHub
+            // 
+            this.linkLabelScarletGitHub.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkLabelScarletGitHub.AutoSize = true;
+            this.linkLabelScarletGitHub.LinkColor = System.Drawing.Color.Navy;
+            this.linkLabelScarletGitHub.Location = new System.Drawing.Point(6, 217);
+            this.linkLabelScarletGitHub.Name = "linkLabelScarletGitHub";
+            this.linkLabelScarletGitHub.Size = new System.Drawing.Size(98, 15);
+            this.linkLabelScarletGitHub.TabIndex = 25;
+            this.linkLabelScarletGitHub.TabStop = true;
+            this.linkLabelScarletGitHub.Text = "Github Project";
+            this.linkLabelScarletGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelScarletGitHub_LinkClicked);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 198);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(288, 15);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "By: xdaniel (Daniel R.) / DigitalZero Domain";
+            // 
+            // labelScarlet
+            // 
+            this.labelScarlet.AutoSize = true;
+            this.labelScarlet.ForeColor = System.Drawing.Color.Teal;
+            this.labelScarlet.Location = new System.Drawing.Point(5, 181);
+            this.labelScarlet.Name = "labelScarlet";
+            this.labelScarlet.Size = new System.Drawing.Size(182, 15);
+            this.labelScarlet.TabIndex = 23;
+            this.labelScarlet.Text = "Scarlet (In code) [GNF LIB]:";
             // 
             // linkLabelLicenceSmd
             // 
@@ -312,8 +357,8 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.linkLabelLicenseOpenTK.Size = new System.Drawing.Size(347, 30);
             this.linkLabelLicenseOpenTK.TabIndex = 12;
             this.linkLabelLicenseOpenTK.TabStop = true;
-            this.linkLabelLicenseOpenTK.Text = "License:  MIT License Copyright (c) 2006-2020 \r\nStefanos Apostolopoulos for the O" +
-    "pen Toolkit project.";
+            this.linkLabelLicenseOpenTK.Text = "License:  MIT License Copyright (c) 2006-2020\r\nStefanos Apostolopoulos for the Op" +
+    "en Toolkit project.";
             this.linkLabelLicenseOpenTK.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLicenseOpenTK_LinkClicked);
             // 
             // labelChris
@@ -562,52 +607,6 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.linkLabelProjectGitHub.Text = "Project GitHub";
             this.linkLabelProjectGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelProjectGitHub_LinkClicked);
             // 
-            // linkLabelLicenceScarlet
-            // 
-            this.linkLabelLicenceScarlet.ActiveLinkColor = System.Drawing.Color.Black;
-            this.linkLabelLicenceScarlet.AutoSize = true;
-            this.linkLabelLicenceScarlet.LinkColor = System.Drawing.Color.Navy;
-            this.linkLabelLicenceScarlet.Location = new System.Drawing.Point(6, 234);
-            this.linkLabelLicenceScarlet.Name = "linkLabelLicenceScarlet";
-            this.linkLabelLicenceScarlet.Size = new System.Drawing.Size(277, 30);
-            this.linkLabelLicenceScarlet.TabIndex = 26;
-            this.linkLabelLicenceScarlet.TabStop = true;
-            this.linkLabelLicenceScarlet.Text = "License:  MIT License - Copyright (c) 2016\r\n xdaniel (Daniel R.) / DigitalZero Do" +
-    "main";
-            this.linkLabelLicenceScarlet.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLicenceScarlet_LinkClicked);
-            // 
-            // linkLabelScarletGitHub
-            // 
-            this.linkLabelScarletGitHub.ActiveLinkColor = System.Drawing.Color.Black;
-            this.linkLabelScarletGitHub.AutoSize = true;
-            this.linkLabelScarletGitHub.LinkColor = System.Drawing.Color.Navy;
-            this.linkLabelScarletGitHub.Location = new System.Drawing.Point(6, 217);
-            this.linkLabelScarletGitHub.Name = "linkLabelScarletGitHub";
-            this.linkLabelScarletGitHub.Size = new System.Drawing.Size(98, 15);
-            this.linkLabelScarletGitHub.TabIndex = 25;
-            this.linkLabelScarletGitHub.TabStop = true;
-            this.linkLabelScarletGitHub.Text = "Github Project";
-            this.linkLabelScarletGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelScarletGitHub_LinkClicked);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 198);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(288, 15);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "By: xdaniel (Daniel R.) / DigitalZero Domain";
-            // 
-            // labelScarlet
-            // 
-            this.labelScarlet.AutoSize = true;
-            this.labelScarlet.ForeColor = System.Drawing.Color.Teal;
-            this.labelScarlet.Location = new System.Drawing.Point(5, 181);
-            this.labelScarlet.Name = "labelScarlet";
-            this.labelScarlet.Size = new System.Drawing.Size(182, 15);
-            this.labelScarlet.TabIndex = 23;
-            this.labelScarlet.Text = "Scarlet (In code) [GNF LIB]:";
-            // 
             // FormCredits
             // 
             this.AcceptButton = this.buttonClose;
@@ -622,7 +621,7 @@ namespace JADERLINK_MODEL_VIEWER.src.Forms
             this.Controls.Add(this.buttonClose);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = global::JADERLINK_MODEL_VIEWER.Properties.Resources.icon;
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FormCredits";

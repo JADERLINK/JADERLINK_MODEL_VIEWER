@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
 using ViewerBase;
 using PMD_API;
-using TGASharpLib;
 using System.IO;
 using OpenTK;
 using JADERLINK_MODEL_VIEWER.src.Nodes;
@@ -34,7 +31,7 @@ namespace RE4_2007_MODEL_VIEWER.src
         public void LoadPMD(string PmdPath)
         {
             FileInfo fileInfo = new FileInfo(PmdPath);
-            string PmdDiretory = fileInfo.DirectoryName + "\\";
+            string PmdDiretory = fileInfo.DirectoryName;
             string FileID = fileInfo.Name.ToUpperInvariant();
             string FileName = FileID;
 
@@ -80,6 +77,8 @@ namespace RE4_2007_MODEL_VIEWER.src
 
                 if (pmd != null)
                 {
+                    List<string> TextureNamesTGA = new List<string>();
+
                     ResponsibilityContainer RContainer = new ResponsibilityContainer();
                     OBJ_Representation obj_representation = new OBJ_Representation(FileID);
                     ModelResponsibility modelResponsibility = new ModelResponsibility(modelGroup, obj_representation);
@@ -101,7 +100,7 @@ namespace RE4_2007_MODEL_VIEWER.src
 
                     PopulateTreatedModel(ref treatedModel, ref pmd, FileID, isScenarioPmd);
 
-                    PopulateMaterialGroup(ref materialGroup, ref matTexGroup, ref pmd);
+                    PopulateMaterialGroup(ref materialGroup, ref matTexGroup, ref pmd, ref TextureNamesTGA);
 
                     BoundaryCalculation.TreatedModel(ref treatedModel);
 
@@ -119,9 +118,9 @@ namespace RE4_2007_MODEL_VIEWER.src
                     //faz parte das texturas
                     LoadTGA loadTGA = new LoadTGA(modelGroup, tpng);
                     List<string> TexPathList = new List<string>();
-                    foreach (var tex in matTexGroup.MatTexDic)
+                    foreach (var texName in TextureNamesTGA)
                     {
-                        string TexPath = PmdDiretory + tex.Value.TextureName;
+                        string TexPath = Path.Combine(PmdDiretory, texName);
                         if (!TexPathList.Contains(TexPath))
                         {
                             TexPathList.Add(TexPath);
@@ -286,7 +285,7 @@ namespace RE4_2007_MODEL_VIEWER.src
 
         }
 
-        private static void PopulateMaterialGroup(ref MaterialGroup materialGroup, ref MatTexGroup matTexGroup, ref PMD pmd) 
+        private static void PopulateMaterialGroup(ref MaterialGroup materialGroup, ref MatTexGroup matTexGroup, ref PMD pmd, ref List<string> TextureNamesTGA) 
         {
             //material
             for (int i = 0; i < pmd.Materials.Length; i++)
@@ -304,6 +303,11 @@ namespace RE4_2007_MODEL_VIEWER.src
                 if (!matTexGroup.MatTexDic.ContainsKey(matTex.MatTexName))
                 {
                     matTexGroup.MatTexDic.Add(matTex.MatTexName, matTex);
+                }
+
+                if (!TextureNamesTGA.Contains(pmd.Materials[i].TextureName))
+                {
+                    TextureNamesTGA.Add(pmd.Materials[i].TextureName);
                 }
             }
         }

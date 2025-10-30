@@ -33,11 +33,12 @@ namespace JADERLINK_MODEL_VIEWER
             this.menuStripMenu = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemLoadObj = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemLoadObjSplit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemLoadObjSplitAsc = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemLoadObjSplitDesc = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemLoadSMD = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemLoadMTL = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemTextures = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparatorFileMenu = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemActions = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemRemoveSelected = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +59,7 @@ namespace JADERLINK_MODEL_VIEWER
             this.toolStripMenuItemMisc = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemChangeSkyColor = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCredits = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemJaderlink = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.panelGL = new System.Windows.Forms.Panel();
             this.openFileDialogOBJ = new System.Windows.Forms.OpenFileDialog();
@@ -73,12 +75,14 @@ namespace JADERLINK_MODEL_VIEWER
             // 
             // menuStripMenu
             // 
-            this.menuStripMenu.BackColor = System.Drawing.Color.Gainsboro;
+            this.menuStripMenu.BackColor = System.Drawing.Color.Transparent;
+            this.menuStripMenu.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemFile,
             this.toolStripMenuItemActions,
             this.toolStripMenuItemView,
-            this.toolStripMenuItemMisc});
+            this.toolStripMenuItemMisc,
+            this.toolStripMenuItemJaderlink});
             this.menuStripMenu.Location = new System.Drawing.Point(0, 0);
             this.menuStripMenu.Name = "menuStripMenu";
             this.menuStripMenu.Size = new System.Drawing.Size(784, 24);
@@ -89,11 +93,12 @@ namespace JADERLINK_MODEL_VIEWER
             // 
             this.toolStripMenuItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemLoadObj,
-            this.toolStripMenuItemLoadObjSplit,
+            this.toolStripMenuItemLoadObjSplitAsc,
+            this.toolStripMenuItemLoadObjSplitDesc,
             this.toolStripMenuItemLoadSMD,
             this.toolStripMenuItemLoadMTL,
             this.toolStripMenuItemTextures,
-            this.toolStripSeparator1,
+            this.toolStripSeparatorFileMenu,
             this.toolStripMenuItemExit});
             this.toolStripMenuItemFile.Name = "toolStripMenuItemFile";
             this.toolStripMenuItemFile.Size = new System.Drawing.Size(37, 20);
@@ -103,52 +108,60 @@ namespace JADERLINK_MODEL_VIEWER
             // 
             this.toolStripMenuItemLoadObj.Name = "toolStripMenuItemLoadObj";
             this.toolStripMenuItemLoadObj.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.toolStripMenuItemLoadObj.Size = new System.Drawing.Size(260, 22);
+            this.toolStripMenuItemLoadObj.Size = new System.Drawing.Size(271, 22);
             this.toolStripMenuItemLoadObj.Text = "Load OBJ (One Group)";
             this.toolStripMenuItemLoadObj.Click += new System.EventHandler(this.toolStripMenuItemLoadObj_Click);
             // 
-            // toolStripMenuItemLoadObjSplit
+            // toolStripMenuItemLoadObjSplitAsc
             // 
-            this.toolStripMenuItemLoadObjSplit.Name = "toolStripMenuItemLoadObjSplit";
-            this.toolStripMenuItemLoadObjSplit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.toolStripMenuItemLoadObjSplit.Size = new System.Drawing.Size(260, 22);
-            this.toolStripMenuItemLoadObjSplit.Text = "Load OBJ (Split Groups)";
-            this.toolStripMenuItemLoadObjSplit.Click += new System.EventHandler(this.toolStripMenuItemLoadObjSplit_Click);
+            this.toolStripMenuItemLoadObjSplitAsc.Name = "toolStripMenuItemLoadObjSplitAsc";
+            this.toolStripMenuItemLoadObjSplitAsc.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.toolStripMenuItemLoadObjSplitAsc.Size = new System.Drawing.Size(271, 22);
+            this.toolStripMenuItemLoadObjSplitAsc.Text = "Load OBJ (Split Groups ASC)";
+            this.toolStripMenuItemLoadObjSplitAsc.Click += new System.EventHandler(this.toolStripMenuItemLoadObjSplitAsc_Click);
+            // 
+            // toolStripMenuItemLoadObjSplitDesc
+            // 
+            this.toolStripMenuItemLoadObjSplitDesc.Name = "toolStripMenuItemLoadObjSplitDesc";
+            this.toolStripMenuItemLoadObjSplitDesc.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
+            this.toolStripMenuItemLoadObjSplitDesc.Size = new System.Drawing.Size(271, 22);
+            this.toolStripMenuItemLoadObjSplitDesc.Text = "Load OBJ (Split Groups DESC)";
+            this.toolStripMenuItemLoadObjSplitDesc.Click += new System.EventHandler(this.toolStripMenuItemLoadObjSplitDesc_Click);
             // 
             // toolStripMenuItemLoadSMD
             // 
             this.toolStripMenuItemLoadSMD.Name = "toolStripMenuItemLoadSMD";
-            this.toolStripMenuItemLoadSMD.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
-            this.toolStripMenuItemLoadSMD.Size = new System.Drawing.Size(260, 22);
+            this.toolStripMenuItemLoadSMD.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.toolStripMenuItemLoadSMD.Size = new System.Drawing.Size(271, 22);
             this.toolStripMenuItemLoadSMD.Text = "Load SMD (StudioMdlData)";
             this.toolStripMenuItemLoadSMD.Click += new System.EventHandler(this.toolStripMenuItemLoadSMD_Click);
             // 
             // toolStripMenuItemLoadMTL
             // 
             this.toolStripMenuItemLoadMTL.Name = "toolStripMenuItemLoadMTL";
-            this.toolStripMenuItemLoadMTL.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.toolStripMenuItemLoadMTL.Size = new System.Drawing.Size(260, 22);
+            this.toolStripMenuItemLoadMTL.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.K)));
+            this.toolStripMenuItemLoadMTL.Size = new System.Drawing.Size(271, 22);
             this.toolStripMenuItemLoadMTL.Text = "Load MTL (Materials)";
             this.toolStripMenuItemLoadMTL.Click += new System.EventHandler(this.toolStripMenuItemLoadMTL_Click);
             // 
             // toolStripMenuItemTextures
             // 
             this.toolStripMenuItemTextures.Name = "toolStripMenuItemTextures";
-            this.toolStripMenuItemTextures.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.toolStripMenuItemTextures.Size = new System.Drawing.Size(260, 22);
+            this.toolStripMenuItemTextures.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.J)));
+            this.toolStripMenuItemTextures.Size = new System.Drawing.Size(271, 22);
             this.toolStripMenuItemTextures.Text = "Load Textures Files";
             this.toolStripMenuItemTextures.Click += new System.EventHandler(this.toolStripMenuItemTextures_Click);
             // 
-            // toolStripSeparator1
+            // toolStripSeparatorFileMenu
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(257, 6);
+            this.toolStripSeparatorFileMenu.Name = "toolStripSeparatorFileMenu";
+            this.toolStripSeparatorFileMenu.Size = new System.Drawing.Size(268, 6);
             // 
             // toolStripMenuItemExit
             // 
             this.toolStripMenuItemExit.Name = "toolStripMenuItemExit";
             this.toolStripMenuItemExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.toolStripMenuItemExit.Size = new System.Drawing.Size(260, 22);
+            this.toolStripMenuItemExit.Size = new System.Drawing.Size(271, 22);
             this.toolStripMenuItemExit.Text = "Exit";
             this.toolStripMenuItemExit.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -317,6 +330,15 @@ namespace JADERLINK_MODEL_VIEWER
             this.toolStripMenuItemCredits.Text = "Credits";
             this.toolStripMenuItemCredits.Click += new System.EventHandler(this.toolStripMenuItemCredits_Click);
             // 
+            // toolStripMenuItemJaderlink
+            // 
+            this.toolStripMenuItemJaderlink.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripMenuItemJaderlink.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItemJaderlink.Name = "toolStripMenuItemJaderlink";
+            this.toolStripMenuItemJaderlink.Size = new System.Drawing.Size(314, 20);
+            this.toolStripMenuItemJaderlink.Text = "Subscribe on my channel: youtube.com/@JADERLINK";
+            this.toolStripMenuItemJaderlink.Click += new System.EventHandler(this.toolStripMenuItemJaderlink_Click);
+            // 
             // splitContainerMain
             // 
             this.splitContainerMain.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -350,14 +372,14 @@ namespace JADERLINK_MODEL_VIEWER
             // 
             // openFileDialogOBJ
             // 
-            this.openFileDialogOBJ.Filter = "OBJ and MTL | *.OBJ;*.MTL";
+            this.openFileDialogOBJ.Filter = "OBJ and MTL|*.OBJ;*.MTL";
             this.openFileDialogOBJ.Multiselect = true;
             this.openFileDialogOBJ.Title = "LOAD OBJ";
             this.openFileDialogOBJ.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogOBJ_FileOk);
             // 
             // openFileDialogSMD
             // 
-            this.openFileDialogSMD.Filter = "SMD and MTL | *.SMD;*.MTL";
+            this.openFileDialogSMD.Filter = "SMD and MTL|*.SMD;*.MTL";
             this.openFileDialogSMD.Multiselect = true;
             this.openFileDialogSMD.Title = "LOAD SMD";
             this.openFileDialogSMD.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogSMD_FileOk);
@@ -365,14 +387,14 @@ namespace JADERLINK_MODEL_VIEWER
             // openFileDialogMTL
             // 
             this.openFileDialogMTL.DefaultExt = "MTL";
-            this.openFileDialogMTL.Filter = "MTL | *.MTL";
+            this.openFileDialogMTL.Filter = "MTL|*.MTL";
             this.openFileDialogMTL.Multiselect = true;
             this.openFileDialogMTL.Title = "LOAD MTL";
             this.openFileDialogMTL.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogMTL_FileOk);
             // 
             // openFileDialogTEXTURES
             // 
-            this.openFileDialogTEXTURES.Filter = "TEXTURES| *.DDS;*.GNF;*.TGA;*.PNG;*.BMP;*.GIF;*.JPG;*.JPEG";
+            this.openFileDialogTEXTURES.Filter = "TEXTURES|*.DDS;*.GNF;*.TGA;*.PNG;*.BMP;*.GIF;*.JPG;*.JPEG";
             this.openFileDialogTEXTURES.Multiselect = true;
             this.openFileDialogTEXTURES.Title = "LOAD TEXTURES";
             this.openFileDialogTEXTURES.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogTEXTURES_FileOk);
@@ -386,13 +408,14 @@ namespace JADERLINK_MODEL_VIEWER
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.splitContainerMain);
             this.Controls.Add(this.menuStripMenu);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = global::JADERLINK_MODEL_VIEWER.Properties.Resources.icon;
             this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "FormMain";
-            this.Text = "JADERLINK MODEL VIEWER | V.1.0.6 | YOUTUBE.COM/@JADERLINK";
+            this.Text = "JADERLINK MODEL VIEWER | V.1.0.7 | YOUTUBE.COM/@JADERLINK";
             this.menuStripMenu.ResumeLayout(false);
             this.menuStripMenu.PerformLayout();
             this.splitContainerMain.Panel2.ResumeLayout(false);
@@ -415,8 +438,8 @@ namespace JADERLINK_MODEL_VIEWER
         private System.Windows.Forms.OpenFileDialog openFileDialogOBJ;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLoadSMD;
         private System.Windows.Forms.OpenFileDialog openFileDialogSMD;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLoadObjSplit;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLoadObjSplitDesc;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparatorFileMenu;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLoadMTL;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExit;
         private System.Windows.Forms.OpenFileDialog openFileDialogMTL;
@@ -440,6 +463,8 @@ namespace JADERLINK_MODEL_VIEWER
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemVertexColor;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAlphaChannel;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTextureNearestLinear;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemJaderlink;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLoadObjSplitAsc;
     }
 }
 

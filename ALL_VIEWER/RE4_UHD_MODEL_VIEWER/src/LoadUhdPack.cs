@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using ViewerBase;
 using System.IO;
 using System.Drawing;
@@ -67,7 +66,15 @@ namespace RE4_UHD_MODEL_VIEWER.src
                         byte[] imagebytes = new byte[fileLength];
                         pack.BaseStream.Read(imagebytes, 0, (int)fileLength);
 
-                        uint imagemagic = BitConverter.ToUInt32(imagebytes, 0);
+                        uint imagemagic = 0xFF_FF_FF_FF;
+                        try
+                        {
+                            imagemagic = BitConverter.ToUInt32(imagebytes, 0);
+                        }
+                        catch (Exception)
+                        {
+                        }
+
                         if (imagemagic == 0x20534444)
                         {
                             Extension = "DDS";

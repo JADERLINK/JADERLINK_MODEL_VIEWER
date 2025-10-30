@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using ViewerBase;
 using System.IO;
 using RE4_SMX_TOOL;
 using JADERLINK_MODEL_VIEWER.src.Nodes;
+using SimpleEndianBinaryIO;
 
 namespace JADERLINK_MODEL_VIEWER.src
 {
@@ -14,14 +14,16 @@ namespace JADERLINK_MODEL_VIEWER.src
     {
         private ModelGroup modelGroup;
         private ScenarioNodeGroup sng;
+        private Endianness _endianness;
 
-        public LoadSMX(ModelGroup modelGroup, ScenarioNodeGroup sng)
+        public LoadSMX(ModelGroup modelGroup, ScenarioNodeGroup sng, Endianness endianness)
         {
             this.modelGroup = modelGroup;
             this.sng = sng;
+            _endianness = endianness;
         }
 
-        public void LoadSmx(string SmxPath, bool isPS2)
+        public void LoadSmx(string SmxPath)
         {
             List<SMX> smxList = new List<SMX>();
             FileInfo fileInfo = new FileInfo(SmxPath);
@@ -29,9 +31,9 @@ namespace JADERLINK_MODEL_VIEWER.src
             try
             {                
                 var stream = fileInfo.OpenRead();
-                var lines = SMXextract.extract(stream);
+                var lines = SMXextract.Extract(stream);
                 stream.Close();
-                smxList = SMXextract.ToSmx(lines, isPS2);
+                smxList = SMXextract.ToSmx(lines, _endianness, false);
             }
             catch (Exception ex)
             {

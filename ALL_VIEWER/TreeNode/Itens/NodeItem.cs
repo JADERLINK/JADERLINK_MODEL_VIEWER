@@ -8,9 +8,8 @@ namespace JADERLINK_MODEL_VIEWER.src.Nodes
 {
     public abstract class NodeItem : TreeNode
     {
-        public NodeItem() : base() { }
-        public NodeItem(string text) : base(text) { }
-        public NodeItem(string text, TreeNode[] children) : base(text, children) { }
+        public NodeItem() : base() {}
+
         public GroupType GetParentGroup() 
         {
             if (Parent != null
@@ -22,5 +21,20 @@ namespace JADERLINK_MODEL_VIEWER.src.Nodes
         }
 
         public ResponsibilityContainer Responsibility;
+
+        private string internalText = "";
+
+        // a intenção aqui é ocultar a variavel original
+        public string Text { 
+            get { 
+                return internalText;
+            }
+            set { 
+                base.Text = "";
+                base.ToolTipText = value;
+                internalText = value;
+            } 
+        }
+
     }
 }

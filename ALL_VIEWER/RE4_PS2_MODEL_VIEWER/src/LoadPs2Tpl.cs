@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using ViewerBase;
 using System.IO;
-using OpenTK;
 using JADERLINK_MODEL_VIEWER.src.Nodes;
 using TPL_PS2_EXTRACT;
 using System.Drawing;

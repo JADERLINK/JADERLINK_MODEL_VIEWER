@@ -9,6 +9,8 @@
     <Import_RootNamespace>Ps2ScenarioSMD</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Ps2ScenarioExtract.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CounterBinTpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extract_BIN_Inside_SMD_PS2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extract_TPL_Inside_SMD_PS2.cs" />
   </ItemGroup>
 </Project>

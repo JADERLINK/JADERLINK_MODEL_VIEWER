@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ControlUtils
@@ -23,7 +19,7 @@ namespace ControlUtils
             {
                 return value;
             }
-            set 
+            set
             { 
                 this.value = value;
                 lastText = floatToText(value);
