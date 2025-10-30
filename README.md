@@ -1,14 +1,14 @@
 # JADERLINK_MODEL_VIEWER
 
-View the 3d models, from the files: Wavefront OBJ, StudioModelData SMD, Re4 Uhd BIN, Re4 Ps4/Ns BIN, Re4 PS2 BIN, Re4 2007 PMD, and your Re4 Scenario SMD files (PS2/UHD/2007/PS4/NS).
+View the 3d models, from the files: Wavefront OBJ, StudioModelData SMD, RE4 BIN, RE4 PMD, and RE4 Scenario SMD files (For RE4 OG PS2/UHD/2007/PS4/NS/X360/PS3/GC/WII).
 
-![](https://i.imgur.com/GEkB1x4.png)
+![](https://i.imgur.com/HU9q8iM.png)
 
 **Info:**
 <br>License: MIT Licence
-<br>Linguage: C#
-<br>Platform: Windows
-<br>Dependency: Microsoft .NET Framework 4.8
+<br>Language: C#
+<br>Platform: Windows / Linux Mono or Wine
+<br>Dependency: Microsoft .NET Framework 4.8 or Mono/Wine
 <br>Requires openGL 3.3 or higher
 
 **Translate from Portuguese Brazil**
@@ -25,7 +25,18 @@ RE4_PS2_MODEL_VIEWER.exe -> arquivos .BIN (Re4 Ps2) + .TPL, Scenario .SMD + .SMX
 
 RE4_PS4NS_MODEL_VIEWER.exe -> arquivos .BIN (Re4 Ps4/Ns) + .TPL, Scenario .SMD + .SMX, com suporte a arquivos .PACK (texturas: DDS, GNF e TGA);
 
+RE4_GCWII_MODEL_VIEWER.exe -> arquivos .BIN (Re4 Gc/Wii), Scenario .SMD + .SMX;
+
+RE4_X360PS3_MODEL_VIEWER.exe -> arquivos .BIN (Re4 x360/ps3) + .TPL, Scenario .SMD + .SMX, com suporte a arquivos do x360 .PACK e .PACK.YZ2 (sem compressão) (texturas: DDS e TGA), arquivos PACKs do PS3 não são suportados;
+
 ## Updates
+
+**Update 1.0.7**
+<br>Adicionado suporte parcial para Linux, para Mono e Wine, sendo o Wine recomendado para uso no Linux.
+<br>Agora na tool "JADERLINK_MODEL_VIEWER" o "Open OBJ Split", foi dividido em dois botões, que definem em que ordem os grupos são ordenados.
+<br>Adicionada a tool "RE4_GCWII_MODEL_VIEWER.exe", pode abrir arquivos BINs e SMDs de cenário, porém essa versão não consegue carregar as texturas;
+<br>Adicionado a tool "RE4_X360PS3_MODEL_VIEWER.exe" pode abrir os arquivos BINs + TPLs, SMDs + SMXs, e arquivos PACK da versão X360 e os arquivos PACK do PS3 não podem ser abertos, pois essa versão não tem suporte para imagem GNF, TGA03 e TGA15.
+<br>E outras mudanças no código para compatibilidade com Linux.
 
 **Update 1.0.6**
 <br>Adicionado suporte para imagem GNF para "RE4_PS4NS_MODEL_VIEWER" e "JADERLINK_MODEL_VIEWER".
@@ -58,7 +69,7 @@ RE4_PS4NS_MODEL_VIEWER.exe -> arquivos .BIN (Re4 Ps4/Ns) + .TPL, Scenario .SMD +
 ## **_MODEL_VIEWER.exe
 
 Para abrir o programa, é necessário que sua placa de vídeo (GPU) tenha o OpenGL versão 3.3 ou superior. Caso sua versão seja inferior à requerida, o programa mostrará uma mensagem de erro.
-<br>Aviso: a versão 1.0.* é uma versão de pré-lançamento, então os programas podem conter erros nos quais podem fechar o programa sem aviso.
+<br>Aviso: a versão 1.0.* é uma versão de pré-lançamento, então os programas podem conter erros que podem fechar o programa sem aviso.
 
 ## Para Desenvolvedores:
 
@@ -80,6 +91,5 @@ Encontra-se em ALL_VIEWER/CjClutter.ObjLoader.Loader, código modificado, as mod
 <br>[Scarlet by xdaniel (Daniel R.) / DigitalZero Domain](https://github.com/xdanieldzd/Scarlet): Adiciona suporte a texturas GNF.
 <br>[OpenTK](https://github.com/opentk/opentk/blob/master/LICENSE.md).
 
------
 **At.te: JADERLINK**
-<br>2024-10-16
+<br>2025-10-30
